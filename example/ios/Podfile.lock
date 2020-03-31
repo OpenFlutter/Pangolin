@@ -1,0 +1,29 @@
+PODS:
+  - Bytedance-UnionAD (2.5.1.5)
+  - Flutter (1.0.0)
+  - pangolin (0.0.1):
+    - Bytedance-UnionAD
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - pangolin (from `.symlinks/plugins/pangolin/ios`)
+
+SPEC REPOS:
+  trunk:
+    - Bytedance-UnionAD
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  pangolin:
+    :path: ".symlinks/plugins/pangolin/ios"
+
+SPEC CHECKSUMS:
+  Bytedance-UnionAD: 7705ad5c88472c13b503c45d5ecc09114f063913
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  pangolin: fd4122b9374fde5ac1147354f0f99c86b7260ee8
+
+PODFILE CHECKSUM: 3dbe063e9c90a5d7c9e4e76e70a821b9e2c1d271
+
+COCOAPODS: 1.8.1
