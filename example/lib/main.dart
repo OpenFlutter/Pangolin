@@ -25,9 +25,16 @@ class _MyAppState extends State<MyApp> {
     String platformVersion;
 
     platformVersion = await Pangolin.platformVersion;
-    var result = await Pangolin.register("5056758", true, "爱看", true, true, true, true);
+    Pangolin.register(
+        "5056758",
+        true,
+        "爱看",
+        true,
+        true,
+        true,
+        true
+    );
     Pangolin.loadSplashAd("887310537",false);
-    print("穿山甲接入结果：${result.toString()}");
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       platformVersion = await Pangolin.platformVersion;
