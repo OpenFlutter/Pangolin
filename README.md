@@ -1,5 +1,5 @@
 <p align="center">
-<img src=https://github.com/tongyangsheng/Pangolin/blob/master/showImage/1.jpg alt="drawing" width="600">
+<img src=https://github.com/tongyangsheng/Pangolin/blob/master/showImage/1.jpg alt="drawing" width="700">
 </p>
 
 <h1 align="center">Pangolin</h1>
@@ -53,6 +53,8 @@ dependencies:
 
 #### iOS
 [穿山甲iOS SDK 接入基础配置](https://partner.oceanengine.com/union/media/union/download/detail?id=16&docId=5de8d570b1afac00129330c5&osType=ios)
+## 穿山甲平台
+在使用之前必须确认您在穿山甲平台[穿山甲控制台](https://partner.oceanengine.com/union/media/union/site)已经注册了自己app所对应的应用以及对应广告类型的代码位，由于穿山甲包含多种类型的广告和功能请务必确认你在插件中注册的和你在平台注册的一一对应。
 ## 开始使用
 ### 初始化（register）
 调用穿山甲SDK的第一步是对SDK的初始化
