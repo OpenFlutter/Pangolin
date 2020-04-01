@@ -93,11 +93,7 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
 
   @Override
   public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
-    if (call.method.equals("getPlatformVersion")) {
-      result.success("Android " + android.os.Build.VERSION.RELEASE);
-    }
-    else if(call.method.equals("register"))
-    {
+    if (call.method.equals("register")) {
       String appId = call.argument("appId");
       Boolean useTextureView = call.argument("useTextureView");
       String appName = call.argument("appName");
@@ -105,14 +101,37 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
       Boolean allowShowPageWhenScreenLock = call.argument("allowShowPageWhenScreenLock");
       Boolean debug = call.argument("debug");
       Boolean supportMultiProcess = call.argument("supportMultiProcess");
+      if(useTextureView == null)
+      {
+        useTextureView = false;
+      }
+      if (allowShowNotify == null)
+      {
+        allowShowNotify = true;
+      }
+      if (allowShowPageWhenScreenLock == null)
+      {
+        allowShowPageWhenScreenLock = true;
+      }
+      if (debug == null)
+      {
+        debug = true;
+      }
+      if (supportMultiProcess == null)
+      {
+        supportMultiProcess = false;
+      }
       if (appId == null || appId == "")
       {
         result.error("500","appId can't be null",null);
       }
-      else
-      {
-        TTAdManagerHolder.init(applicationContext,appId,useTextureView,appName,allowShowNotify,allowShowPageWhenScreenLock,debug, supportMultiProcess);
-        result.success(true);
+      else {
+        if (appName == null || appName == "") {
+          result.error("600", "appName can't be null", null);
+        } else {
+          TTAdManagerHolder.init(applicationContext, appId, useTextureView, appName, allowShowNotify, allowShowPageWhenScreenLock, debug, supportMultiProcess);
+          result.success(true);
+        }
       }
     }
     else if(call.method.equals("loadSplashAd"))

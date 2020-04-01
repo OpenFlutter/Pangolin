@@ -6,11 +6,6 @@ class Pangolin {
   static const MethodChannel _channel =
       const MethodChannel('com.tongyangsheng.pangolin');
 
-  static Future<String> get platformVersion async {
-    final String version = await _channel.invokeMethod('getPlatformVersion');
-    return version;
-  }
-
   static Future<bool> register(String appId,bool useTextureView,String appName,bool allowShowNotify,bool allowShowPageWhenScreenLock,bool debug,bool supportMultiProcess) async{
     assert(appId != Null);
     return await _channel.invokeMethod("register",

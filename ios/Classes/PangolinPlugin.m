@@ -11,11 +11,7 @@
 }
 
 - (void)handleMethodCall:(FlutterMethodCall*)call result:(FlutterResult)result {
-    if ([@"getPlatformVersion" isEqualToString:call.method]) {
-        result([@"iOS " stringByAppendingString:[[UIDevice currentDevice] systemVersion]]);
-    }
-    else if([@"register" isEqualToString:call.method])
-    {
+    if ([@"register" isEqualToString:call.method]) {
         NSString* appId = call.arguments[@"appId"];
         if ([@"" isEqualToString:appId]) {
             result([FlutterError errorWithCode:@"500" message:@"appId can't be null" details:nil]);
