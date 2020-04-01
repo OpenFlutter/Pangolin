@@ -54,7 +54,7 @@ dependencies:
 #### iOS
 [穿山甲iOS SDK 接入基础配置](https://partner.oceanengine.com/union/media/union/download/detail?id=16&docId=5de8d570b1afac00129330c5&osType=ios)
 ## 穿山甲平台
-在使用之前必须确认您在穿山甲平台[穿山甲控制台](https://partner.oceanengine.com/union/media/union/site)已经注册了自己app所对应的应用以及对应广告类型的代码位，由于穿山甲包含多种类型的广告和功能请务必确认你在插件中注册的和你在平台注册的一一对应。
+在使用之前必须确认您在穿山甲平台的[控制台](https://partner.oceanengine.com/union/media/union/site)已经注册了自己app所对应的应用以及对应广告类型的代码位，由于穿山甲包含多种类型的广告和功能请务必确认你在插件中注册的和你在平台注册的一一对应。
 ## 开始使用
 ### 初始化（register）
 调用穿山甲SDK的第一步是对SDK的初始化
@@ -111,6 +111,9 @@ Pangolin.loadSplashAd(mCodeId,debug);
 | :------------ |:---------------:| -----:|
 | mCodeId      | 在穿山甲平台注册的自己的广告位id | null |
 | debug  | 测试阶段打开，可以通过日志排查问题，上线时去除该调用       |    true |
+
+## 测试说明
+穿山甲的测试个人建议在真机进行测试，我本人在模拟器上会遇到各种疑难杂症，虽然插件和穿山甲SDK的报错都能看到，但是直接上真机很多报错会减少，这个由使用者自行决定，建议仅供参考
 ## 感谢
 感谢各位Flutter开发者的支持和帮助，如果本插件能为你在开发过程中省下一点点的时间和精力算是达到了我开发插件的初衷。如果喜欢，欢迎点个🌟持续关注。如果项目关注度高，会继续开发SDK的剩余部分和分享一些开发插件的心得和踩坑经验。
 
