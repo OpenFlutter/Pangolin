@@ -1,6 +1,6 @@
 name: pangolin
 description: Flutter plugin for bytedance Ad SDK.
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/tongyangsheng/Pangolin.git
 
 environment:
