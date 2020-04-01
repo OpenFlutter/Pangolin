@@ -1,5 +1,5 @@
 <p align="center">
-<img src=https://github.com/tongyangsheng/Pangolin/blob/master/showImage/1.png alt="drawing" width="500">
+<img src=https://github.com/tongyangsheng/Pangolin/blob/master/showImage/1.jpg alt="drawing" width="500">
 </p>
 
 <h1 align="center">Pangolin</h1>
@@ -51,7 +51,7 @@ dependencies:
 
 * 穿山甲官方推荐在合适时机申请用户权限，但是使用本插件前请务必确认你所需的权限已经获得用户授权。
 
-####iOS
+#### iOS
 [穿山甲iOS SDK 接入基础配置](https://partner.oceanengine.com/union/media/union/download/detail?id=16&docId=5de8d570b1afac00129330c5&osType=ios)
 ## 开始使用
 ### 初始化（register）
