@@ -34,8 +34,8 @@ class _MyAppState extends State<MyApp> {
         true,
         true
     );
-    Pangolin.loadSplashAd("887310537",false);
-
+//    Pangolin.loadSplashAd("887310537",false);
+    Pangolin.loadExpressAd();
     // If the widget was removed from the tree while the asynchronous platform
     // message was in flight, we want to discard the reply rather than calling
     // setState to update our non-existent appearance.

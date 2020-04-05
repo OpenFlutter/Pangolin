@@ -5,23 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69a1e289-c17a-4105-997e-40a0d7ef5a11" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/android/src/main/java/com/tongyangsheng/pangolin/RewardVideoActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/src/main/res/drawable/border_input_box.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/src/main/res/drawable/btn_bg_creative.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/src/main/res/layout/activity_reward_video.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/src/main/res/values/colors.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/android/src/main/res/values/styles.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/android/src/main/java/com/tongyangsheng/pangolin/RewardVideoActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/android/src/main/res/drawable/border_input_box.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/android/src/main/res/drawable/btn_bg_creative.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/android/src/main/res/layout/activity_reward_video.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/android/src/main/res/values/colors.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/android/src/main/res/values/styles.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/src/main/java/com/tongyangsheng/pangolin/PangolinPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/tongyangsheng/pangolin/PangolinPlugin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/android/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/android/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/android/src/main/java/com/tongyangsheng/pangolin/PangolinPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/android/src/main/java/com/tongyangsheng/pangolin/PangolinPlugin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/example/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/example/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/example/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/ios/Classes/PangolinPlugin.m" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/ios/Classes/PangolinPlugin.m" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/lib/pangolin.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/lib/pangolin.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/pangolin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/pangolin.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/test/pangolin_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/test/pangolin_test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Classes/PangolinPlugin.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/PangolinPlugin.m" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/pangolin.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pangolin.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pangolin.iml" beforeDir="false" afterPath="$PROJECT_DIR$/pangolin.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/pangolin_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test/pangolin_test.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

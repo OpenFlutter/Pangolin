@@ -1,0 +1,77 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+
+    <!-- 主题配置 -->
+    <style name="Theme.Light.NoActionBar" parent="Theme.AppCompat.Light">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+
+    <style name="Theme.Dialog.TTDownload" parent="Theme.AppCompat.Light.Dialog" tools:keep="@style/Theme_Dialog_TTDownload">
+        <item name="windowNoTitle">?android:attr/windowNoTitle</item>
+        <item name="android:windowBackground">@color/white</item>
+    </style>
+
+    <!--自定义插屏广告 dialog背景全透明无边框theme -->
+    <style name="native_insert_dialog" parent="android:style/Theme.Dialog">
+        <!--背景颜色及和透明程度-->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <!--是否去除标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!--是否去除边框-->
+        <item name="android:windowFrame">@null</item>
+        <!--是否浮现在activity之上-->
+        <item name="android:windowIsFloating">true</item>
+        <!--是否模糊-->
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+
+    <style name="common_locker_screen" parent="AppTheme">
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="InputBoxStyle">
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginLeft">18dp</item>
+        <item name="android:layout_marginRight">18dp</item>
+        <item name="android:background">@drawable/border_input_box</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="EditTextStyle">
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="PrimaryButton" parent="Theme.AppCompat">
+        <item name="colorButtonNormal">#fff</item>
+        <item name="colorControlHighlight">#503399cc</item>
+        <!--        <item name="actionButtonStyle" ></item>-->
+        <item name="borderlessButtonStyle">@style/Widget.AppCompat.Button.Borderless</item>
+        <item name="background">@drawable/btn_bg_creative</item>
+        <!--        <item name="selectableItemBackground">@drawable/item_background_material</item>-->
+        <!--        <item name="selectableItemBackgroundBorderless">@drawable/item_background_borderless_material</item>-->
+        <!--        <item name="borderlessButtonStyle">@style/Widget.Material.Light.Button.Borderless</item>-->
+        <!--        <item name="buttonBarButtonStyle">@style/Widget.Material.Light.Button.ButtonBar.AlertDialog</item>-->
+
+
+    </style>
+
+</resources>
