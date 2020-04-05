@@ -39,7 +39,7 @@ Android Studio (version 3.6)
 ```yaml
 # add this line to your dependencies
 dependencies:
-  pangolin: ^0.0.1
+  pangolin: ^0.0.2
 ```
 
 ## 环境配置
