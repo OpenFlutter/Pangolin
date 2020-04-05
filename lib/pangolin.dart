@@ -29,4 +29,9 @@ class Pangolin {
         }
     );
   }
+
+  static Future loadExpressAd() async
+  {
+    return await _channel.invokeMethod("loadExpressAd");
+  }
 }

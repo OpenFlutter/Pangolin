@@ -144,6 +144,14 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
       intent.putExtra("debug",deBug);
       activity.startActivity(intent);
     }
+    else if (call.method.equals("loadExpressAd"))
+    {
+      Intent intent = new Intent();
+      intent.setClass(activity, RewardVideoActivity.class);
+      intent.putExtra("horizontal_rit","945122969");
+      intent.putExtra("vertical_rit","945122969");
+      activity.startActivity(intent);
+    }
     else
       {
       result.notImplemented();
