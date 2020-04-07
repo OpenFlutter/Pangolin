@@ -34,6 +34,11 @@ Dart VM version: 2.4.1 (Wed Aug 7 13:15:56 2019 +0200) on "macos_x64"
 Xcode - develop for iOS and macOS (Xcode 11.2)
 Android Studio (version 3.6)
 ```
+### 穿山甲
+```
+iOS - 2.5.1.5(cocoapods lastest version)
+Android - 2.9.5.0
+```
 
 ## 安装
 ```yaml
