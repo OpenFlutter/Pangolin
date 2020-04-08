@@ -17,6 +17,8 @@ import com.bytedance.sdk.openadsdk.TTAdNative;
 import com.bytedance.sdk.openadsdk.TTAppDownloadListener;
 import com.bytedance.sdk.openadsdk.TTRewardVideoAd;
 
+import io.flutter.plugin.common.MethodChannel;
+
 
 /**
  * Created by bytedance on 2018/2/1.
@@ -29,10 +31,9 @@ public class RewardVideoActivity extends Activity {
     private Button mShowAd;
     private TTAdNative mTTAdNative;
     private TTRewardVideoAd mttRewardVideoAd;
-    private String mHorizontalCodeId;
-    private String mVerticalCodeId;
+    public String mHorizontalCodeId;
+    public String mVerticalCodeId;
     private boolean mIsExpress = false; //是否请求模板广告
-
 
     @SuppressWarnings("RedundantCast")
     @Override
@@ -60,6 +61,14 @@ public class RewardVideoActivity extends Activity {
         mHorizontalCodeId = intent.getStringExtra("horizontal_rit");
         mVerticalCodeId = intent.getStringExtra("vertical_rit");
         mIsExpress = intent.getBooleanExtra("is_express", false);
+        if (mHorizontalCodeId != null)
+        {
+            loadAd(mHorizontalCodeId, TTAdConstant.HORIZONTAL);
+        }
+        else
+        {
+            loadAd(mVerticalCodeId, TTAdConstant.VERTICAL);
+        }
     }
 
     private void initClickEvent() {
@@ -92,6 +101,7 @@ public class RewardVideoActivity extends Activity {
             }
         });
     }
+
 
     private boolean mHasShowDownloadActive = false;
 
@@ -136,6 +146,8 @@ public class RewardVideoActivity extends Activity {
             public void onRewardVideoCached() {
                 Log.e(TAG, "onRewardVideoCached");
                 TToast.show(RewardVideoActivity.this, "rewardVideoAd video cached");
+                mttRewardVideoAd.showRewardVideoAd(RewardVideoActivity.this, TTAdConstant.RitScenes.CUSTOMIZE_SCENES, "scenes_test");
+                mttRewardVideoAd = null;
             }
 
             //视频广告的素材加载完毕，比如视频url等，在此回调后，可以播放在线视频，网络不好可能出现加载缓冲，影响体验。
@@ -178,6 +190,8 @@ public class RewardVideoActivity extends Activity {
                     public void onRewardVerify(boolean rewardVerify, int rewardAmount, String rewardName) {
                         TToast.show(RewardVideoActivity.this, "verify:" + rewardVerify + " amount:" + rewardAmount +
                                 " name:" + rewardName);
+//                        PangolinPlugin pangolinPlugin = new PangolinPlugin();
+//                        pangolinPlugin.rewardVideoCallBack(rewardVerify,rewardName);
                     }
 
                     @Override

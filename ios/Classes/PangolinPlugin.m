@@ -1,6 +1,18 @@
 #import "PangolinPlugin.h"
 #import <BUAdSDK/BUAdSDK.h>
 
+@interface PangolinPlugin ()<BURewardedVideoAdDelegate>
+@property (nonatomic, strong) UITextField *playableUrlTextView;
+@property (nonatomic, strong) UITextField *downloadUrlTextView;
+@property (nonatomic, strong) UITextField *deeplinkUrlTextView;
+@property (nonatomic, strong) UILabel *isLandscapeLabel;
+@property (nonatomic, strong) UISwitch *isLandscapeSwitch;
+@property (nonatomic, assign) BOOL isPlayableUrlValid;
+@property (nonatomic, assign) BOOL isDownloadUrlValid;
+@property (nonatomic, assign) BOOL isDeeplinkUrlValid;
+@property (nonatomic, strong) BURewardedVideoAd *rewardedVideoAd;
+@end
+
 @implementation PangolinPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
     FlutterMethodChannel* channel = [FlutterMethodChannel
@@ -30,6 +42,14 @@
         [splashView loadAdData];
         [keyWindow.rootViewController.view addSubview:splashView];
         splashView.rootViewController = keyWindow.rootViewController;
+    }
+    else if([@"loadExpressAd" isEqualToString:call.method])
+    {
+        BURewardedVideoModel *model = [[BURewardedVideoModel alloc] init];
+        model.userId = @"123";
+        self.rewardedVideoAd = [[BURewardedVideoAd alloc] initWithSlotID:self.viewModel.slotID rewardedVideoModel:model];
+        self.rewardedVideoAd.delegate = self;
+        [self.rewardedVideoAd loadAdData];
     }
     else
     {

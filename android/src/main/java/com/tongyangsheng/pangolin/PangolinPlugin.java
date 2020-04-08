@@ -21,7 +21,10 @@ import com.hjq.permissions.OnPermission;
 import com.hjq.permissions.Permission;
 import com.hjq.permissions.XXPermissions;
 
+import java.util.Dictionary;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import io.flutter.Log;
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
@@ -42,6 +45,8 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
     private MethodChannel methodChannel;
     private Context applicationContext;
     private Activity activity;
+
+    public boolean rewardFinish = false;
 
   @Override
   public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
@@ -146,15 +151,41 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
     }
     else if (call.method.equals("loadExpressAd"))
     {
-      Intent intent = new Intent();
-      intent.setClass(activity, RewardVideoActivity.class);
-      intent.putExtra("horizontal_rit","945122969");
-      intent.putExtra("vertical_rit","945122969");
-      activity.startActivity(intent);
+      Boolean isHorizontal = call.argument("isHorizontal");
+      String mCodeId = call.argument("mCodeId");
+      if (isHorizontal == null)
+      {
+        result.error("600","isHorizonal can not be null",null);
+      }
+      else
+      {
+        if(isHorizontal)
+        {
+          Intent intent = new Intent();
+          intent.setClass(activity, RewardVideoActivity.class);
+          intent.putExtra("horizontal_rit",mCodeId);
+          activity.startActivity(intent);
+        }
+        else
+        {
+          Intent intent = new Intent();
+          intent.setClass(activity, RewardVideoActivity.class);
+          intent.putExtra("vertical_rit",mCodeId);
+          activity.startActivity(intent);
+        }
+      }
     }
     else
       {
       result.notImplemented();
     }
+  }
+
+  void rewardVideoCallBack(boolean rewardVerify,String rewardName)
+  {
+    Map<String, Object> callback = new HashMap<String, Object>();
+    callback.put("rewardVerify",rewardVerify);
+    callback.put("rewardName", rewardName);
+    methodChannel.invokeMethod("rewardVideoCallback", callback);
   }
 }
