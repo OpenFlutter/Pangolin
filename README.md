@@ -58,6 +58,14 @@ dependencies:
 
 #### iOS
 [穿山甲iOS SDK 接入基础配置](https://partner.oceanengine.com/union/media/union/download/detail?id=16&docId=5de8d570b1afac00129330c5&osType=ios)
+
+## Pangolin集成
+### Android 
+在Android端你可能需要简单的四个小步骤导入穿山甲SDK具体步骤已为你写好请戳👉[Pangolin Android集成手册](https://github.com/tongyangsheng/Pangolin/blob/master/AndroidProfile.md)
+### iOS
+```
+pod install
+```
 ## 穿山甲平台
 在使用之前必须确认您在穿山甲平台的[控制台](https://partner.oceanengine.com/union/media/union/site)已经注册了自己app所对应的应用以及对应广告类型的代码位，由于穿山甲包含多种类型的广告和功能请务必确认你在插件中注册的和你在平台注册的一一对应。
 ## 开始使用
