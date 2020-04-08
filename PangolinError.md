@@ -11,6 +11,6 @@
 
 方法：
 <p align="center">
-<img src=https://github.com/tongyangsheng/Pangolin/blob/master/showImage/void1.jpg alt="drawing" width="600">
+<img src=https://github.com/tongyangsheng/Pangolin/blob/master/showImage/void1.jpeg alt="drawing" width="600">
 </p>
 
