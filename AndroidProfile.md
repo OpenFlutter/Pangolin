@@ -1,7 +1,7 @@
 <h1 align="center">Pangolin Android集成手册</h1>
 
 ## 前言
-还是有很多人私聊我问Android端找不到SDK的问题，所以我制作了一个文档统一回复一下大家，其实认真研究一下穿山甲Android SDK或者其文档不难发现穿山甲并不支持，穿山甲本身不支持implementation的方式集成，所以需要自己导入一个SDK ，很简单的步骤。
+还是有很多人私聊我问Android端找不到SDK的问题，所以我制作了一个文档统一回复一下大家，其实认真研究一下穿山甲Android SDK或者其文档不难发现穿山甲本身不支持implementation的方式集成，所以需要自己导入一个SDK ，很简单的步骤。
 
 ## 开始集成
 ### Step1:
