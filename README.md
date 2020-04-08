@@ -62,7 +62,8 @@ dependencies:
 
 ## Pangolin集成
 ### Android 
-在Android端你可能需要简单的四个小步骤导入穿山甲SDK具体步骤已为你写好请戳👉[Pangolin Android集成手册](https://github.com/tongyangsheng/Pangolin/blob/master/AndroidProfile.md)
+在Android端你可能需要简单的四个小步骤导入穿山甲SDK具体步骤已为你写好请戳👉
+#### [Pangolin Android集成手册](https://github.com/tongyangsheng/Pangolin/blob/master/AndroidProfile.md)
 ### iOS
 ```
 pod install
