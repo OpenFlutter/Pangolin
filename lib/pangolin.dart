@@ -30,8 +30,11 @@ class Pangolin {
     );
   }
 
-  static Future loadExpressAd() async
-  {
-    return await _channel.invokeMethod("loadExpressAd");
+  static Future loadExpressAd(bool isHorizontal, String mCodeId) async {
+    return await _channel.invokeMethod("loadExpressAd",
+    {
+      "isHorizontal" : isHorizontal,
+      "mCodeId" : mCodeId
+    });
   }
 }
