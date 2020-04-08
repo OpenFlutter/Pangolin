@@ -11,7 +11,7 @@
 <a href="https://www.dart.dev"><img src=https://img.shields.io/badge/Language-Dart-orange></a>
 <a href="https://www.flutter.dev"><img src=https://img.shields.io/badge/Flutter-v1.12.13-informational></a>
 <a href="https://www.dart.dev"><img src=https://img.shields.io/badge/Dart-v2.4.1-informational></a>
-<a href="https://github.com/tongyangsheng/flutter_reader"><img src=https://img.shields.io/badge/Pangolin-v0.0.1-success></a>
+<a href="https://github.com/tongyangsheng/flutter_reader"><img src=https://img.shields.io/badge/Pangolin-v0.0.2-success></a>
 </p>
 
 ## 前言
@@ -33,6 +33,11 @@ Dart VM version: 2.4.1 (Wed Aug 7 13:15:56 2019 +0200) on "macos_x64"
 ```
 Xcode - develop for iOS and macOS (Xcode 11.2)
 Android Studio (version 3.6)
+```
+### 穿山甲
+```
+iOS - 2.5.1.5(cocoapods lastest version)
+Android - 2.9.5.0
 ```
 
 ## 安装
@@ -111,6 +116,8 @@ Pangolin.loadSplashAd(mCodeId,debug);
 | :------------ |:---------------:| -----:|
 | mCodeId      | 在穿山甲平台注册的自己的广告位id | null |
 | debug  | 测试阶段打开，可以通过日志排查问题，上线时去除该调用       |    true |
+
+### 加载激励视频（正在处理接口和优化结构，预计本周内放出）
 
 ## 测试说明
 穿山甲的测试个人建议在真机进行测试，我本人在模拟器上会遇到各种疑难杂症，虽然插件和穿山甲SDK的报错都能看到，但是直接上真机很多报错会减少，这个由使用者自行决定，建议仅供参考
