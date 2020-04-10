@@ -4,7 +4,8 @@
         <activity android:name=".SplashActivity"
             android:theme="@android:style/Theme.NoTitleBar">
         </activity>
-        <activity android:name=".RewardVideoActivity">
+        <activity android:name=".RewardVideoActivity"
+            android:theme="@android:style/Theme.NoTitleBar">
         </activity>
     </application>
 </manifest>
