@@ -5,9 +5,6 @@ import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
-/**
- * Create by hanweiwei on 11/07/2018
- */
 public final class TToast {
     private static Toast sToast;
 

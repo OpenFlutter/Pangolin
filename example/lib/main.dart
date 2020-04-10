@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'dart:async';
 
-import 'package:flutter/services.dart';
-import 'package:pangolin/pangolin.dart';
+import 'package:pangolin/pangolin.dart' as Pangolin;
 
 void main() => runApp(MyApp());
 
@@ -19,6 +18,19 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
+    Pangolin.pangolinResponseEventHandler.listen((value)
+    {
+      if(value is Pangolin.onRewardResponse)
+        {
+          print("激励视频回调：${value.rewardVerify}");
+          print("激励视频回调：${value.rewardName}");
+          print("激励视频回调：${value.rewardAmount}");
+        }
+      else
+        {
+          print("回调类型不符合");
+        }
+    });
     super.initState();
     initPlatformState();
   }
@@ -37,18 +49,7 @@ class _MyAppState extends State<MyApp> {
     if(statuses[Permission.location] != PermissionStatus.granted){
       print("无位置权限");
     }
-
-    Pangolin.register(
-        "5056758",
-        true,
-        "爱看",
-        true,
-        true,
-        true,
-        true
-    );
-    Pangolin.loadSplashAd("887310537",false);
-//    Pangolin.loadExpressAd(true,"945124378");
+    _initPangolin();
     // If the widget was removed from the tree while the asynchronous platform
     // message was in flight, we want to discard the reply rather than calling
     // setState to update our non-existent appearance.
@@ -59,6 +60,45 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+//  "5056758",
+//  true,
+//  "爱看",
+//  true,
+//  true,
+//  true,
+//  true
+  _initPangolin() async
+  {
+    await Pangolin.registerPangolin(
+        appId: "Your AppID",
+        useTextureView: true,
+        appName: "Your AppName",
+        allowShowNotify: true,
+        allowShowPageWhenScreenLock: true,
+        debug: true,
+        supportMultiProcess: true
+    ).then((v){
+      _loadRewardAd();
+    });
+  }
+
+  _loadSplashAd() async
+  {
+        Pangolin.loadSplashAd(
+            mCodeId: "Your CodeId",
+            debug: false);
+  }
+
+  //945122969
+  _loadRewardAd() async
+  {
+    await Pangolin.loadRewardAd(
+      isHorizontal: false,
+      mCodeId: "Your CodeId",
+      debug: true
+        );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -67,7 +107,15 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Plugin example app'),
         ),
         body: Center(
-          child: Text('Running on: $_platformVersion\n'),
+          child: Center(
+            child: FlatButton(
+              onPressed: ()
+              {
+
+              },
+              child: Text("Pangolin"),
+            ),
+          ),
         ),
       ),
     );

@@ -16,9 +16,6 @@ import com.bytedance.sdk.openadsdk.TTAdNative;
 import com.bytedance.sdk.openadsdk.TTAppDownloadListener;
 import com.bytedance.sdk.openadsdk.TTSplashAd;
 
-/**
- * 开屏广告Activity示例
- */
 public class SplashActivity extends Activity {
     private static final String TAG = "SplashActivity";
     private TTAdNative mTTAdNative;

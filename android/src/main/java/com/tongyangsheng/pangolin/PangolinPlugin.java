@@ -3,30 +3,12 @@ package com.tongyangsheng.pangolin;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.Toast;
 
-import androidx.annotation.MainThread;
 import androidx.annotation.NonNull;
 
-import com.bytedance.sdk.openadsdk.AdSlot;
-import com.bytedance.sdk.openadsdk.TTAdConfig;
-import com.bytedance.sdk.openadsdk.TTAdConstant;
-import com.bytedance.sdk.openadsdk.TTAdNative;
-import com.bytedance.sdk.openadsdk.TTAdSdk;
-import com.bytedance.sdk.openadsdk.TTAppDownloadListener;
-import com.bytedance.sdk.openadsdk.TTSplashAd;
-import com.hjq.permissions.OnPermission;
-import com.hjq.permissions.Permission;
-import com.hjq.permissions.XXPermissions;
-
-import java.util.Dictionary;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
-import io.flutter.Log;
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.embedding.engine.plugins.activity.ActivityAware;
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding;
@@ -38,7 +20,6 @@ import io.flutter.plugin.common.MethodChannel.Result;
 import io.flutter.plugin.common.PluginRegistry.Registrar;
 
 
-
 /** PangolinPlugin */
 public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, ActivityAware {
 
@@ -46,7 +27,6 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
     private Context applicationContext;
     private Activity activity;
 
-    public boolean rewardFinish = false;
 
   @Override
   public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
@@ -149,21 +129,25 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
       intent.putExtra("debug",deBug);
       activity.startActivity(intent);
     }
-    else if (call.method.equals("loadExpressAd"))
+    else if (call.method.equals("loadRewardAd"))
     {
       Boolean isHorizontal = call.argument("isHorizontal");
       String mCodeId = call.argument("mCodeId");
+      Boolean debug = call.argument("debug");
+
       if (isHorizontal == null)
       {
         result.error("600","isHorizonal can not be null",null);
       }
       else
       {
+        RewardVideoActivity._channel = methodChannel;
         if(isHorizontal)
         {
           Intent intent = new Intent();
           intent.setClass(activity, RewardVideoActivity.class);
           intent.putExtra("horizontal_rit",mCodeId);
+          intent.putExtra("debug",debug);
           activity.startActivity(intent);
         }
         else
@@ -171,6 +155,7 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
           Intent intent = new Intent();
           intent.setClass(activity, RewardVideoActivity.class);
           intent.putExtra("vertical_rit",mCodeId);
+          intent.putExtra("debug",debug);
           activity.startActivity(intent);
         }
       }
@@ -179,13 +164,5 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
       {
       result.notImplemented();
     }
-  }
-
-  void rewardVideoCallBack(boolean rewardVerify,String rewardName)
-  {
-    Map<String, Object> callback = new HashMap<String, Object>();
-    callback.put("rewardVerify",rewardVerify);
-    callback.put("rewardName", rewardName);
-    methodChannel.invokeMethod("rewardVideoCallback", callback);
   }
 }
