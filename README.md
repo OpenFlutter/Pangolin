@@ -75,15 +75,15 @@ pod install
 调用穿山甲SDK的第一步是对SDK的初始化
 
 ```dart
-  Pangolin.register(
-        appId, 
-        useTextureView, 
-        appName, 
-        allowShowNotify, 
-        allowShowPageWhenScreenLock, 
-        debug, 
-        supportMultiProcess
-    );
+await Pangolin.registerPangolin(
+        appId: "Your AppID",
+        useTextureView: true,
+        appName: "Your AppName",
+        allowShowNotify: true,
+        allowShowPageWhenScreenLock: true,
+        debug: true,
+        supportMultiProcess: true
+    )
 ```
 #### 参数说明
 | 参数  | 描述  | 默认值 |
@@ -119,7 +119,9 @@ E/TTAdSdk-InitChecker( 5148): ==穿山甲sdk初始化配置检测结束==
 
 ### 加载开屏广告
 ```dart
-Pangolin.loadSplashAd(mCodeId,debug);
+        Pangolin.loadSplashAd(
+            mCodeId: "Your CodeId",
+            debug: false);
 ```
 #### 参数说明
 | 参数  | 描述  | 默认值 |
@@ -127,7 +129,47 @@ Pangolin.loadSplashAd(mCodeId,debug);
 | mCodeId      | 在穿山甲平台注册的自己的广告位id | null |
 | debug  | 测试阶段打开，可以通过日志排查问题，上线时去除该调用       |    true |
 
-### 加载激励视频（正在处理接口和优化结构，预计本周内放出）
+### 加载激励视频(Android)
+激励视频的原生接入相对复杂，但是我已经给各位留好了接口，只需简单的几步就可以加载到你的激励视频<br/>
+⚠️使用前请确认您已在穿山甲平台的[控制台](https://partner.oceanengine.com/union/media/union/site)建立了你的激励视频广告id。<br/>
+```dart
+await Pangolin.loadRewardAd(
+      isHorizontal: false,
+      mCodeId: "Your CodeId",
+      debug: true
+        );
+```
+#### 参数说明
+| 参数  | 描述  | 默认值 |
+| :------------ |:---------------:| -----:|
+| mCodeId      | 在穿山甲平台注册的自己的广告位id | null |
+| debug  | 此处debug为true的情况下 我会给你显示整体进程的一个Toast 方便你调试      |    true |
+
+### 激励视频回调监听(Android)
+在合适的位置注册你的监听，保证用户看完广告时接收到我给你的回调信息，并做下一步处理
+```dart
+Pangolin.pangolinResponseEventHandler.listen((value)
+    {
+      if(value is Pangolin.onRewardResponse)
+        {
+          print("激励视频回调：${value.rewardVerify}");
+          print("激励视频回调：${value.rewardName}");
+          print("激励视频回调：${value.rewardAmount}");
+        }
+      else
+        {
+          print("回调类型不符合");
+        }
+    });
+```
+#### 参数说明
+| 参数  | 描述  | 默认值 |
+| :------------ |:---------------:| -----:|
+| rewardVerify      | 验证奖励有效性，即用户是否完成观看 | / |
+| rewardName  | 你在穿山甲填写的奖励名称      |    / |
+| rewardName  | 你在穿山甲填写的奖励数量     |    / |
+
+激励视频的具体使用参见项目目录下Example
 
 ## 测试说明
 穿山甲的测试个人建议在真机进行测试，我本人在模拟器上会遇到各种疑难杂症，虽然插件和穿山甲SDK的报错都能看到，但是直接上真机很多报错会减少，这个由使用者自行决定，建议仅供参考
