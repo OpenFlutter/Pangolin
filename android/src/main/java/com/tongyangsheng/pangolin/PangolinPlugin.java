@@ -134,6 +134,39 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
       Boolean isHorizontal = call.argument("isHorizontal");
       String mCodeId = call.argument("mCodeId");
       Boolean debug = call.argument("debug");
+      Boolean supportDeepLink = call.argument("supportDeepLink");
+      String rewardName = call.argument("rewardName");
+      int rewardAmount = (int)call.argument("rewardAmount");
+      Boolean isExpress = call.argument("isExpress");
+      float expressViewAcceptedSizeH;
+      if (call.argument("expressViewAcceptedSizeH") == null)
+      {
+        expressViewAcceptedSizeH = 500;
+      }
+      else
+      {
+        expressViewAcceptedSizeH = (float)call.argument("expressViewAcceptedSizeH");
+      }
+      float expressViewAcceptedSizeW;
+      if (call.argument("expressViewAcceptedSizeW") == null)
+      {
+        expressViewAcceptedSizeW = 500;
+      }
+      else
+      {
+        expressViewAcceptedSizeW = (float)call.argument("expressViewAcceptedSizeW");
+      }
+
+      String userID = call.argument("userID");
+      String mediaExtra;
+      if (call.argument("mediaExtra") == null)
+      {
+        mediaExtra = "media_extra";
+      }
+      else
+      {
+        mediaExtra = call.argument("mediaExtra");
+      }
 
       if (isHorizontal == null)
       {
@@ -148,6 +181,14 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
           intent.setClass(activity, RewardVideoActivity.class);
           intent.putExtra("horizontal_rit",mCodeId);
           intent.putExtra("debug",debug);
+          intent.putExtra("supportDeepLink", supportDeepLink);
+          intent.putExtra("rewardName",rewardName);
+          intent.putExtra("rewardAmount",rewardAmount);
+          intent.putExtra("isExpress",isExpress);
+          intent.putExtra("expressViewAcceptedSizeH",expressViewAcceptedSizeH);
+          intent.putExtra("expressViewAcceptedSizeW",expressViewAcceptedSizeW);
+          intent.putExtra("userID",userID);
+          intent.putExtra("mediaExtra",mediaExtra);
           activity.startActivity(intent);
         }
         else
@@ -156,6 +197,13 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
           intent.setClass(activity, RewardVideoActivity.class);
           intent.putExtra("vertical_rit",mCodeId);
           intent.putExtra("debug",debug);
+          intent.putExtra("supportDeepLink", supportDeepLink);
+          intent.putExtra("rewardName",rewardName);
+          intent.putExtra("rewardAmount",rewardAmount);
+          intent.putExtra("expressViewAcceptedSizeH",expressViewAcceptedSizeH);
+          intent.putExtra("expressViewAcceptedSizeW",expressViewAcceptedSizeW);
+          intent.putExtra("userID",userID);
+          intent.putExtra("mediaExtra",mediaExtra);
           activity.startActivity(intent);
         }
       }

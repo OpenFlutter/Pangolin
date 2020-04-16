@@ -55,15 +55,23 @@ public class RewardVideoActivity extends FlutterActivity {
         }
         mHorizontalCodeId = intent.getStringExtra("horizontal_rit");
         mVerticalCodeId = intent.getStringExtra("vertical_rit");
-        mIsExpress = intent.getBooleanExtra("is_express", false);
+        mIsExpress = intent.getBooleanExtra("isExpress", false);
         debug = intent.getBooleanExtra("debug",true);
+        boolean supportDeepLink = intent.getBooleanExtra("supportDeepLink",true);
+        String rewardName = intent.getStringExtra("rewardName");
+        int rewardAmount = intent.getIntExtra("rewardAmount",0);
+        float expressViewAcceptedSizeH = intent.getFloatExtra("expressViewAcceptedSizeH",500);
+        float expressViewAcceptedSizeW = intent.getFloatExtra("expressViewAcceptedSizeW",500);
+        String userID = intent.getStringExtra("userID");
+        String mediaExtra = intent.getStringExtra("mediaExtra");
+
         if (mHorizontalCodeId != null)
         {
-            loadAd(mHorizontalCodeId, TTAdConstant.HORIZONTAL);
+            loadAd(mHorizontalCodeId,supportDeepLink,rewardName,rewardAmount,expressViewAcceptedSizeW,expressViewAcceptedSizeH,userID,mediaExtra, TTAdConstant.HORIZONTAL);
         }
         else
         {
-            loadAd(mVerticalCodeId, TTAdConstant.VERTICAL);
+            loadAd(mVerticalCodeId,supportDeepLink,rewardName,rewardAmount,expressViewAcceptedSizeW,expressViewAcceptedSizeH,userID,mediaExtra, TTAdConstant.VERTICAL);
         }
     }
 
@@ -101,31 +109,31 @@ public class RewardVideoActivity extends FlutterActivity {
 
     private boolean mHasShowDownloadActive = false;
 
-    private void loadAd(final String codeId, int orientation) {
+    private void loadAd(final String codeId,boolean supportDeepLink,String rewardName,int rewardAmount, float expressViewAcceptedSizeW, float expressViewAcceptedSizeH, String userID, String mediaExtra, int orientation) {
         //step4:创建广告请求参数AdSlot,具体参数含义参考文档
         AdSlot adSlot;
         if (mIsExpress) {
             //个性化模板广告需要传入期望广告view的宽、高，单位dp，
             adSlot = new AdSlot.Builder()
                     .setCodeId(codeId)
-                    .setSupportDeepLink(true)
-                    .setRewardName("金币") //奖励的名称
-                    .setRewardAmount(3)  //奖励的数量
+                    .setSupportDeepLink(supportDeepLink)
+                    .setRewardName(rewardName) //奖励的名称
+                    .setRewardAmount(rewardAmount)  //奖励的数量
                     //模板广告需要设置期望个性化模板广告的大小,单位dp,激励视频场景，只要设置的值大于0即可
-                    .setExpressViewAcceptedSize(500,500)
-                    .setUserID("user123")//用户id,必传参数
-                    .setMediaExtra("media_extra") //附加参数，可选
+                    .setExpressViewAcceptedSize(expressViewAcceptedSizeW,expressViewAcceptedSizeH)
+                    .setUserID(userID)//用户id,必传参数
+                    .setMediaExtra(mediaExtra) //附加参数，可选
                     .setOrientation(orientation) //必填参数，期望视频的播放方向：TTAdConstant.HORIZONTAL 或 TTAdConstant.VERTICAL
                     .build();
         } else {
             //模板广告需要设置期望个性化模板广告的大小,单位dp,代码位是否属于个性化模板广告，请在穿山甲平台查看
             adSlot = new AdSlot.Builder()
                     .setCodeId(codeId)
-                    .setSupportDeepLink(true)
-                    .setRewardName("金币") //奖励的名称
-                    .setRewardAmount(3)  //奖励的数量
-                    .setUserID("user123")//用户id,必传参数
-                    .setMediaExtra("media_extra") //附加参数，可选
+                    .setSupportDeepLink(supportDeepLink)
+                    .setRewardName(rewardName) //奖励的名称
+                    .setRewardAmount(rewardAmount)  //奖励的数量
+                    .setUserID(userID)//用户id,必传参数
+                    .setMediaExtra(mediaExtra) //附加参数，可选
                     .setOrientation(orientation) //必填参数，期望视频的播放方向：TTAdConstant.HORIZONTAL 或 TTAdConstant.VERTICAL
                     .build();
         }
