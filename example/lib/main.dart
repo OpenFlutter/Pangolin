@@ -94,8 +94,16 @@ class _MyAppState extends State<MyApp> {
   {
     await Pangolin.loadRewardAd(
       isHorizontal: false,
-      mCodeId: "Your CodeId",
-      debug: true
+      debug: false,
+      mCodeId: "",
+      supportDeepLink: true,
+      rewardName: "书币",
+      rewardAmount: 3,
+      isExpress: true,
+      expressViewAcceptedSizeH: 500,
+      expressViewAcceptedSizeW: 500,
+      userID: "user123",
+      mediaExtra: "media_extra"
         );
   }
 

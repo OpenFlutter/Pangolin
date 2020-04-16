@@ -47,14 +47,30 @@ Future<bool> loadSplashAd({
 }
 
 Future loadRewardAd({
-  @required bool isHorizontal,
   @required String mCodeId,
-  @required bool debug}) async {
+  @required bool debug,
+  @required bool supportDeepLink,
+  @required String rewardName,
+  @required int rewardAmount,
+  @required bool isExpress,
+  double expressViewAcceptedSizeH,
+  double expressViewAcceptedSizeW,
+  @required userID,
+  String mediaExtra,
+  @required bool isHorizontal,}) async {
   return await _channel.invokeMethod("loadRewardAd",
       {
-        "isHorizontal" : isHorizontal,
         "mCodeId" : mCodeId,
-        "debug" : debug
+        "debug" : debug,
+        "supportDeepLink" : supportDeepLink,
+        "rewardName": rewardName,
+        "rewardAmount" : rewardAmount,
+        "isExpress" : isExpress,
+        "expressViewAcceptedSizeH" : expressViewAcceptedSizeH,
+        "expressViewAcceptedSizeW" : expressViewAcceptedSizeW,
+        "userID" : userID,
+        "mediaExtra" : mediaExtra,
+        "isHorizontal" : isHorizontal,
       });
 }
 
