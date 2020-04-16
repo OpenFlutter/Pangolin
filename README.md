@@ -45,7 +45,7 @@ Android - 2.9.5.0
 ```yaml
 # add this line to your dependencies
 dependencies:
-  pangolin: ^0.0.2
+  pangolin: ^0.0.5
 ```
 
 ## 环境配置
@@ -170,6 +170,13 @@ Pangolin.pangolinResponseEventHandler.listen((value)
 | rewardName  | 你在穿山甲填写的奖励数量     |    / |
 
 激励视频的具体使用参见项目目录下Example
+
+## 版本信息
+| 版本  | 更新信息  |
+| :------------ |:---------------:|
+| 0.0.1  | 穿山甲SDK接入，开屏广告实现 |
+| 0.0.2  | 修复开屏广告偶现TopBar的Bug |
+| 0.0.5  | 激励视频Android接入     |
 
 ## 测试说明
 穿山甲的测试个人建议在真机进行测试，我本人在模拟器上会遇到各种疑难杂症，虽然插件和穿山甲SDK的报错都能看到，但是直接上真机很多报错会减少，这个由使用者自行决定，建议仅供参考
