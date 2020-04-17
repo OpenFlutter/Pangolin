@@ -10,3 +10,11 @@
 ## 0.0.5
 
 * TODO: Add RewardVideo,reBuild API
+
+## 0.0.6
+
+* TODO: ReBuild RewardVideo API
+
+## 0.0.7
+
+* TODO: Remove ExampleActivity

@@ -45,11 +45,11 @@
     }
     else if([@"loadExpressAd" isEqualToString:call.method])
     {
-        BURewardedVideoModel *model = [[BURewardedVideoModel alloc] init];
-        model.userId = @"123";
-        self.rewardedVideoAd = [[BURewardedVideoAd alloc] initWithSlotID:self.viewModel.slotID rewardedVideoModel:model];
-        self.rewardedVideoAd.delegate = self;
-        [self.rewardedVideoAd loadAdData];
+//        BURewardedVideoModel *model = [[BURewardedVideoModel alloc] init];
+//        model.userId = @"123";
+//        self.rewardedVideoAd = [[BURewardedVideoAd alloc] initWithSlotID:self.viewModel.slotID rewardedVideoModel:model];
+//        self.rewardedVideoAd.delegate = self;
+//        [self.rewardedVideoAd loadAdData];
     }
     else
     {
