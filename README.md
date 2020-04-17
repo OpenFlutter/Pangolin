@@ -133,17 +133,35 @@ E/TTAdSdk-InitChecker( 5148): ==穿山甲sdk初始化配置检测结束==
 激励视频的原生接入相对复杂，但是我已经给各位留好了接口，只需简单的几步就可以加载到你的激励视频<br/>
 ⚠️使用前请确认您已在穿山甲平台的[控制台](https://partner.oceanengine.com/union/media/union/site)建立了你的激励视频广告id。<br/>
 ```dart
-await Pangolin.loadRewardAd(
+    await Pangolin.loadRewardAd(
       isHorizontal: false,
+      debug: false,
       mCodeId: "Your CodeId",
-      debug: true
+      supportDeepLink: true,
+      rewardName: "Your Reward Name",
+      rewardAmount: 3,
+      isExpress: true,
+      expressViewAcceptedSizeH: 500,
+      expressViewAcceptedSizeW: 500,
+      userID: "user123",
+      mediaExtra: "media_extra"
         );
 ```
 #### 参数说明
 | 参数  | 描述  | 默认值 |
 | :------------ |:---------------:| -----:|
+| isHorizontal  | 是否横屏      |    false |
 | mCodeId      | 在穿山甲平台注册的自己的广告位id | null |
 | debug  | 此处debug为true的情况下 我会给你显示整体进程的一个Toast 方便你调试      |    true |
+| supportDeepLink  | 是否横屏      |    false |
+| rewardName  | 奖励的名称      |    null |
+| rewardAmount  | 奖励数量      |    null |
+| isExpress  |是否进行自渲染（传入后设置激励视频尺寸）      |    true |
+| expressViewAcceptedSizeH  | 渲染视频高度      |    500 |
+| expressViewAcceptedSizeW  | 渲染视频宽度      |    500 |
+| userID  | 必传参数，表来标识应用侧唯一用户；若非服务器回调模式或不需sdk透传      |    null |
+| mediaExtra  | 用户透传的信息，可不传      |    media_extra |
+
 
 ### 激励视频回调监听(Android)
 在合适的位置注册你的监听，保证用户看完广告时接收到我给你的回调信息，并做下一步处理
@@ -177,6 +195,8 @@ Pangolin.pangolinResponseEventHandler.listen((value)
 | 0.0.1  | 穿山甲SDK接入，开屏广告实现 |
 | 0.0.2  | 修复开屏广告偶现TopBar的Bug |
 | 0.0.5  | 激励视频Android接入     |
+| 0.0.6  | 激励视频接口参数重写     |
+
 
 ## 测试说明
 穿山甲的测试个人建议在真机进行测试，我本人在模拟器上会遇到各种疑难杂症，虽然插件和穿山甲SDK的报错都能看到，但是直接上真机很多报错会减少，这个由使用者自行决定，建议仅供参考
