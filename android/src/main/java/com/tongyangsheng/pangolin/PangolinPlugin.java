@@ -138,6 +138,7 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
       String rewardName = call.argument("rewardName");
       int rewardAmount = (int)call.argument("rewardAmount");
       Boolean isExpress = call.argument("isExpress");
+
       double expressViewAcceptedSizeH;
       if (call.argument("expressViewAcceptedSizeH") == null)
       {
@@ -168,45 +169,66 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
         mediaExtra = call.argument("mediaExtra");
       }
 
-      if (isHorizontal == null)
+      RewardVideo rewardVideo = new RewardVideo();
+      RewardVideo._channel = methodChannel;
+      rewardVideo.activity = activity;
+      rewardVideo.context = applicationContext;
+      if (isHorizontal)
       {
-        result.error("600","isHorizonal can not be null",null);
+        rewardVideo.mHorizontalCodeId = mCodeId;
       }
       else
       {
-        RewardVideoActivity._channel = methodChannel;
-        if(isHorizontal)
-        {
-          Intent intent = new Intent();
-          intent.setClass(activity, RewardVideoActivity.class);
-          intent.putExtra("horizontal_rit",mCodeId);
-          intent.putExtra("debug",debug);
-          intent.putExtra("supportDeepLink", supportDeepLink);
-          intent.putExtra("rewardName",rewardName);
-          intent.putExtra("rewardAmount",rewardAmount);
-          intent.putExtra("isExpress",isExpress);
-          intent.putExtra("expressViewAcceptedSizeH",expressViewAcceptedSizeH);
-          intent.putExtra("expressViewAcceptedSizeW",expressViewAcceptedSizeW);
-          intent.putExtra("userID",userID);
-          intent.putExtra("mediaExtra",mediaExtra);
-          activity.startActivity(intent);
-        }
-        else
-        {
-          Intent intent = new Intent();
-          intent.setClass(activity, RewardVideoActivity.class);
-          intent.putExtra("vertical_rit",mCodeId);
-          intent.putExtra("debug",debug);
-          intent.putExtra("supportDeepLink", supportDeepLink);
-          intent.putExtra("rewardName",rewardName);
-          intent.putExtra("rewardAmount",rewardAmount);
-          intent.putExtra("expressViewAcceptedSizeH",expressViewAcceptedSizeH);
-          intent.putExtra("expressViewAcceptedSizeW",expressViewAcceptedSizeW);
-          intent.putExtra("userID",userID);
-          intent.putExtra("mediaExtra",mediaExtra);
-          activity.startActivity(intent);
-        }
+        rewardVideo.mVerticalCodeId = mCodeId;
       }
+      rewardVideo.supportDeepLink = supportDeepLink;
+      rewardVideo.expressViewAcceptedSizeH = expressViewAcceptedSizeH;
+      rewardVideo.expressViewAcceptedSizeW = expressViewAcceptedSizeW;
+      rewardVideo.rewardName = rewardName;
+      rewardVideo.rewardAmount = rewardAmount;
+      rewardVideo.userID = userID;
+      rewardVideo.mediaExtra = mediaExtra;
+      rewardVideo.init();
+
+//      if (isHorizontal == null)
+//      {
+//        result.error("600","isHorizonal can not be null",null);
+//      }
+//      else
+//      {
+//        RewardVideoActivity._channel = methodChannel;
+//        if(isHorizontal)
+//        {
+//          Intent intent = new Intent();
+//          intent.setClass(activity, RewardVideoActivity.class);
+//          intent.putExtra("horizontal_rit",mCodeId);
+//          intent.putExtra("debug",debug);
+//          intent.putExtra("supportDeepLink", supportDeepLink);
+//          intent.putExtra("rewardName",rewardName);
+//          intent.putExtra("rewardAmount",rewardAmount);
+//          intent.putExtra("isExpress",isExpress);
+//          intent.putExtra("expressViewAcceptedSizeH",expressViewAcceptedSizeH);
+//          intent.putExtra("expressViewAcceptedSizeW",expressViewAcceptedSizeW);
+//          intent.putExtra("userID",userID);
+//          intent.putExtra("mediaExtra",mediaExtra);
+//          activity.startActivity(intent);
+//        }
+//        else
+//        {
+//          Intent intent = new Intent();
+//          intent.setClass(activity, RewardVideoActivity.class);
+//          intent.putExtra("vertical_rit",mCodeId);
+//          intent.putExtra("debug",debug);
+//          intent.putExtra("supportDeepLink", supportDeepLink);
+//          intent.putExtra("rewardName",rewardName);
+//          intent.putExtra("rewardAmount",rewardAmount);
+//          intent.putExtra("expressViewAcceptedSizeH",expressViewAcceptedSizeH);
+//          intent.putExtra("expressViewAcceptedSizeW",expressViewAcceptedSizeW);
+//          intent.putExtra("userID",userID);
+//          intent.putExtra("mediaExtra",mediaExtra);
+//          activity.startActivity(intent);
+//        }
+//      }
     }
     else
       {

@@ -70,9 +70,9 @@ class _MyAppState extends State<MyApp> {
   _initPangolin() async
   {
     await Pangolin.registerPangolin(
-        appId: "You App Code",
+        appId: "5056758",
         useTextureView: true,
-        appName: "Your App Name",
+        appName: "爱看",
         allowShowNotify: true,
         allowShowPageWhenScreenLock: true,
         debug: true,
@@ -95,9 +95,9 @@ class _MyAppState extends State<MyApp> {
     await Pangolin.loadRewardAd(
       isHorizontal: false,
       debug: false,
-      mCodeId: "Your CodeId",
+      mCodeId: "945122969",
       supportDeepLink: true,
-      rewardName: "Your Reward Name",
+      rewardName: "书币",
       rewardAmount: 3,
       isExpress: true,
       expressViewAcceptedSizeH: 500,
