@@ -60,18 +60,18 @@ public class RewardVideoActivity extends FlutterActivity {
         boolean supportDeepLink = intent.getBooleanExtra("supportDeepLink",true);
         String rewardName = intent.getStringExtra("rewardName");
         int rewardAmount = intent.getIntExtra("rewardAmount",0);
-        float expressViewAcceptedSizeH = intent.getFloatExtra("expressViewAcceptedSizeH",500);
-        float expressViewAcceptedSizeW = intent.getFloatExtra("expressViewAcceptedSizeW",500);
+        double expressViewAcceptedSizeH = intent.getDoubleExtra("expressViewAcceptedSizeH",500);
+        double expressViewAcceptedSizeW = intent.getDoubleExtra("expressViewAcceptedSizeW",500);
         String userID = intent.getStringExtra("userID");
         String mediaExtra = intent.getStringExtra("mediaExtra");
 
         if (mHorizontalCodeId != null)
         {
-            loadAd(mHorizontalCodeId,supportDeepLink,rewardName,rewardAmount,expressViewAcceptedSizeW,expressViewAcceptedSizeH,userID,mediaExtra, TTAdConstant.HORIZONTAL);
+            loadAd(mHorizontalCodeId,supportDeepLink,rewardName,rewardAmount,(float) expressViewAcceptedSizeW,(float) expressViewAcceptedSizeH,userID,mediaExtra, TTAdConstant.HORIZONTAL);
         }
         else
         {
-            loadAd(mVerticalCodeId,supportDeepLink,rewardName,rewardAmount,expressViewAcceptedSizeW,expressViewAcceptedSizeH,userID,mediaExtra, TTAdConstant.VERTICAL);
+            loadAd(mVerticalCodeId,supportDeepLink,rewardName,rewardAmount,(float) expressViewAcceptedSizeW,(float) expressViewAcceptedSizeH,userID,mediaExtra, TTAdConstant.VERTICAL);
         }
     }
 

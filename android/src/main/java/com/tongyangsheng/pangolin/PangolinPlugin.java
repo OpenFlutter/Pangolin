@@ -138,23 +138,23 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
       String rewardName = call.argument("rewardName");
       int rewardAmount = (int)call.argument("rewardAmount");
       Boolean isExpress = call.argument("isExpress");
-      float expressViewAcceptedSizeH;
+      double expressViewAcceptedSizeH;
       if (call.argument("expressViewAcceptedSizeH") == null)
       {
         expressViewAcceptedSizeH = 500;
       }
       else
       {
-        expressViewAcceptedSizeH = (float)call.argument("expressViewAcceptedSizeH");
+        expressViewAcceptedSizeH = call.argument("expressViewAcceptedSizeH");
       }
-      float expressViewAcceptedSizeW;
+      double expressViewAcceptedSizeW;
       if (call.argument("expressViewAcceptedSizeW") == null)
       {
         expressViewAcceptedSizeW = 500;
       }
       else
       {
-        expressViewAcceptedSizeW = (float)call.argument("expressViewAcceptedSizeW");
+        expressViewAcceptedSizeW = call.argument("expressViewAcceptedSizeW");
       }
 
       String userID = call.argument("userID");
