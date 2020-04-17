@@ -45,7 +45,7 @@ Android - 2.9.5.0
 ```yaml
 # add this line to your dependencies
 dependencies:
-  pangolin: ^0.0.5
+  pangolin: ^0.0.6
 ```
 
 ## 环境配置
