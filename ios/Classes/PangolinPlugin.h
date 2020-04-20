@@ -2,6 +2,4 @@
 
 @interface PangolinPlugin : NSObject<FlutterPlugin>
 
-@property (nonatomic, strong) id<BUDExampleViewModel> viewModel;
-
 @end

@@ -78,14 +78,14 @@ class _MyAppState extends State<MyApp> {
         debug: true,
         supportMultiProcess: true
     ).then((v){
-      _loadRewardAd();
+      _loadSplashAd();
     });
   }
 
   _loadSplashAd() async
   {
         Pangolin.loadSplashAd(
-            mCodeId: "Your CodeId",
+            mCodeId: "887310537",
             debug: false);
   }
 
