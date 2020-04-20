@@ -18,3 +18,7 @@
 ## 0.0.7
 
 * TODO: Remove ExampleActivity
+
+## 0.0.8
+
+* TODO: Fix iOS SplashAd Bug
