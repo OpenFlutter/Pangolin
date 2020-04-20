@@ -45,7 +45,7 @@ Android - 2.9.5.0
 ```yaml
 # add this line to your dependencies
 dependencies:
-  pangolin: ^0.0.7
+  pangolin: ^0.0.8
 ```
 
 ## 环境配置
@@ -197,6 +197,7 @@ Pangolin.pangolinResponseEventHandler.listen((value)
 | 0.0.5  | 激励视频Android接入     |
 | 0.0.6  | 激励视频接口参数重写     |
 | 0.0.7  | 移除默认Activity 直接在当前界面调起广告    |
+| 0.0.8  | 紧急修复iOS端 报错Bug   |
 
 
 ## 测试说明
