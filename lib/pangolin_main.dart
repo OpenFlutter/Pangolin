@@ -5,11 +5,17 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:pangolin/pangolin.dart';
 
+const int NETWORK_STATE_MOBILE = 1;
+const int NETWORK_STATE_2G = 2;
+const int NETWORK_STATE_3G = 3;
+const int NETWORK_STATE_WIFI = 4;
+const int NETWORK_STATE_4G = 5;
 
-MethodChannel _channel = MethodChannel('com.tongyangsheng.pangolin')..setMethodCallHandler(_methodHandler);
+MethodChannel _channel = MethodChannel('com.tongyangsheng.pangolin')
+  ..setMethodCallHandler(_methodHandler);
 
-
-StreamController<BasePangolinResponse> _pangolinResponseEventHandlerController = new StreamController.broadcast();
+StreamController<BasePangolinResponse> _pangolinResponseEventHandlerController =
+    new StreamController.broadcast();
 
 Stream<BasePangolinResponse> get pangolinResponseEventHandler =>
     _pangolinResponseEventHandlerController.stream;
@@ -21,29 +27,31 @@ Future<bool> registerPangolin({
   @required bool allowShowNotify,
   @required bool allowShowPageWhenScreenLock,
   @required bool debug,
-  @required bool supportMultiProcess}) async{
-  return await _channel.invokeMethod("register",
-      {
-        "appId":appId,
-        "useTextureView":useTextureView,
-        "appName":appName,
-        "allowShowNotify":allowShowNotify,
-        "allowShowPageWhenScreenLock":allowShowPageWhenScreenLock,
-        "debug":debug,
-        "supportMultiProcess":supportMultiProcess
-      }
-  );
+  @required bool supportMultiProcess,
+  List<int> directDownloadNetworkType,
+}) async {
+  return await _channel.invokeMethod("register", {
+    "appId": appId,
+    "useTextureView": useTextureView,
+    "appName": appName,
+    "allowShowNotify": allowShowNotify,
+    "allowShowPageWhenScreenLock": allowShowPageWhenScreenLock,
+    "debug": debug,
+    "supportMultiProcess": supportMultiProcess,
+    "directDownloadNetworkType": directDownloadNetworkType ??
+        [
+          NETWORK_STATE_MOBILE,
+          NETWORK_STATE_3G,
+          NETWORK_STATE_4G,
+          NETWORK_STATE_WIFI
+        ]
+  });
 }
 
-Future<bool> loadSplashAd({
-  @required String mCodeId,
-  @required bool debug}) async{
-  return await _channel.invokeMethod("loadSplashAd",
-      {
-        "mCodeId":mCodeId,
-        "debug":debug
-      }
-  );
+Future<bool> loadSplashAd(
+    {@required String mCodeId, @required bool debug}) async {
+  return await _channel
+      .invokeMethod("loadSplashAd", {"mCodeId": mCodeId, "debug": debug});
 }
 
 Future loadRewardAd({
@@ -57,27 +65,26 @@ Future loadRewardAd({
   double expressViewAcceptedSizeW,
   @required userID,
   String mediaExtra,
-  @required bool isHorizontal,}) async {
-  return await _channel.invokeMethod("loadRewardAd",
-      {
-        "mCodeId" : mCodeId,
-        "debug" : debug,
-        "supportDeepLink" : supportDeepLink,
-        "rewardName": rewardName,
-        "rewardAmount" : rewardAmount,
-        "isExpress" : isExpress,
-        "expressViewAcceptedSizeH" : expressViewAcceptedSizeH,
-        "expressViewAcceptedSizeW" : expressViewAcceptedSizeW,
-        "userID" : userID,
-        "mediaExtra" : mediaExtra,
-        "isHorizontal" : isHorizontal,
-      });
+  @required bool isHorizontal,
+}) async {
+  return await _channel.invokeMethod("loadRewardAd", {
+    "mCodeId": mCodeId,
+    "debug": debug,
+    "supportDeepLink": supportDeepLink,
+    "rewardName": rewardName,
+    "rewardAmount": rewardAmount,
+    "isExpress": isExpress,
+    "expressViewAcceptedSizeH": expressViewAcceptedSizeH,
+    "expressViewAcceptedSizeW": expressViewAcceptedSizeW,
+    "userID": userID,
+    "mediaExtra": mediaExtra,
+    "isHorizontal": isHorizontal,
+  });
 }
-
 
 Future _methodHandler(MethodCall methodCall) {
   var response =
-  BasePangolinResponse.create(methodCall.method, methodCall.arguments);
+      BasePangolinResponse.create(methodCall.method, methodCall.arguments);
   _pangolinResponseEventHandlerController.add(response);
   return Future.value();
 }
