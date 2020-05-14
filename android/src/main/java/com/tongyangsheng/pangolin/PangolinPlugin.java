@@ -7,6 +7,7 @@ import android.content.Intent;
 import androidx.annotation.NonNull;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
@@ -86,6 +87,7 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
       Boolean allowShowPageWhenScreenLock = call.argument("allowShowPageWhenScreenLock");
       Boolean debug = call.argument("debug");
       Boolean supportMultiProcess = call.argument("supportMultiProcess");
+      List<Integer> directDownloadNetworkType = call.argument("directDownloadNetworkType");
       if(useTextureView == null)
       {
         useTextureView = false;
@@ -106,15 +108,15 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
       {
         supportMultiProcess = false;
       }
-      if (appId == null || appId == "")
+      if (appId == null || appId.trim().isEmpty())
       {
         result.error("500","appId can't be null",null);
       }
       else {
-        if (appName == null || appName == "") {
+        if (appName == null || appName.trim().isEmpty()) {
           result.error("600", "appName can't be null", null);
         } else {
-          TTAdManagerHolder.init(applicationContext, appId, useTextureView, appName, allowShowNotify, allowShowPageWhenScreenLock, debug, supportMultiProcess);
+          TTAdManagerHolder.init(applicationContext, appId, useTextureView, appName, allowShowNotify, allowShowPageWhenScreenLock, debug, supportMultiProcess,directDownloadNetworkType);
           result.success(true);
         }
       }
