@@ -37,7 +37,7 @@ Android Studio (version 3.6)
 ```
 ### 穿山甲
 ```
-iOS - 2.5.1.5(cocoapods lastest version)
+iOS - 2.9.5.6(cocoapods lastest version)
 Android - 2.9.5.0
 ```
 
@@ -45,7 +45,7 @@ Android - 2.9.5.0
 ```yaml
 # add this line to your dependencies
 dependencies:
-  pangolin: ^0.0.8
+  pangolin: ^0.1.1
 ```
 
 ## 环境配置
@@ -129,7 +129,7 @@ E/TTAdSdk-InitChecker( 5148): ==穿山甲sdk初始化配置检测结束==
 | mCodeId      | 在穿山甲平台注册的自己的广告位id | null |
 | debug  | 测试阶段打开，可以通过日志排查问题，上线时去除该调用       |    true |
 
-### 加载激励视频(Android)
+### 加载激励视频
 激励视频的原生接入相对复杂，但是我已经给各位留好了接口，只需简单的几步就可以加载到你的激励视频<br/>
 ⚠️使用前请确认您已在穿山甲平台的[控制台](https://partner.oceanengine.com/union/media/union/site)建立了你的激励视频广告id。<br/>
 ```dart
@@ -163,7 +163,7 @@ E/TTAdSdk-InitChecker( 5148): ==穿山甲sdk初始化配置检测结束==
 | mediaExtra  | 用户透传的信息，可不传      |    media_extra |
 
 
-### 激励视频回调监听(Android)
+### 激励视频回调监听
 在合适的位置注册你的监听，保证用户看完广告时接收到我给你的回调信息，并做下一步处理
 ```dart
 Pangolin.pangolinResponseEventHandler.listen((value)
@@ -198,6 +198,9 @@ Pangolin.pangolinResponseEventHandler.listen((value)
 | 0.0.6  | 激励视频接口参数重写     |
 | 0.0.7  | 移除默认Activity 直接在当前界面调起广告    |
 | 0.0.8  | 紧急修复iOS端 报错Bug   |
+| 0.1.0  | iOS激励视频支持   |
+| 0.1.1  | 自动下载网络环境可配置   |
+
 
 
 ## 测试说明
