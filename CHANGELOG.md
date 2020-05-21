@@ -22,3 +22,7 @@
 ## 0.0.8
 
 * TODO: Fix iOS SplashAd Bug
+
+## 0.1.1
+
+* TODO: support select auto-download webState
