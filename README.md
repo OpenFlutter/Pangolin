@@ -37,7 +37,7 @@ Android Studio (version 3.6)
 ```
 ### 穿山甲
 ```
-iOS - 2.5.1.5(cocoapods lastest version)
+iOS - 2.9.5.6(cocoapods lastest version)
 Android - 2.9.5.0
 ```
 
@@ -45,7 +45,7 @@ Android - 2.9.5.0
 ```yaml
 # add this line to your dependencies
 dependencies:
-  pangolin: ^0.0.8
+  pangolin: ^0.1.1
 ```
 
 ## 环境配置
@@ -129,7 +129,7 @@ E/TTAdSdk-InitChecker( 5148): ==穿山甲sdk初始化配置检测结束==
 | mCodeId      | 在穿山甲平台注册的自己的广告位id | null |
 | debug  | 测试阶段打开，可以通过日志排查问题，上线时去除该调用       |    true |
 
-### 加载激励视频(Android)
+### 加载激励视频
 激励视频的原生接入相对复杂，但是我已经给各位留好了接口，只需简单的几步就可以加载到你的激励视频<br/>
 ⚠️使用前请确认您已在穿山甲平台的[控制台](https://partner.oceanengine.com/union/media/union/site)建立了你的激励视频广告id。<br/>
 ```dart
@@ -163,7 +163,7 @@ E/TTAdSdk-InitChecker( 5148): ==穿山甲sdk初始化配置检测结束==
 | mediaExtra  | 用户透传的信息，可不传      |    media_extra |
 
 
-### 激励视频回调监听(Android)
+### 激励视频回调监听
 在合适的位置注册你的监听，保证用户看完广告时接收到我给你的回调信息，并做下一步处理
 ```dart
 Pangolin.pangolinResponseEventHandler.listen((value)
@@ -198,12 +198,19 @@ Pangolin.pangolinResponseEventHandler.listen((value)
 | 0.0.6  | 激励视频接口参数重写     |
 | 0.0.7  | 移除默认Activity 直接在当前界面调起广告    |
 | 0.0.8  | 紧急修复iOS端 报错Bug   |
+| 0.1.0  | iOS激励视频支持   |
+| 0.1.1  | 自动下载网络环境可配置   |
+
 
 
 ## 测试说明
 穿山甲的测试个人建议在真机进行测试，我本人在模拟器上会遇到各种疑难杂症，虽然插件和穿山甲SDK的报错都能看到，但是直接上真机很多报错会减少，这个由使用者自行决定，建议仅供参考
 ## 感谢
 感谢各位Flutter开发者的支持和帮助，如果本插件能为你在开发过程中省下一点点的时间和精力算是达到了我开发插件的初衷。如果喜欢，欢迎点个🌟持续关注。如果项目关注度高，会继续开发SDK的剩余部分和分享一些开发插件的心得和踩坑经验。
+## 闲谈
+1.这个项目其实初衷是帮助各位了解Flutter插件的使用，同时方便各位的开发工作。到后来就演变成了我必须要更新。某些来联系我的人甚至态度恶劣和不屑，十分让人寒心，开源社区的环境应该由大家来维护，应该给予开源者最起码的尊重。</br>
+2.我本人去某大厂修“福报”了，未来可能比较忙，加我好友可能需要等待几个小时到一天不等，感谢各位谅解🤣</br>
+3.感谢各位一直以来的支持 特别是我的好友[瑞宇](https://github.com/zhangruiyu) ，各位期待的 信息流、banner 都有小伙伴自告奋勇的在制作了，后续会和我pr，也欢迎各位加入这个项目。</br>
 
 
 ## 个人联系方式
