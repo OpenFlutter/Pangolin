@@ -20,4 +20,11 @@
 检查你的广告调用方法有没有使用await 进行异步操作，仔细确认自己的调用方式和example中的实例代码相同
 * step2 
 在issue中已经有人提过相关问题并解决，此处不做赘述点击👉[开屏广告黑屏issue](https://github.com/OpenFlutter/Pangolin/issues/3)
+* step3
+有使用者反应，可以在buildTypes的release中添加配置修复打包后黑屏问题
+<p align="center">
+<img src=https://github.com/tongyangsheng/Pangolin/blob/master/showImage/error2.png alt="drawing" width="600">
+</p>
+
+
 
