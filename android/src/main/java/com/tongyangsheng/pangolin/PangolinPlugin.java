@@ -183,6 +183,16 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
       {
         rewardVideo.mVerticalCodeId = mCodeId;
       }
+
+      if (debug != null)
+      {
+        rewardVideo.debug = debug;
+      }
+      else
+      {
+        rewardVideo.debug = false;
+      }
+
       rewardVideo.supportDeepLink = supportDeepLink;
       rewardVideo.expressViewAcceptedSizeH = expressViewAcceptedSizeH;
       rewardVideo.expressViewAcceptedSizeW = expressViewAcceptedSizeW;
