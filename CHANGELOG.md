@@ -26,3 +26,7 @@
 ## 0.1.1
 
 * TODO: support select auto-download webState
+
+## 0.1.2
+
+* TODO: debug toast bug fix

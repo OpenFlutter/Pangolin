@@ -31,11 +31,11 @@ public class RewardVideo {
     public double expressViewAcceptedSizeH = 500;
     public String userID = "user123";
     public String mediaExtra = "media_extra";
-
+    public boolean debug = false;
 
     private boolean mIsExpress = false; //是否请求模板广告
 
-    private boolean debug = true;
+
 
     static MethodChannel _channel;
     public Context context;
