@@ -63,10 +63,14 @@ FlutterMethodChannel* globalMethodChannel;
             NSString* slotId = call.arguments[@"mCodeId"];
             NSString* userId = call.arguments[@"userID"];
             NSString* rewardName = call.arguments[@"rewardName"];
+            NSInteger rewardAmount = [call.arguments[@"rewardAmount"] intValue];
+            NSString* mediaExtra = call.arguments[@"mediaExtra"];
             
             BURewardedVideoModel *model = [[BURewardedVideoModel alloc] init];
             model.userId = userId;
             model.rewardName = rewardName;
+            model.extra = mediaExtra;
+            model.rewardAmount = rewardAmount;
         
             self.rewardedAd = [[BUNativeExpressRewardedVideoAd alloc] initWithSlotID:slotId rewardedVideoModel:model];
             self.rewardedAd.delegate = self;
