@@ -63,11 +63,13 @@ FlutterMethodChannel* globalMethodChannel;
             NSString* slotId = call.arguments[@"mCodeId"];
             NSString* userId = call.arguments[@"userID"];
             NSString* rewardName = call.arguments[@"rewardName"];
-            
+            NSString* mediaExtra = call.arguments[@"mediaExtra"];
+
             BURewardedVideoModel *model = [[BURewardedVideoModel alloc] init];
             model.userId = userId;
             model.rewardName = rewardName;
-        
+            model.extra=mediaExtra;
+
             self.rewardedAd = [[BUNativeExpressRewardedVideoAd alloc] initWithSlotID:slotId rewardedVideoModel:model];
             self.rewardedAd.delegate = self;
             [self.rewardedAd loadAdData];
@@ -82,23 +84,23 @@ FlutterMethodChannel* globalMethodChannel;
 //展示视频用
 - (UIViewController *)rootViewController{
     UIViewController *rootVC = [[UIApplication sharedApplication].delegate window].rootViewController;
-    
+
     UIViewController *parent = rootVC;
     while((parent = rootVC.presentingViewController) != nil){
         rootVC = parent;
     }
-    
+
     while ([rootVC isKindOfClass:[UINavigationController class]]) {
         rootVC = [(UINavigationController *)rootVC topViewController];
     }
-    
+
     return rootVC;
 }
 
 //激励视频渲染完成并展示
 - (void)nativeExpressRewardedVideoAdViewRenderSuccess:(BUNativeExpressRewardedVideoAd *)rewardedVideoAd {
     [self.rewardedAd showAdFromRootViewController: [self rootViewController]];
-    
+
 }
 
 //激励视频播放完成
@@ -107,19 +109,23 @@ FlutterMethodChannel* globalMethodChannel;
     [mutableDictionary setValue:@YES forKey:@"rewardVerify"];
     [mutableDictionary setValue:NULL forKey:@"rewardAmount"];
     [mutableDictionary setValue:NULL forKey:@"rewardName"];
-    
+
     [globalMethodChannel invokeMethod:@"onRewardResponse" arguments:mutableDictionary];
 }
 
 - (void)nativeExpressRewardedVideoAdServerRewardDidSucceed:(BUNativeExpressRewardedVideoAd *)rewardedVideoAd verify:(BOOL)verify {
-    
+
 }
 
 //激励视频关闭
 - (void)nativeExpressRewardedVideoAdDidClose:(BUNativeExpressRewardedVideoAd *)rewardedVideoAd {
-    
+
 }
 
+//开屏视频关闭
+- (void)splashAdDidClose:(BUSplashAdView *)splashAd {
+    [splashAd removeFromSuperview];
+}
 @end
 
 
