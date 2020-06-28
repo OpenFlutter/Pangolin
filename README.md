@@ -201,6 +201,7 @@ Pangolin.pangolinResponseEventHandler.listen((value)
 | 0.1.0  | iOS激励视频支持   |
 | 0.1.1  | 自动下载网络环境可配置   |
 | 0.1.2  | 修复了toast无法移除的问题   |
+| 0.1.3  | 修复了部分情况下iOS无法收到回调的问题，iOS的开屏现在会自动关闭   |
 
 
 
