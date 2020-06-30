@@ -45,7 +45,7 @@ Android - 2.9.5.0
 ```yaml
 # add this line to your dependencies
 dependencies:
-  pangolin: ^0.1.2
+  pangolin: ^0.1.4
 ```
 
 ## 环境配置
@@ -202,6 +202,7 @@ Pangolin.pangolinResponseEventHandler.listen((value)
 | 0.1.1  | 自动下载网络环境可配置   |
 | 0.1.2  | 修复了toast无法移除的问题   |
 | 0.1.3  | 修复了部分情况下iOS无法收到回调的问题，iOS的开屏现在会自动关闭   |
+| 0.1.4  | 修复了部分情况下iOS在使用Cocoapods导入SDK时存在的错误   |
 
 
 
