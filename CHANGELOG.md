@@ -30,3 +30,11 @@
 ## 0.1.2
 
 * TODO: debug toast bug fix
+
+## 0.1.3
+
+* TODO: fix iOS rewardVideo bug, splashVideo auto close.
+
+## 0.1.4
+
+* TODO: fix iOS Cocoapods install bug

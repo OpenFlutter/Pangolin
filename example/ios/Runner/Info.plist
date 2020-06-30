@@ -27,10 +27,10 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-    <key>NSLocationUsageDescription</key>
-    <string>需要使用您的地理位置</string>
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>需要使用您的地理位置</string>
+	<key>NSLocationUsageDescription</key>
+	<string>需要使用您的地理位置</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>需要使用您的地理位置</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
