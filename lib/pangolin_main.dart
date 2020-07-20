@@ -86,13 +86,17 @@ Future loadBannerAd({
   @required String mCodeId,
   @required bool supportDeepLink,
   double expressViewWidth,
-  double expressViewHeight
+  double expressViewHeight,
+  bool isCarousel,
+  int interval
 }) async {
   return await _channel.invokeMethod("loadBannerAd", {
     "mCodeId": mCodeId,
     "supportDeepLink": supportDeepLink,
     "expressViewWidth": expressViewWidth,
-    "expressViewHeight": expressViewHeight
+    "expressViewHeight": expressViewHeight,
+    "isCarousel": isCarousel,
+    "interval": interval
   });
 }
 

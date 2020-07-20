@@ -81,19 +81,29 @@ FlutterMethodChannel* globalMethodChannel;
     else if([@"loadBannerAd" isEqualToString:call.method]){
         
         NSString* mCodeId = call.arguments[@"mCodeId"];
-        
-        NSLog(@"banner广告id:%@",mCodeId);
+        NSNumber* expressViewWidth = call.arguments[@"expressViewWidth"];
+        NSNumber* expressViewHeight = call.arguments[@"expressViewHeight"];
+        NSNumber* isCarousel = call.arguments[@"isCarousel"];
+        NSNumber* interval = call.arguments[@"interval"];
         
         UIViewController* rootVC = [self getRootViewController];
         
             
-        NSValue *sizeValue = [NSValue valueWithCGSize:CGSizeMake(600, 300)];
+        NSValue *sizeValue = [NSValue valueWithCGSize:CGSizeMake(expressViewWidth.floatValue, expressViewHeight.floatValue)];
         CGSize size = [sizeValue CGSizeValue];
         CGFloat screenWidth = CGRectGetWidth([UIScreen mainScreen].bounds);
         CGFloat bannerHeigh = screenWidth/size.width*size.height;
         
-        self.bannerView = [[BUNativeExpressBannerView alloc] initWithSlotID:mCodeId rootViewController:rootVC adSize:CGSizeMake(screenWidth, bannerHeigh) IsSupportDeepLink:YES interval:30];
+        if (isCarousel == 0) {
+            self.bannerView = [[BUNativeExpressBannerView alloc] initWithSlotID:mCodeId rootViewController:rootVC adSize:CGSizeMake(screenWidth, bannerHeigh) IsSupportDeepLink:YES];
+        }
+        else
+        {
+            self.bannerView = [[BUNativeExpressBannerView alloc] initWithSlotID:mCodeId rootViewController:rootVC adSize:CGSizeMake(screenWidth, bannerHeigh) IsSupportDeepLink:YES interval:interval.intValue];
+        }
+        
         self.bannerView.delegate = self;
+        
         self.bannerView.frame = CGRectMake(0, rootVC.view.bounds.size.height-bannerHeigh, screenWidth, bannerHeigh);
         [self.bannerView loadAdData];
         [rootVC.view addSubview:self.bannerView];

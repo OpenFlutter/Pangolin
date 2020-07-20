@@ -108,7 +108,7 @@ class _MyAppState extends State<MyApp> {
 
   _loadBannerAd() async
   {
-    await Pangolin.loadBannerAd(mCodeId: "945330217", supportDeepLink: true, expressViewWidth: 300,expressViewHeight: 240);
+    await Pangolin.loadBannerAd(mCodeId: "945330217", supportDeepLink: true, expressViewWidth: 600,expressViewHeight: 300, isCarousel: true,interval: 40);
   }
 
   @override
