@@ -82,6 +82,20 @@ Future loadRewardAd({
   });
 }
 
+Future loadBannerAd({
+  @required String mCodeId,
+  @required bool supportDeepLink,
+  double expressViewWidth,
+  double expressViewHeight
+}) async {
+  return await _channel.invokeMethod("loadBannerAd", {
+    "mCodeId": mCodeId,
+    "supportDeepLink": supportDeepLink,
+    "expressViewWidth": expressViewWidth,
+    "expressViewHeight": expressViewHeight
+  });
+}
+
 Future _methodHandler(MethodCall methodCall) {
   var response =
       BasePangolinResponse.create(methodCall.method, methodCall.arguments);

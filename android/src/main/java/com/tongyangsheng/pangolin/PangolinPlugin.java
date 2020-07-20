@@ -3,6 +3,7 @@ package com.tongyangsheng.pangolin;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 
@@ -131,43 +132,33 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
       intent.putExtra("debug",deBug);
       activity.startActivity(intent);
     }
-    else if (call.method.equals("loadRewardAd"))
-    {
+    else if (call.method.equals("loadRewardAd")) {
       Boolean isHorizontal = call.argument("isHorizontal");
       String mCodeId = call.argument("mCodeId");
       Boolean debug = call.argument("debug");
       Boolean supportDeepLink = call.argument("supportDeepLink");
       String rewardName = call.argument("rewardName");
-      int rewardAmount = (int)call.argument("rewardAmount");
+      int rewardAmount = (int) call.argument("rewardAmount");
       Boolean isExpress = call.argument("isExpress");
 
       double expressViewAcceptedSizeH;
-      if (call.argument("expressViewAcceptedSizeH") == null)
-      {
+      if (call.argument("expressViewAcceptedSizeH") == null) {
         expressViewAcceptedSizeH = 500;
-      }
-      else
-      {
+      } else {
         expressViewAcceptedSizeH = call.argument("expressViewAcceptedSizeH");
       }
       double expressViewAcceptedSizeW;
-      if (call.argument("expressViewAcceptedSizeW") == null)
-      {
+      if (call.argument("expressViewAcceptedSizeW") == null) {
         expressViewAcceptedSizeW = 500;
-      }
-      else
-      {
+      } else {
         expressViewAcceptedSizeW = call.argument("expressViewAcceptedSizeW");
       }
 
       String userID = call.argument("userID");
       String mediaExtra;
-      if (call.argument("mediaExtra") == null)
-      {
+      if (call.argument("mediaExtra") == null) {
         mediaExtra = "media_extra";
-      }
-      else
-      {
+      } else {
         mediaExtra = call.argument("mediaExtra");
       }
 
@@ -175,21 +166,15 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
       RewardVideo._channel = methodChannel;
       rewardVideo.activity = activity;
       rewardVideo.context = applicationContext;
-      if (isHorizontal)
-      {
+      if (isHorizontal) {
         rewardVideo.mHorizontalCodeId = mCodeId;
-      }
-      else
-      {
+      } else {
         rewardVideo.mVerticalCodeId = mCodeId;
       }
 
-      if (debug != null)
-      {
+      if (debug != null) {
         rewardVideo.debug = debug;
-      }
-      else
-      {
+      } else {
         rewardVideo.debug = false;
       }
 
@@ -201,46 +186,37 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
       rewardVideo.userID = userID;
       rewardVideo.mediaExtra = mediaExtra;
       rewardVideo.init();
+    }
+    else if (call.method.equals("loadBannerAd"))
+    {
+      Log.d("banner广告","接入Android");
+      String mCodeId = call.argument("mCodeId");
+      Boolean supportDeepLink = call.argument("supportDeepLink");
+      float expressViewWidth = 0;
+      float expressViewHeight = 0;
+      if (call.argument("expressViewWidth") != null)
+      {
+        double expressViewWidthDouble = call.argument("expressViewWidth");
+        expressViewWidth = (float)expressViewWidthDouble;
+      }
 
-//      if (isHorizontal == null)
-//      {
-//        result.error("600","isHorizonal can not be null",null);
-//      }
-//      else
-//      {
-//        RewardVideoActivity._channel = methodChannel;
-//        if(isHorizontal)
-//        {
-//          Intent intent = new Intent();
-//          intent.setClass(activity, RewardVideoActivity.class);
-//          intent.putExtra("horizontal_rit",mCodeId);
-//          intent.putExtra("debug",debug);
-//          intent.putExtra("supportDeepLink", supportDeepLink);
-//          intent.putExtra("rewardName",rewardName);
-//          intent.putExtra("rewardAmount",rewardAmount);
-//          intent.putExtra("isExpress",isExpress);
-//          intent.putExtra("expressViewAcceptedSizeH",expressViewAcceptedSizeH);
-//          intent.putExtra("expressViewAcceptedSizeW",expressViewAcceptedSizeW);
-//          intent.putExtra("userID",userID);
-//          intent.putExtra("mediaExtra",mediaExtra);
-//          activity.startActivity(intent);
-//        }
-//        else
-//        {
-//          Intent intent = new Intent();
-//          intent.setClass(activity, RewardVideoActivity.class);
-//          intent.putExtra("vertical_rit",mCodeId);
-//          intent.putExtra("debug",debug);
-//          intent.putExtra("supportDeepLink", supportDeepLink);
-//          intent.putExtra("rewardName",rewardName);
-//          intent.putExtra("rewardAmount",rewardAmount);
-//          intent.putExtra("expressViewAcceptedSizeH",expressViewAcceptedSizeH);
-//          intent.putExtra("expressViewAcceptedSizeW",expressViewAcceptedSizeW);
-//          intent.putExtra("userID",userID);
-//          intent.putExtra("mediaExtra",mediaExtra);
-//          activity.startActivity(intent);
-//        }
-//      }
+      if (call.argument("expressViewHeight") != null)
+      {
+        double expressViewHeightDouble = call.argument("expressViewHeight");
+        expressViewHeight = (float)expressViewHeightDouble;
+      }
+
+      Log.d("banner广告",mCodeId);
+      Log.d("banner广告",supportDeepLink.toString());
+      Log.d("banner广告",Float.toString(expressViewHeight));
+
+      Intent intent = new Intent();
+      intent.setClass(activity, BannerActivity.class);
+      intent.putExtra("mCodeId", mCodeId);
+      intent.putExtra("supportDeepLink", supportDeepLink);
+      intent.putExtra("expressViewWidth", expressViewWidth);
+      intent.putExtra("expressViewHeight", expressViewHeight);
+      activity.startActivity(intent);
     }
     else
       {

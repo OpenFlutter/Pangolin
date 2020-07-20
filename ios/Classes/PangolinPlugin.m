@@ -15,8 +15,11 @@ BUNativeExpresInterstitialAdDelegate>
 @property (nonatomic, assign) BOOL isDownloadUrlValid;
 @property (nonatomic, assign) BOOL isDeeplinkUrlValid;
 
+@property(nonatomic, copy) NSDictionary *sizeDcit;
+
 @property (nonatomic, strong) BURewardedVideoAd *rewardedVideoAd;
 @property (nonatomic, strong) BUNativeExpressRewardedVideoAd *rewardedAd;
+@property(nonatomic, strong) BUNativeExpressBannerView *bannerView;
 
 @end
 
@@ -75,6 +78,26 @@ FlutterMethodChannel* globalMethodChannel;
             [self.rewardedAd loadAdData];
             result(@YES);
     }
+    else if([@"loadBannerAd" isEqualToString:call.method]){
+        
+        NSString* mCodeId = call.arguments[@"mCodeId"];
+        
+        NSLog(@"banner广告id:%@",mCodeId);
+        
+        UIViewController* rootVC = [self getRootViewController];
+        
+            
+        NSValue *sizeValue = [NSValue valueWithCGSize:CGSizeMake(600, 300)];
+        CGSize size = [sizeValue CGSizeValue];
+        CGFloat screenWidth = CGRectGetWidth([UIScreen mainScreen].bounds);
+        CGFloat bannerHeigh = screenWidth/size.width*size.height;
+        
+        self.bannerView = [[BUNativeExpressBannerView alloc] initWithSlotID:mCodeId rootViewController:rootVC adSize:CGSizeMake(screenWidth, bannerHeigh) IsSupportDeepLink:YES interval:30];
+        self.bannerView.delegate = self;
+        self.bannerView.frame = CGRectMake(0, rootVC.view.bounds.size.height-bannerHeigh, screenWidth, bannerHeigh);
+        [self.bannerView loadAdData];
+        [rootVC.view addSubview:self.bannerView];
+    }
     else
     {
         result(FlutterMethodNotImplemented);
@@ -126,7 +149,85 @@ FlutterMethodChannel* globalMethodChannel;
 - (void)splashAdDidClose:(BUSplashAdView *)splashAd {
     [splashAd removeFromSuperview];
 }
+
+#pragma BUNativeExpressBannerViewDelegate
+- (void)nativeExpressBannerAdViewDidLoad:(BUNativeExpressBannerView *)bannerAdView {
+}
+
+- (void)nativeExpressBannerAdView:(BUNativeExpressBannerView *)bannerAdView didLoadFailWithError:(NSError *)error {
+    NSLog(@"error code : %ld , error message : %@",(long)error.code,error.description);
+}
+
+- (void)nativeExpressBannerAdViewRenderSuccess:(BUNativeExpressBannerView *)bannerAdView {
+    NSLog(@"%s",__func__);
+}
+
+- (void)nativeExpressBannerAdViewRenderFail:(BUNativeExpressBannerView *)bannerAdView error:(NSError *)error {
+    NSLog(@"%s",__func__);
+}
+
+- (void)nativeExpressBannerAdViewWillBecomVisible:(BUNativeExpressBannerView *)bannerAdView {
+    NSLog(@"%s",__func__);
+}
+
+- (void)nativeExpressBannerAdViewDidClick:(BUNativeExpressBannerView *)bannerAdView {
+    NSLog(@"%s",__func__);
+}
+
+- (void)nativeExpressBannerAdView:(BUNativeExpressBannerView *)bannerAdView dislikeWithReason:(NSArray<BUDislikeWords *> *)filterwords {
+    [UIView animateWithDuration:0.25 animations:^{
+        bannerAdView.alpha = 0;
+    } completion:^(BOOL finished) {
+        [bannerAdView removeFromSuperview];
+        self.bannerView = nil;
+    }];
+}
+
+- (void)nativeExpressBannerAdViewDidCloseOtherController:(BUNativeExpressBannerView *)bannerAdView interactionType:(BUInteractionType)interactionType {
+    NSString *str = nil;
+    if (interactionType == BUInteractionTypePage) {
+        str = @"ladingpage";
+    } else if (interactionType == BUInteractionTypeVideoAdDetail) {
+        str = @"videoDetail";
+    } else {
+        str = @"appstoreInApp";
+    }
+}
+
+
+
+//获取根控制器
+
+- (UIViewController *)getRootViewController{
+
+    UIWindow* window = [[[UIApplication sharedApplication] delegate] window];
+    NSAssert(window, @"The window is empty");
+    return window.rootViewController;
+}
+
+
+- (UIViewController *)currentViewController
+{
+    UIWindow *keyWindow  = [UIApplication sharedApplication].keyWindow;
+    UIViewController *vc = keyWindow.rootViewController;
+    while (vc.presentedViewController)
+    {
+        vc = vc.presentedViewController;
+
+        if ([vc isKindOfClass:[UINavigationController class]])
+        {
+            vc = [(UINavigationController *)vc visibleViewController];
+        }
+        else if ([vc isKindOfClass:[UITabBarController class]])
+        {
+            vc = [(UITabBarController *)vc selectedViewController];
+        }
+    }
+    return vc;
+}
+
 @end
+
 
 
 

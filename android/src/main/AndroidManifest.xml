@@ -4,8 +4,11 @@
         <activity android:name=".SplashActivity"
             android:theme="@android:style/Theme.NoTitleBar">
         </activity>
-        <activity android:name=".RewardVideoActivity"
+        <activity android:name=".RewardVideo"
             android:theme="@android:style/Theme.NoTitleBar">
+        </activity>
+        <activity android:name=".BannerActivity"
+            android:theme="@android:style/Theme.Black.NoTitleBar">
         </activity>
     </application>
 </manifest>

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:permission_handler/permission_handler.dart';
 import 'dart:async';
 
 import 'package:pangolin/pangolin.dart' as Pangolin;
@@ -40,15 +39,15 @@ class _MyAppState extends State<MyApp> {
   Future<void> initPlatformState() async {
     String platformVersion;
 
-    Map<Permission, PermissionStatus> statuses = await [
-      Permission.phone,
-      Permission.location,
-      Permission.storage,
-    ].request();
-    //校验权限
-    if(statuses[Permission.location] != PermissionStatus.granted){
-      print("无位置权限");
-    }
+//    Map<Permission, PermissionStatus> statuses = await [
+//      Permission.phone,
+//      Permission.location,
+//      Permission.storage,
+//    ].request();
+//    //校验权限
+//    if(statuses[Permission.location] != PermissionStatus.granted){
+//      print("无位置权限");
+//    }
     _initPangolin();
     // If the widget was removed from the tree while the asynchronous platform
     // message was in flight, we want to discard the reply rather than calling
@@ -78,7 +77,7 @@ class _MyAppState extends State<MyApp> {
         debug: true,
         supportMultiProcess: true
     ).then((v){
-      _loadSplashAd();
+      _loadBannerAd();
     });
   }
 
@@ -105,6 +104,11 @@ class _MyAppState extends State<MyApp> {
       userID: "user123",
       mediaExtra: "media_extra"
         );
+  }
+
+  _loadBannerAd() async
+  {
+    await Pangolin.loadBannerAd(mCodeId: "945330217", supportDeepLink: true, expressViewWidth: 300,expressViewHeight: 240);
   }
 
   @override

@@ -15,9 +15,10 @@ import com.bytedance.sdk.openadsdk.TTRewardVideoAd;
 import java.util.HashMap;
 import java.util.Map;
 
+import io.flutter.app.FlutterActivity;
 import io.flutter.plugin.common.MethodChannel;
 
-public class RewardVideo {
+public class RewardVideo extends FlutterActivity {
     private static final String TAG = "RewardVideo";
     private TTAdNative mTTAdNative;
     private TTRewardVideoAd mttRewardVideoAd;
