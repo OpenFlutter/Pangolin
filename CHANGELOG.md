@@ -42,3 +42,7 @@
 ## 0.1.5
 
 * TODO: iOS BannerAd support
+
+## 0.1.6
+
+* TODO: iOS InterstitialAd support
