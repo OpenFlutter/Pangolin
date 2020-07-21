@@ -5,7 +5,8 @@
 BUNativeAdsManagerDelegate,BUVideoAdViewDelegate,BUNativeAdDelegate,
 BUNativeExpressAdViewDelegate,
 BUNativeExpressFullscreenVideoAdDelegate,
-BUNativeExpresInterstitialAdDelegate>
+BUNativeExpresInterstitialAdDelegate,
+BUBannerAdViewDelegate>
 @property (nonatomic, strong) UITextField *playableUrlTextView;
 @property (nonatomic, strong) UITextField *downloadUrlTextView;
 @property (nonatomic, strong) UITextField *deeplinkUrlTextView;
@@ -20,6 +21,7 @@ BUNativeExpresInterstitialAdDelegate>
 @property (nonatomic, strong) BURewardedVideoAd *rewardedVideoAd;
 @property (nonatomic, strong) BUNativeExpressRewardedVideoAd *rewardedAd;
 @property(nonatomic, strong) BUNativeExpressBannerView *bannerView;
+@property (nonatomic, strong) BUNativeExpressInterstitialAd *interstitialAd;
 
 @end
 
@@ -63,20 +65,20 @@ FlutterMethodChannel* globalMethodChannel;
     }
     else if([@"loadRewardAd" isEqualToString:call.method])
     {
-            NSString* slotId = call.arguments[@"mCodeId"];
-            NSString* userId = call.arguments[@"userID"];
-            NSString* rewardName = call.arguments[@"rewardName"];
-            NSString* mediaExtra = call.arguments[@"mediaExtra"];
-
-            BURewardedVideoModel *model = [[BURewardedVideoModel alloc] init];
-            model.userId = userId;
-            model.rewardName = rewardName;
-            model.extra=mediaExtra;
-
-            self.rewardedAd = [[BUNativeExpressRewardedVideoAd alloc] initWithSlotID:slotId rewardedVideoModel:model];
-            self.rewardedAd.delegate = self;
-            [self.rewardedAd loadAdData];
-            result(@YES);
+        NSString* slotId = call.arguments[@"mCodeId"];
+        NSString* userId = call.arguments[@"userID"];
+        NSString* rewardName = call.arguments[@"rewardName"];
+        NSString* mediaExtra = call.arguments[@"mediaExtra"];
+        
+        BURewardedVideoModel *model = [[BURewardedVideoModel alloc] init];
+        model.userId = userId;
+        model.rewardName = rewardName;
+        model.extra=mediaExtra;
+        
+        self.rewardedAd = [[BUNativeExpressRewardedVideoAd alloc] initWithSlotID:slotId rewardedVideoModel:model];
+        self.rewardedAd.delegate = self;
+        [self.rewardedAd loadAdData];
+        result(@YES);
     }
     else if([@"loadBannerAd" isEqualToString:call.method]){
         
@@ -88,7 +90,7 @@ FlutterMethodChannel* globalMethodChannel;
         
         UIViewController* rootVC = [self getRootViewController];
         
-            
+        
         NSValue *sizeValue = [NSValue valueWithCGSize:CGSizeMake(expressViewWidth.floatValue, expressViewHeight.floatValue)];
         CGSize size = [sizeValue CGSizeValue];
         CGFloat screenWidth = CGRectGetWidth([UIScreen mainScreen].bounds);
@@ -108,6 +110,23 @@ FlutterMethodChannel* globalMethodChannel;
         [self.bannerView loadAdData];
         [rootVC.view addSubview:self.bannerView];
     }
+    else if([@"loadInterstitialAd" isEqualToString:call.method])
+    {
+        NSString* mCodeId = call.arguments[@"mCodeId"];
+        NSNumber* expressViewWidth = call.arguments[@"expressViewWidth"];
+        NSNumber* expressViewHeight = call.arguments[@"expressViewHeight"];
+        
+        NSLog(@"渲染高度%@",expressViewHeight);
+        
+        NSValue *sizeValue = [NSValue valueWithCGSize:CGSizeMake(expressViewWidth.floatValue, expressViewHeight.floatValue)];
+        CGSize size = [sizeValue CGSizeValue];
+        CGFloat width = CGRectGetWidth([UIScreen mainScreen].bounds)-40;
+        CGFloat height = width/size.width*size.height;
+        
+        self.interstitialAd = [[BUNativeExpressInterstitialAd alloc] initWithSlotID:mCodeId adSize:CGSizeMake(width, height)];
+        self.interstitialAd.delegate = self;
+        [self.interstitialAd loadAdData];
+    }
     else
     {
         result(FlutterMethodNotImplemented);
@@ -117,23 +136,23 @@ FlutterMethodChannel* globalMethodChannel;
 //展示视频用
 - (UIViewController *)rootViewController{
     UIViewController *rootVC = [[UIApplication sharedApplication].delegate window].rootViewController;
-
+    
     UIViewController *parent = rootVC;
     while((parent = rootVC.presentingViewController) != nil){
         rootVC = parent;
     }
-
+    
     while ([rootVC isKindOfClass:[UINavigationController class]]) {
         rootVC = [(UINavigationController *)rootVC topViewController];
     }
-
+    
     return rootVC;
 }
 
 //激励视频渲染完成并展示
 - (void)nativeExpressRewardedVideoAdViewRenderSuccess:(BUNativeExpressRewardedVideoAd *)rewardedVideoAd {
     [self.rewardedAd showAdFromRootViewController: [self rootViewController]];
-
+    
 }
 
 //激励视频播放完成
@@ -142,17 +161,17 @@ FlutterMethodChannel* globalMethodChannel;
     [mutableDictionary setValue:@YES forKey:@"rewardVerify"];
     [mutableDictionary setValue:NULL forKey:@"rewardAmount"];
     [mutableDictionary setValue:NULL forKey:@"rewardName"];
-
+    
     [globalMethodChannel invokeMethod:@"onRewardResponse" arguments:mutableDictionary];
 }
 
 - (void)nativeExpressRewardedVideoAdServerRewardDidSucceed:(BUNativeExpressRewardedVideoAd *)rewardedVideoAd verify:(BOOL)verify {
-
+    
 }
 
 //激励视频关闭
 - (void)nativeExpressRewardedVideoAdDidClose:(BUNativeExpressRewardedVideoAd *)rewardedVideoAd {
-
+    
 }
 
 //开屏视频关闭
@@ -204,12 +223,62 @@ FlutterMethodChannel* globalMethodChannel;
     }
 }
 
+#pragma ---BUNativeExpresInterstitialAdDelegate
+- (void)nativeExpresInterstitialAdDidLoad:(BUNativeExpressInterstitialAd *)interstitialAd {
+    NSLog(@"%s",__func__);
+}
+
+- (void)nativeExpresInterstitialAd:(BUNativeExpressInterstitialAd *)interstitialAd didFailWithError:(NSError *)error {
+    NSLog(@"加载失败");
+    NSLog(@"%s",__func__);
+}
+
+- (void)nativeExpresInterstitialAdRenderSuccess:(BUNativeExpressInterstitialAd *)interstitialAd {
+    UIViewController* rootVC = [self getRootViewController];
+    [self.interstitialAd showAdFromRootViewController:rootVC];
+    NSLog(@"%s",__func__);
+}
+
+- (void)nativeExpresInterstitialAdRenderFail:(BUNativeExpressInterstitialAd *)interstitialAd error:(NSError *)error {
+    NSLog(@"%s",__func__);
+    NSLog(@"error code : %ld , error message : %@",(long)error.code,error.description);
+}
+
+- (void)nativeExpresInterstitialAdWillVisible:(BUNativeExpressInterstitialAd *)interstitialAd {
+    NSLog(@"%s",__func__);
+}
+
+- (void)nativeExpresInterstitialAdDidClick:(BUNativeExpressInterstitialAd *)interstitialAd {
+    NSLog(@"%s",__func__);
+}
+
+- (void)nativeExpresInterstitialAdWillClose:(BUNativeExpressInterstitialAd *)interstitialAd {
+    NSLog(@"%s",__func__);
+}
+
+- (void)nativeExpresInterstitialAdDidClose:(BUNativeExpressInterstitialAd *)interstitialAd {
+    NSLog(@"%s",__func__);
+}
+
+- (void)nativeExpresInterstitialAdDidCloseOtherController:(BUNativeExpressInterstitialAd *)interstitialAd interactionType:(BUInteractionType)interactionType {
+    NSString *str = nil;
+    if (interactionType == BUInteractionTypePage) {
+        str = @"ladingpage";
+    } else if (interactionType == BUInteractionTypeVideoAdDetail) {
+        str = @"videoDetail";
+    } else {
+        str = @"appstoreInApp";
+    }
+    NSLog(@"%s __ %@",__func__,str);
+}
+
+
 
 
 //获取根控制器
 
 - (UIViewController *)getRootViewController{
-
+    
     UIWindow* window = [[[UIApplication sharedApplication] delegate] window];
     NSAssert(window, @"The window is empty");
     return window.rootViewController;
@@ -223,7 +292,7 @@ FlutterMethodChannel* globalMethodChannel;
     while (vc.presentedViewController)
     {
         vc = vc.presentedViewController;
-
+        
         if ([vc isKindOfClass:[UINavigationController class]])
         {
             vc = [(UINavigationController *)vc visibleViewController];
@@ -237,6 +306,7 @@ FlutterMethodChannel* globalMethodChannel;
 }
 
 @end
+
 
 
 

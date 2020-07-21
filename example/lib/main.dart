@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'dart:async';
 
 import 'package:pangolin/pangolin.dart' as Pangolin;
+import 'package:permission_handler/permission_handler.dart';
 
 void main() => runApp(MyApp());
 
@@ -39,15 +40,15 @@ class _MyAppState extends State<MyApp> {
   Future<void> initPlatformState() async {
     String platformVersion;
 
-//    Map<Permission, PermissionStatus> statuses = await [
-//      Permission.phone,
-//      Permission.location,
-//      Permission.storage,
-//    ].request();
-//    //校验权限
-//    if(statuses[Permission.location] != PermissionStatus.granted){
-//      print("无位置权限");
-//    }
+    Map<Permission, PermissionStatus> statuses = await [
+      Permission.phone,
+      Permission.location,
+      Permission.storage,
+    ].request();
+    //校验权限
+    if(statuses[Permission.location] != PermissionStatus.granted){
+      print("无位置权限");
+    }
     _initPangolin();
     // If the widget was removed from the tree while the asynchronous platform
     // message was in flight, we want to discard the reply rather than calling
@@ -77,7 +78,7 @@ class _MyAppState extends State<MyApp> {
         debug: true,
         supportMultiProcess: true
     ).then((v){
-      _loadBannerAd();
+      _loadInterstitialAd();
     });
   }
 
@@ -108,7 +109,18 @@ class _MyAppState extends State<MyApp> {
 
   _loadBannerAd() async
   {
-    await Pangolin.loadBannerAd(mCodeId: "945330217", supportDeepLink: true, expressViewWidth: 600,expressViewHeight: 300, isCarousel: true,interval: 40);
+    await Pangolin.loadBannerAd(
+        mCodeId: "945330217",
+        supportDeepLink: true,
+        expressViewWidth: 600,
+        expressViewHeight: 300,
+        isCarousel: true,
+        interval: 40);
+  }
+
+  _loadInterstitialAd() async
+  {
+    await Pangolin.loadInterstitialAd(mCodeId: "945332768", expressViewWidth: 300, expressViewHeight: 300);
   }
 
   @override

@@ -187,37 +187,37 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
       rewardVideo.mediaExtra = mediaExtra;
       rewardVideo.init();
     }
-    else if (call.method.equals("loadBannerAd"))
-    {
-      Log.d("banner广告","接入Android");
-      String mCodeId = call.argument("mCodeId");
-      Boolean supportDeepLink = call.argument("supportDeepLink");
-      float expressViewWidth = 0;
-      float expressViewHeight = 0;
-      if (call.argument("expressViewWidth") != null)
-      {
-        double expressViewWidthDouble = call.argument("expressViewWidth");
-        expressViewWidth = (float)expressViewWidthDouble;
-      }
-
-      if (call.argument("expressViewHeight") != null)
-      {
-        double expressViewHeightDouble = call.argument("expressViewHeight");
-        expressViewHeight = (float)expressViewHeightDouble;
-      }
-
-      Log.d("banner广告",mCodeId);
-      Log.d("banner广告",supportDeepLink.toString());
-      Log.d("banner广告",Float.toString(expressViewHeight));
-
-      Intent intent = new Intent();
-      intent.setClass(activity, BannerActivity.class);
-      intent.putExtra("mCodeId", mCodeId);
-      intent.putExtra("supportDeepLink", supportDeepLink);
-      intent.putExtra("expressViewWidth", expressViewWidth);
-      intent.putExtra("expressViewHeight", expressViewHeight);
-      activity.startActivity(intent);
-    }
+//    else if (call.method.equals("loadBannerAd"))
+//    {
+//      Log.d("banner广告","接入Android");
+//      String mCodeId = call.argument("mCodeId");
+//      Boolean supportDeepLink = call.argument("supportDeepLink");
+//      float expressViewWidth = 0;
+//      float expressViewHeight = 0;
+//      if (call.argument("expressViewWidth") != null)
+//      {
+//        double expressViewWidthDouble = call.argument("expressViewWidth");
+//        expressViewWidth = (float)expressViewWidthDouble;
+//      }
+//
+//      if (call.argument("expressViewHeight") != null)
+//      {
+//        double expressViewHeightDouble = call.argument("expressViewHeight");
+//        expressViewHeight = (float)expressViewHeightDouble;
+//      }
+//
+//      Log.d("banner广告",mCodeId);
+//      Log.d("banner广告",supportDeepLink.toString());
+//      Log.d("banner广告",Float.toString(expressViewHeight));
+//
+//      Intent intent = new Intent();
+//      intent.setClass(activity, BannerActivity.class);
+//      intent.putExtra("mCodeId", mCodeId);
+//      intent.putExtra("supportDeepLink", supportDeepLink);
+//      intent.putExtra("expressViewWidth", expressViewWidth);
+//      intent.putExtra("expressViewHeight", expressViewHeight);
+//      activity.startActivity(intent);
+//    }
     else
       {
       result.notImplemented();

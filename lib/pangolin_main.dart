@@ -100,6 +100,18 @@ Future loadBannerAd({
   });
 }
 
+Future loadInterstitialAd({
+  @required String mCodeId,
+  double expressViewWidth,
+  double expressViewHeight
+}) async {
+  return await _channel.invokeMethod("loadInterstitialAd",{
+    "mCodeId": mCodeId,
+    "expressViewWidth": expressViewWidth,
+    "expressViewHeight": expressViewHeight,
+  });
+}
+
 Future _methodHandler(MethodCall methodCall) {
   var response =
       BasePangolinResponse.create(methodCall.method, methodCall.arguments);
