@@ -36,6 +36,7 @@ Pangolin是一款Flutter插件，集成了字节跳动旗下的广告平台—�
 | 0.1.3  | 修复了部分情况下iOS无法收到回调的问题，iOS的开屏现在会自动关闭   |
 | 0.1.4  | 修复了部分情况下iOS在使用Cocoapods导入SDK时存在的错误   |
 | 0.1.5  | 支持iOS banner广告   |
+| 0.1.5  | 支持iOS 插屏广告   |
 
 ## 插件开发环境相关
 ### Flutter
@@ -61,7 +62,7 @@ Android - 2.9.5.0
 ```yaml
 # add this line to your dependencies
 dependencies:
-  pangolin: ^0.1.5
+  pangolin: ^0.1.6
 ```
 
 ## 环境配置
@@ -226,6 +227,23 @@ Pangolin.pangolinResponseEventHandler.listen((value)
 |  interval | 轮播间隔（30～120s）     |    null |
 
 以上参数在创建代码位时都可以进行自定义设置，请确保在代码中填写的实际值和创建代码位时一致。
+
+### 加载插屏广告（iOS）
+```dart
+    await Pangolin.loadInterstitialAd(
+        mCodeId: "Your CodeId",
+        expressViewWidth: 300,
+        expressViewHeight: 300
+    );
+```
+#### 参数说明
+| 参数  | 描述  | 默认值 |
+| :------------ |:---------------:| -----:|
+|  mCodeId      | 在穿山甲平台注册的自己的广告位id | null |
+|  expressViewWidth | 插屏长度     |    null |
+|  expressViewWidth | 插屏高度    |    null |
+
+插屏广告的长宽可以自己设定，但是长宽比必须和自己代码位设定的一致，例如设置了1:1的长宽比可以设置： 长度300+宽度300 或 长度600+宽度600。
 
 
 ## 加入/贡献
