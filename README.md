@@ -21,6 +21,22 @@
 ## 简介
 Pangolin是一款Flutter插件，集成了字节跳动旗下的广告平台——穿山甲的Android和iOS的SDK，方便开发者直接在Flutter层面调用相关方法。
 
+## 版本信息
+| 版本  | 更新信息  |
+| :------------ |:---------------:|
+| 0.0.1  | 穿山甲SDK接入，开屏广告实现 |
+| 0.0.2  | 修复开屏广告偶现TopBar的Bug |
+| 0.0.5  | 激励视频Android接入     |
+| 0.0.6  | 激励视频接口参数重写     |
+| 0.0.7  | 移除默认Activity 直接在当前界面调起广告    |
+| 0.0.8  | 紧急修复iOS端 报错Bug   |
+| 0.1.0  | iOS激励视频支持   |
+| 0.1.1  | 自动下载网络环境可配置   |
+| 0.1.2  | 修复了toast无法移除的问题   |
+| 0.1.3  | 修复了部分情况下iOS无法收到回调的问题，iOS的开屏现在会自动关闭   |
+| 0.1.4  | 修复了部分情况下iOS在使用Cocoapods导入SDK时存在的错误   |
+| 0.1.5  | 支持iOS banner广告   |
+
 ## 插件开发环境相关
 ### Flutter
 ```
@@ -45,7 +61,7 @@ Android - 2.9.5.0
 ```yaml
 # add this line to your dependencies
 dependencies:
-  pangolin: ^0.1.4
+  pangolin: ^0.1.5
 ```
 
 ## 环境配置
@@ -189,26 +205,33 @@ Pangolin.pangolinResponseEventHandler.listen((value)
 
 激励视频的具体使用参见项目目录下Example
 
-## 版本信息
-| 版本  | 更新信息  |
-| :------------ |:---------------:|
-| 0.0.1  | 穿山甲SDK接入，开屏广告实现 |
-| 0.0.2  | 修复开屏广告偶现TopBar的Bug |
-| 0.0.5  | 激励视频Android接入     |
-| 0.0.6  | 激励视频接口参数重写     |
-| 0.0.7  | 移除默认Activity 直接在当前界面调起广告    |
-| 0.0.8  | 紧急修复iOS端 报错Bug   |
-| 0.1.0  | iOS激励视频支持   |
-| 0.1.1  | 自动下载网络环境可配置   |
-| 0.1.2  | 修复了toast无法移除的问题   |
-| 0.1.3  | 修复了部分情况下iOS无法收到回调的问题，iOS的开屏现在会自动关闭   |
-| 0.1.4  | 修复了部分情况下iOS在使用Cocoapods导入SDK时存在的错误   |
+### 加载Banner广告（iOS）
+```dart
+     await Pangolin.loadBannerAd(
+        mCodeId: "Your CodeId", 
+        supportDeepLink: true, 
+        expressViewWidth: Your expressViewWidth,
+        expressViewHeight: Your expressViewHeight, 
+        isCarousel: true,
+        interval: 40);
+```
+#### 参数说明
+| 参数  | 描述  | 默认值 |
+| :------------ |:---------------:| -----:|
+|  mCodeId      | 在穿山甲平台注册的自己的广告位id | null |
+|  supportDeepLink | 是否支持横屏     |    true |
+|  expressViewWidth | banner长度     |    null |
+|  expressViewWidth | banner高度    |    null |
+|  isCarousel | 是否开启轮播    |    true |
+|  interval | 轮播间隔（30～120s）     |    null |
+
+以上参数在创建代码位时都可以进行自定义设置，请确保在代码中填写的实际值和创建代码位时一致。
 
 
 ## 加入/贡献
 目前项目已经逐渐完善，但是还有许多特性需要给的协助，如果你对项目有兴趣并且对开源有兴趣和信心，可以通过README底部的联系方式联系我，并在备注中说明，我会优先回复你的信息🤪。目前剩余的广告（按目前issue中提到的人数统计优先级）：
 * 信息流广告
-* banner广告
+* banner广告（Android）
 * 插屏广告
 ### 方法 
 * fork项目代码
