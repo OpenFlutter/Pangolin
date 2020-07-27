@@ -17,7 +17,7 @@
 </p>
 
 ### Step3:
-由于穿山甲SDK的后缀是.arr文件，我们也选择相应的.arr工程
+由于穿山甲SDK的后缀是.aar文件，我们也选择相应的.aar工程
 <p align="center">
 <img src=https://github.com/tongyangsheng/Pangolin/blob/master/showImage/step3.jpg alt="drawing" width="600">
 </p>
