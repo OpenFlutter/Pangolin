@@ -1,5 +1,5 @@
 <p align="center">
-<img src=https://github.com/tongyangsheng/Pangolin/blob/master/showImage/1.jpg alt="drawing" width="700">
+<img src=https://github.com/tongyangsheng/Pangolin/blob/master/showImage/showimage2.jpg alt="drawing" width="700">
 </p>
 
 <h1 align="center">Flutter 穿山甲SDK 集成</h1>
