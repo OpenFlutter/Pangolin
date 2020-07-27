@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69a1e289-c17a-4105-997e-40a0d7ef5a11" name="Default Changelist" comment="banner iOS contact step1">
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/example/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +37,7 @@
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="SvnConfiguration">
@@ -72,30 +76,35 @@
     </state>
     <state x="-1347" y="74" width="857" height="1080" key="CommitChangelistDialog2/0.0.1792.1120/-1920.74.1920.1080@-1920.74.1920.1080" timestamp="1595227543573" />
     <state x="-1347" y="74" key="CommitChangelistDialog2/0.23.1792.1018/-1920.74.1920.1080@-1920.74.1920.1080" timestamp="1595317090435" />
-    <state width="1878" height="399" key="GridCell.Tab.0.bottom" timestamp="1595318028431">
+    <state width="1878" height="399" key="GridCell.Tab.0.bottom" timestamp="1595319083066">
       <screen x="-1920" y="74" width="1920" height="1080" />
     </state>
-    <state width="1878" height="399" key="GridCell.Tab.0.bottom/0.0.1792.1120/-1920.74.1920.1080@-1920.74.1920.1080" timestamp="1595318028431" />
+    <state width="1878" height="399" key="GridCell.Tab.0.bottom/0.0.1792.1120/-1920.74.1920.1080@-1920.74.1920.1080" timestamp="1595319083066" />
     <state width="1878" height="416" key="GridCell.Tab.0.bottom/0.23.1792.1018/-1920.97.1920.1057@-1920.97.1920.1057" timestamp="1595209446504" />
     <state width="1878" height="416" key="GridCell.Tab.0.bottom/0.23.1792.1097/-1920.74.1920.1080@-1920.74.1920.1080" timestamp="1595213254150" />
-    <state width="1878" height="399" key="GridCell.Tab.0.center" timestamp="1595318028430">
+    <state width="1878" height="399" key="GridCell.Tab.0.center" timestamp="1595319083064">
       <screen x="-1920" y="74" width="1920" height="1080" />
     </state>
-    <state width="1878" height="399" key="GridCell.Tab.0.center/0.0.1792.1120/-1920.74.1920.1080@-1920.74.1920.1080" timestamp="1595318028430" />
+    <state width="1878" height="399" key="GridCell.Tab.0.center/0.0.1792.1120/-1920.74.1920.1080@-1920.74.1920.1080" timestamp="1595319083064" />
     <state width="1878" height="416" key="GridCell.Tab.0.center/0.23.1792.1018/-1920.97.1920.1057@-1920.97.1920.1057" timestamp="1595209446503" />
     <state width="1878" height="416" key="GridCell.Tab.0.center/0.23.1792.1097/-1920.74.1920.1080@-1920.74.1920.1080" timestamp="1595213254149" />
-    <state width="1878" height="399" key="GridCell.Tab.0.left" timestamp="1595318028429">
+    <state width="1878" height="399" key="GridCell.Tab.0.left" timestamp="1595319083063">
       <screen x="-1920" y="74" width="1920" height="1080" />
     </state>
-    <state width="1878" height="399" key="GridCell.Tab.0.left/0.0.1792.1120/-1920.74.1920.1080@-1920.74.1920.1080" timestamp="1595318028429" />
+    <state width="1878" height="399" key="GridCell.Tab.0.left/0.0.1792.1120/-1920.74.1920.1080@-1920.74.1920.1080" timestamp="1595319083063" />
     <state width="1878" height="416" key="GridCell.Tab.0.left/0.23.1792.1018/-1920.97.1920.1057@-1920.97.1920.1057" timestamp="1595209446503" />
     <state width="1878" height="416" key="GridCell.Tab.0.left/0.23.1792.1097/-1920.74.1920.1080@-1920.74.1920.1080" timestamp="1595213254148" />
-    <state width="1878" height="399" key="GridCell.Tab.0.right" timestamp="1595318028431">
+    <state width="1878" height="399" key="GridCell.Tab.0.right" timestamp="1595319083065">
       <screen x="-1920" y="74" width="1920" height="1080" />
     </state>
-    <state width="1878" height="399" key="GridCell.Tab.0.right/0.0.1792.1120/-1920.74.1920.1080@-1920.74.1920.1080" timestamp="1595318028431" />
+    <state width="1878" height="399" key="GridCell.Tab.0.right/0.0.1792.1120/-1920.74.1920.1080@-1920.74.1920.1080" timestamp="1595319083065" />
     <state width="1878" height="416" key="GridCell.Tab.0.right/0.23.1792.1018/-1920.97.1920.1057@-1920.97.1920.1057" timestamp="1595209446503" />
     <state width="1878" height="416" key="GridCell.Tab.0.right/0.23.1792.1097/-1920.74.1920.1080@-1920.74.1920.1080" timestamp="1595213254149" />
+    <state x="623" y="94" key="SettingsEditor" timestamp="1595814958131">
+      <screen x="0" y="23" width="1792" height="1014" />
+    </state>
+    <state x="-1253" y="150" key="SettingsEditor/0.0.1792.1120/-1920.74.1920.1080@-1920.74.1920.1080" timestamp="1595814940256" />
+    <state x="623" y="94" key="SettingsEditor/0.23.1792.1014/-1920.97.1920.1057@0.23.1792.1014" timestamp="1595814958131" />
     <state x="-1360" y="350" key="Vcs.Push.Dialog.v2" timestamp="1595227559050">
       <screen x="-1920" y="74" width="1920" height="1080" />
     </state>

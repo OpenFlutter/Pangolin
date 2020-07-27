@@ -120,7 +120,11 @@ class _MyAppState extends State<MyApp> {
 
   _loadInterstitialAd() async
   {
-    await Pangolin.loadInterstitialAd(mCodeId: "945332768", expressViewWidth: 300, expressViewHeight: 300);
+    await Pangolin.loadInterstitialAd(
+        mCodeId: "945332768",
+        expressViewWidth: 300,
+        expressViewHeight: 300
+    );
   }
 
   @override
