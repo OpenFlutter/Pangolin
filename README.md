@@ -9,9 +9,9 @@
 <a href="https://www.apple.com/lae/ios/ios-13/"><img src=https://img.shields.io/badge/platform-ios-lightgrey></a>
 <a href="https://www.Android.com/package/drone"><img src=https://img.shields.io/badge/platform-Android-lightgrey></a>
 <a href="https://www.dart.dev"><img src=https://img.shields.io/badge/Language-Dart-orange></a>
-<a href="https://www.flutter.dev"><img src=https://img.shields.io/badge/Flutter-v1.12.13-informational></a>
+<a href="https://www.flutter.dev"><img src=https://img.shields.io/badge/Flutter-v1.17.3-informational></a>
 <a href="https://www.dart.dev"><img src=https://img.shields.io/badge/Dart-v2.4.1-informational></a>
-<a href="https://github.com/tongyangsheng/flutter_reader"><img src=https://img.shields.io/badge/Pangolin-v0.0.2-success></a>
+<a href="https://github.com/tongyangsheng/flutter_reader"><img src=https://img.shields.io/badge/Pangolin-v0.1.6-success></a>
 </p>
 
 ## 前言
