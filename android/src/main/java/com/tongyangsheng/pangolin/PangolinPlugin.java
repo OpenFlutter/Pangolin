@@ -178,6 +178,15 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
         rewardVideo.debug = false;
       }
 
+      if (isExpress != null)
+      {
+        rewardVideo.mIsExpress = isExpress;
+      }
+      else
+      {
+        rewardVideo.mIsExpress = false;
+      }
+
       rewardVideo.supportDeepLink = supportDeepLink;
       rewardVideo.expressViewAcceptedSizeH = expressViewAcceptedSizeH;
       rewardVideo.expressViewAcceptedSizeW = expressViewAcceptedSizeW;

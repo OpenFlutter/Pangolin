@@ -46,3 +46,7 @@
 ## 0.1.6
 
 * TODO: iOS InterstitialAd support
+
+## 0.1.7
+
+* TODO: fix "isExpress" always false

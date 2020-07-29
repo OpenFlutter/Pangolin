@@ -34,7 +34,7 @@ public class RewardVideo extends FlutterActivity {
     public String mediaExtra = "media_extra";
     public boolean debug = false;
 
-    private boolean mIsExpress = false; //是否请求模板广告
+    public boolean mIsExpress = false; //是否请求模板广告
 
 
 
