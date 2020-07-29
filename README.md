@@ -35,6 +35,7 @@ Pangolin是一款Flutter插件，集成了字节跳动旗下的广告平台—�
 | 0.1.4  | 修复了部分情况下iOS在使用Cocoapods导入SDK时存在的错误   |
 | 0.1.5  | 支持iOS banner广告   |
 | 0.1.6  | 支持iOS 插屏广告   |
+| 0.1.7  | 修复“isExpress”参数的传递问题   |
 
 ## 插件开发环境相关
 ### Flutter
