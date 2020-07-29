@@ -2,8 +2,6 @@
 <img src=https://github.com/tongyangsheng/Pangolin/blob/master/showImage/showImage3.png alt="drawing" width="700">
 </p>
 
-<h1 align="center">Flutter 穿山甲SDK 集成</h1>
-
 <p>
 <a href="https://www.npmjs.com/package/drone"><img src=https://img.shields.io/badge/license-MIT-brightgreen></a>
 <a href="https://www.apple.com/lae/ios/ios-13/"><img src=https://img.shields.io/badge/platform-ios-lightgrey></a>
