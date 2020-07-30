@@ -31,7 +31,7 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
 
   public static void registerWith(Registrar registrar) {
     final PangolinPlugin instance = new PangolinPlugin();
-    instance.onAttachedToEngine(registrar.context(),registrar.messenger());
+    instance.onAttachedToEngine(registrar.context(),registrar.messenger(),registrar.activity());
   }
 
   @Override
@@ -44,6 +44,13 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
         methodChannel = new MethodChannel(messenger, "com.tongyangsheng.pangolin");
         methodChannel.setMethodCallHandler(this);
     }
+
+  private void onAttachedToEngine(Context applicationContext , BinaryMessenger messenger, Activity activity) {
+    this.applicationContext = applicationContext;
+    methodChannel = new MethodChannel(messenger, "com.tongyangsheng.pangolin");
+    methodChannel.setMethodCallHandler(this);
+    this.activity = activity;
+  }
 
     @Override
     public void onAttachedToActivity(ActivityPluginBinding binding) {

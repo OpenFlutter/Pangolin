@@ -54,3 +54,7 @@
 ## 0.1.8
 
 * TODO: fix context is null
+
+## 0.1.9
+
+* TODO: fix activity is null
