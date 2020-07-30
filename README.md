@@ -9,7 +9,7 @@
 <a href="https://www.dart.dev"><img src=https://img.shields.io/badge/Language-Dart-orange></a>
 <a href="https://www.flutter.dev"><img src=https://img.shields.io/badge/Flutter-v1.17.3-informational></a>
 <a href="https://www.dart.dev"><img src=https://img.shields.io/badge/Dart-v2.4.1-informational></a>
-<a href="https://github.com/tongyangsheng/flutter_reader"><img src=https://img.shields.io/badge/Pangolin-v0.1.6-success></a>
+<a href="https://github.com/tongyangsheng/flutter_reader"><img src=https://img.shields.io/badge/Pangolin-v0.1.8-success></a>
 </p>
 
 ## 前言
@@ -36,6 +36,7 @@ Pangolin是一款Flutter插件，集成了字节跳动旗下的广告平台—�
 | 0.1.5  | 支持iOS banner广告   |
 | 0.1.6  | 支持iOS 插屏广告   |
 | 0.1.7  | 修复“isExpress”参数的传递问题   |
+| 0.1.8  | 修复部分用户context获取不到的问题 原因是部分用户没有走onAttachedToEngine()，走了registerWith()   |
 
 ## 插件开发环境相关
 ### Flutter
