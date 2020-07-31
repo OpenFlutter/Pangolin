@@ -41,7 +41,6 @@ public class BannerActivity extends FlutterActivity {
     public void init(){
         TTAdManager mTTAdManager = TTAdManagerHolder.get();
         mTTAdNative = mTTAdManager.createAdNative(context.getApplicationContext());
-
         configAd();
     }
 

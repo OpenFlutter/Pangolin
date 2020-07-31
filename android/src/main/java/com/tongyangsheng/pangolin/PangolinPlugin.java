@@ -4,9 +4,22 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.Toast;
+
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.GridLayoutManager;
 
+import com.bytedance.sdk.openadsdk.AdSlot;
+import com.bytedance.sdk.openadsdk.TTAdConstant;
+import com.bytedance.sdk.openadsdk.TTAdNative;
+import com.bytedance.sdk.openadsdk.TTAppDownloadListener;
+import com.bytedance.sdk.openadsdk.TTNativeExpressAd;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +41,12 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
     private MethodChannel methodChannel;
     private Context applicationContext;
     private Activity activity;
+
+    private TTAdNative mTTAdNative;
+    private Context mContext;
+    private FrameLayout mExpressContainer;
+    private TTNativeExpressAd mTTAd;
+    private long startTime = 0;
 
   public static void registerWith(Registrar registrar) {
     final PangolinPlugin instance = new PangolinPlugin();
@@ -203,40 +222,150 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
       rewardVideo.mediaExtra = mediaExtra;
       rewardVideo.init();
     }
-//    else if (call.method.equals("loadBannerAd"))
-//    {
-//      Log.d("banner广告","接入Android");
-//      String mCodeId = call.argument("mCodeId");
-//      Boolean supportDeepLink = call.argument("supportDeepLink");
-//      float expressViewWidth = 0;
-//      float expressViewHeight = 0;
-//      if (call.argument("expressViewWidth") != null)
-//      {
-//        double expressViewWidthDouble = call.argument("expressViewWidth");
-//        expressViewWidth = (float)expressViewWidthDouble;
-//      }
-//
-//      if (call.argument("expressViewHeight") != null)
-//      {
-//        double expressViewHeightDouble = call.argument("expressViewHeight");
-//        expressViewHeight = (float)expressViewHeightDouble;
-//      }
-//
-//      Log.d("banner广告",mCodeId);
-//      Log.d("banner广告",supportDeepLink.toString());
-//      Log.d("banner广告",Float.toString(expressViewHeight));
-//
-//      Intent intent = new Intent();
-//      intent.setClass(activity, BannerActivity.class);
-//      intent.putExtra("mCodeId", mCodeId);
-//      intent.putExtra("supportDeepLink", supportDeepLink);
-//      intent.putExtra("expressViewWidth", expressViewWidth);
-//      intent.putExtra("expressViewHeight", expressViewHeight);
-//      activity.startActivity(intent);
-//    }
+    else if (call.method.equals("loadBannerAd"))
+    {
+      Log.d("banner广告","接入Android");
+      String mCodeId = call.argument("mCodeId");
+      Boolean supportDeepLink = call.argument("supportDeepLink");
+      float expressViewWidth = 0;
+      float expressViewHeight = 0;
+      if (call.argument("expressViewWidth") != null)
+      {
+        double expressViewWidthDouble = call.argument("expressViewWidth");
+        expressViewWidth = (float)expressViewWidthDouble;
+      }
+
+      if (call.argument("expressViewHeight") != null)
+      {
+        double expressViewHeightDouble = call.argument("expressViewHeight");
+        expressViewHeight = (float)expressViewHeightDouble;
+      }
+
+      Log.d("banner广告",mCodeId);
+      Log.d("banner广告",supportDeepLink.toString());
+      Log.d("banner广告",Float.toString(expressViewHeight));
+
+
+      mContext = this.applicationContext;
+      ViewGroup rootView = (ViewGroup) activity.findViewById(android.R.id.content);
+      View view = View.inflate(activity, R.layout.activity_native_express_banner,null);
+      mExpressContainer = (FrameLayout) view.findViewById(R.id.express_container);
+      if(mExpressContainer.getParent() != null) {
+        ((ViewGroup)mExpressContainer.getParent()).removeView(mExpressContainer);
+      }
+      rootView.addView(mExpressContainer);
+      initTTSDKConfig();
+      this.loadExpressAd(mCodeId,Math.round(expressViewWidth),Math.round(expressViewHeight));
+    }
     else
       {
       result.notImplemented();
     }
+  }
+
+
+  private void initTTSDKConfig() {
+    //step2:创建TTAdNative对象，createAdNative(Context context) banner广告context需要传入Activity对象
+    mTTAdNative = TTAdManagerHolder.get().createAdNative(activity);
+    //step3:(可选，强烈建议在合适的时机调用):申请部分权限，如read_phone_state,防止获取不了imei时候，下载类广告没有填充的问题。
+    TTAdManagerHolder.get().requestPermissionIfNecessary(activity);
+  }
+
+  private void loadExpressAd(String codeId, int expressViewWidth, int expressViewHeight) {
+    mExpressContainer.removeAllViews();
+    //step4:创建广告请求参数AdSlot,具体参数含义参考文档
+    AdSlot adSlot = new AdSlot.Builder()
+            .setCodeId(codeId) //广告位id
+            .setSupportDeepLink(true)
+            .setAdCount(1) //请求广告数量为1到3条
+            .setExpressViewAcceptedSize(expressViewWidth, expressViewHeight) //期望模板广告view的size,单位dp
+            .build();
+    //step5:请求广告，对请求回调的广告作渲染处理
+    mTTAdNative.loadBannerExpressAd(adSlot, new TTAdNative.NativeExpressAdListener() {
+      @Override
+      public void onError(int code, String message) {
+        TToast.show(activity, "load error : " + code + ", " + message);
+        mExpressContainer.removeAllViews();
+      }
+
+      @Override
+      public void onNativeExpressAdLoad(List<TTNativeExpressAd> ads) {
+        if (ads == null || ads.size() == 0) {
+          return;
+        }
+        mTTAd = ads.get(0);
+        mTTAd.setSlideIntervalTime(30 * 1000);
+        bindAdListener(mTTAd);
+        startTime = System.currentTimeMillis();
+        mTTAd.render();
+      }
+    });
+  }
+
+  private void bindAdListener(TTNativeExpressAd ad) {
+    ad.setExpressInteractionListener(new TTNativeExpressAd.ExpressAdInteractionListener() {
+      @Override
+      public void onAdClicked(View view, int type) {
+        TToast.show(mContext, "广告被点击");
+      }
+
+      @Override
+      public void onAdShow(View view, int type) {
+        TToast.show(mContext, "广告展示");
+      }
+
+      @Override
+      public void onRenderFail(View view, String msg, int code) {
+        Log.e("ExpressView", "render fail:" + (System.currentTimeMillis() - startTime));
+        TToast.show(mContext, msg + " code:" + code);
+      }
+
+      @Override
+      public void onRenderSuccess(View view, float width, float height) {
+        Log.e("ExpressView", "render suc:" + (System.currentTimeMillis() - startTime));
+        //返回view的宽高 单位 dp
+        TToast.show(mContext, "渲染成功");
+        mExpressContainer.removeAllViews();
+        mExpressContainer.addView(view);
+      }
+    });
+    //dislike设置
+//    bindDislike(ad, false);
+    if (ad.getInteractionType() != TTAdConstant.INTERACTION_TYPE_DOWNLOAD) {
+      return;
+    }
+    ad.setDownloadListener(new TTAppDownloadListener() {
+      @Override
+      public void onIdle() {
+      }
+
+      @Override
+      public void onDownloadActive(long totalBytes, long currBytes, String fileName, String appName) {
+//        if (!mHasShowDownloadActive) {
+//          mHasShowDownloadActive = true;
+////          TToast.show(BannerExpressActivity.this, "下载中，点击暂停", Toast.LENGTH_LONG);
+//        }
+      }
+
+      @Override
+      public void onDownloadPaused(long totalBytes, long currBytes, String fileName, String appName) {
+//        TToast.show(BannerExpressActivity.this, "下载暂停，点击继续", Toast.LENGTH_LONG);
+      }
+
+      @Override
+      public void onDownloadFailed(long totalBytes, long currBytes, String fileName, String appName) {
+//        TToast.show(BannerExpressActivity.this, "下载失败，点击重新下载", Toast.LENGTH_LONG);
+      }
+
+      @Override
+      public void onInstalled(String fileName, String appName) {
+//        TToast.show(BannerExpressActivity.this, "安装完成，点击图片打开", Toast.LENGTH_LONG);
+      }
+
+      @Override
+      public void onDownloadFinished(long totalBytes, String fileName, String appName) {
+//        TToast.show(BannerExpressActivity.this, "点击安装", Toast.LENGTH_LONG);
+      }
+    });
   }
 }
