@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 
@@ -253,6 +255,12 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
       if(mExpressContainer.getParent() != null) {
         ((ViewGroup)mExpressContainer.getParent()).removeView(mExpressContainer);
       }
+        RelativeLayout.LayoutParams params= (RelativeLayout.LayoutParams) mExpressContainer.getLayoutParams();
+      
+        params.height= (int) expressViewHeight;
+        params.width = (int) expressViewHeight;
+      params.topMargin = 200;
+        mExpressContainer.setLayoutParams(params);
       rootView.addView(mExpressContainer);
       initTTSDKConfig();
       this.loadExpressAd(mCodeId,Math.round(expressViewWidth),Math.round(expressViewHeight));
@@ -284,7 +292,7 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
     mTTAdNative.loadBannerExpressAd(adSlot, new TTAdNative.NativeExpressAdListener() {
       @Override
       public void onError(int code, String message) {
-        TToast.show(activity, "load error : " + code + ", " + message);
+//        TToast.show(activity, "load error : " + code + ", " + message);
         mExpressContainer.removeAllViews();
       }
 
@@ -306,25 +314,25 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
     ad.setExpressInteractionListener(new TTNativeExpressAd.ExpressAdInteractionListener() {
       @Override
       public void onAdClicked(View view, int type) {
-        TToast.show(mContext, "广告被点击");
+//        TToast.show(mContext, "广告被点击");
       }
 
       @Override
       public void onAdShow(View view, int type) {
-        TToast.show(mContext, "广告展示");
+//        TToast.show(mContext, "广告展示");
       }
 
       @Override
       public void onRenderFail(View view, String msg, int code) {
         Log.e("ExpressView", "render fail:" + (System.currentTimeMillis() - startTime));
-        TToast.show(mContext, msg + " code:" + code);
+//        TToast.show(mContext, msg + " code:" + code);
       }
 
       @Override
       public void onRenderSuccess(View view, float width, float height) {
         Log.e("ExpressView", "render suc:" + (System.currentTimeMillis() - startTime));
         //返回view的宽高 单位 dp
-        TToast.show(mContext, "渲染成功");
+//        TToast.show(mContext, "渲染成功");
         mExpressContainer.removeAllViews();
         mExpressContainer.addView(view);
       }
@@ -367,5 +375,19 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
 //        TToast.show(BannerExpressActivity.this, "点击安装", Toast.LENGTH_LONG);
       }
     });
+  }
+
+  public static class AdSizeModel {
+    public AdSizeModel(String adSizeName, int width, int height, String codeId) {
+      this.adSizeName = adSizeName;
+      this.width = width;
+      this.height = height;
+      this.codeId = codeId;
+    }
+
+    public String adSizeName;
+    public int width;
+    public int height;
+    public String codeId;
   }
 }
