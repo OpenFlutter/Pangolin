@@ -256,7 +256,7 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
         ((ViewGroup)mExpressContainer.getParent()).removeView(mExpressContainer);
       }
         RelativeLayout.LayoutParams params= (RelativeLayout.LayoutParams) mExpressContainer.getLayoutParams();
-      
+
         params.height= (int) expressViewHeight;
         params.width = (int) expressViewHeight;
       params.topMargin = 200;
@@ -264,6 +264,10 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
       rootView.addView(mExpressContainer);
       initTTSDKConfig();
       this.loadExpressAd(mCodeId,Math.round(expressViewWidth),Math.round(expressViewHeight));
+    }
+    else if (call.method.equals("loadInterstitialAd"))
+    {
+      Log.d("debug_message","正在开发");
     }
     else
       {
