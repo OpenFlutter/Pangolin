@@ -40,15 +40,15 @@ import io.flutter.plugin.common.PluginRegistry.Registrar;
 /** PangolinPlugin */
 public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, ActivityAware {
 
-    private MethodChannel methodChannel;
-    private Context applicationContext;
-    private Activity activity;
+  private MethodChannel methodChannel;
+  private Context applicationContext;
+  private Activity activity;
 
-    private TTAdNative mTTAdNative;
-    private Context mContext;
-    private FrameLayout mExpressContainer;
-    private TTNativeExpressAd mTTAd;
-    private long startTime = 0;
+  private TTAdNative mTTAdNative;
+  private Context mContext;
+  private FrameLayout mExpressContainer;
+  private TTNativeExpressAd mTTAd;
+  private long startTime = 0;
 
   public static void registerWith(Registrar registrar) {
     final PangolinPlugin instance = new PangolinPlugin();
@@ -57,14 +57,14 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
 
   @Override
   public void onAttachedToEngine(@NonNull FlutterPluginBinding flutterPluginBinding) {
-      onAttachedToEngine(flutterPluginBinding.getApplicationContext(), flutterPluginBinding.getBinaryMessenger());
+    onAttachedToEngine(flutterPluginBinding.getApplicationContext(), flutterPluginBinding.getBinaryMessenger());
   }
 
-    private void onAttachedToEngine(Context applicationContext , BinaryMessenger messenger) {
-        this.applicationContext = applicationContext;
-        methodChannel = new MethodChannel(messenger, "com.tongyangsheng.pangolin");
-        methodChannel.setMethodCallHandler(this);
-    }
+  private void onAttachedToEngine(Context applicationContext , BinaryMessenger messenger) {
+    this.applicationContext = applicationContext;
+    methodChannel = new MethodChannel(messenger, "com.tongyangsheng.pangolin");
+    methodChannel.setMethodCallHandler(this);
+  }
 
   private void onAttachedToEngine(Context applicationContext , BinaryMessenger messenger, Activity activity) {
     this.applicationContext = applicationContext;
@@ -73,29 +73,29 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
     this.activity = activity;
   }
 
-    @Override
-    public void onAttachedToActivity(ActivityPluginBinding binding) {
-        this.activity = binding.getActivity();
-    }
+  @Override
+  public void onAttachedToActivity(ActivityPluginBinding binding) {
+    this.activity = binding.getActivity();
+  }
 
-    @Override
-    public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
-    }
+  @Override
+  public void onDetachedFromEngine(@NonNull FlutterPluginBinding binding) {
+  }
 
-    @Override
-    public void onDetachedFromActivityForConfigChanges() {
+  @Override
+  public void onDetachedFromActivityForConfigChanges() {
 
-    }
+  }
 
-    @Override
-    public void onReattachedToActivityForConfigChanges(ActivityPluginBinding binding) {
+  @Override
+  public void onReattachedToActivityForConfigChanges(ActivityPluginBinding binding) {
 
-    }
+  }
 
-    @Override
-    public void onDetachedFromActivity() {
+  @Override
+  public void onDetachedFromActivity() {
 
-    }
+  }
   // This static function is optional and equivalent to onAttachedToEngine. It supports the old
   // pre-Flutter-1.12 Android projects. You are encouraged to continue supporting
   // plugin registration via this function while apps migrate to use the new Android APIs
@@ -229,6 +229,8 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
       Log.d("banner广告","接入Android");
       String mCodeId = call.argument("mCodeId");
       Boolean supportDeepLink = call.argument("supportDeepLink");
+      Boolean isCarousel = call.argument("isCarousel");
+      int interval = 0;
       float expressViewWidth = 0;
       float expressViewHeight = 0;
       if (call.argument("expressViewWidth") != null)
@@ -242,6 +244,10 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
         double expressViewHeightDouble = call.argument("expressViewHeight");
         expressViewHeight = (float)expressViewHeightDouble;
       }
+      if (call.argument("interval") != null && isCarousel)
+      {
+        interval = call.argument("interval");
+      }
 
       Log.d("banner广告",mCodeId);
       Log.d("banner广告",supportDeepLink.toString());
@@ -249,28 +255,32 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
 
 
       mContext = this.applicationContext;
+
+      // 获取根视图
       ViewGroup rootView = (ViewGroup) activity.findViewById(android.R.id.content);
       View view = View.inflate(activity, R.layout.activity_native_express_banner,null);
       mExpressContainer = (FrameLayout) view.findViewById(R.id.express_container);
       if(mExpressContainer.getParent() != null) {
         ((ViewGroup)mExpressContainer.getParent()).removeView(mExpressContainer);
       }
-        RelativeLayout.LayoutParams params= (RelativeLayout.LayoutParams) mExpressContainer.getLayoutParams();
 
-        params.height= (int) expressViewHeight;
-        params.width = (int) expressViewHeight;
+      // 设置banner 广告参数
+      RelativeLayout.LayoutParams params= (RelativeLayout.LayoutParams) mExpressContainer.getLayoutParams();
+      params.height= (int) expressViewHeight;
+      params.width = (int) expressViewHeight;
+      // 到顶部距离
       params.topMargin = 200;
-        mExpressContainer.setLayoutParams(params);
+      mExpressContainer.setLayoutParams(params);
       rootView.addView(mExpressContainer);
       initTTSDKConfig();
-      this.loadExpressAd(mCodeId,Math.round(expressViewWidth),Math.round(expressViewHeight));
+      this.loadExpressAd(mCodeId,Math.round(expressViewWidth),Math.round(expressViewHeight), interval);
     }
     else if (call.method.equals("loadInterstitialAd"))
     {
       Log.d("debug_message","正在开发");
     }
     else
-      {
+    {
       result.notImplemented();
     }
   }
@@ -283,7 +293,8 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
     TTAdManagerHolder.get().requestPermissionIfNecessary(activity);
   }
 
-  private void loadExpressAd(String codeId, int expressViewWidth, int expressViewHeight) {
+  // banner 广告回调
+  private void loadExpressAd(String codeId, int expressViewWidth, int expressViewHeight, final int interval) {
     mExpressContainer.removeAllViews();
     //step4:创建广告请求参数AdSlot,具体参数含义参考文档
     AdSlot adSlot = new AdSlot.Builder()
@@ -305,15 +316,19 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
         if (ads == null || ads.size() == 0) {
           return;
         }
+        //获取哪一条广告
         mTTAd = ads.get(0);
-        mTTAd.setSlideIntervalTime(30 * 1000);
+        //设置轮播间隔 ms,不调用则不进行轮播展示
+        mTTAd.setSlideIntervalTime(interval * 1000);
         bindAdListener(mTTAd);
         startTime = System.currentTimeMillis();
+        // 渲染广告
         mTTAd.render();
       }
     });
   }
 
+  // banner 广告回调
   private void bindAdListener(TTNativeExpressAd ad) {
     ad.setExpressInteractionListener(new TTNativeExpressAd.ExpressAdInteractionListener() {
       @Override
@@ -381,17 +396,4 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
     });
   }
 
-  public static class AdSizeModel {
-    public AdSizeModel(String adSizeName, int width, int height, String codeId) {
-      this.adSizeName = adSizeName;
-      this.width = width;
-      this.height = height;
-      this.codeId = codeId;
-    }
-
-    public String adSizeName;
-    public int width;
-    public int height;
-    public String codeId;
-  }
 }
