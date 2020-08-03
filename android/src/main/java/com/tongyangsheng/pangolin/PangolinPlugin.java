@@ -44,6 +44,7 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
   private Context applicationContext;
   private Activity activity;
 
+  //bannerAd parameter
   private TTAdNative mTTAdNative;
   private Context mContext;
   private FrameLayout mExpressContainer;
@@ -278,11 +279,23 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
       mExpressContainer.setLayoutParams(params);
       rootView.addView(mExpressContainer);
       initTTSDKConfig();
-      this.loadExpressAd(mCodeId,Math.round(expressViewWidth),Math.round(expressViewHeight), interval);
+      this.loadExpressBannerAd(mCodeId,Math.round(expressViewWidth),Math.round(expressViewHeight), interval);
     }
     else if (call.method.equals("loadInterstitialAd"))
     {
-      Log.d("debug_message","正在开发");
+      String mCodeId = call.argument("mCodeId");
+      double expressViewWidth = 0;
+      double expressViewHeight = 0;
+      if(call.argument("expressViewWidth") != null)
+      {
+        expressViewWidth = call.argument("expressViewWidth");
+      }
+      if (call.argument("expressViewHeight") != null)
+      {
+        expressViewHeight = call.argument("expressViewHeight");
+      }
+      initTTSDKConfig();
+      this.loadExpressInterstitialAd(mCodeId,(int) expressViewWidth,(int) expressViewHeight);
     }
     else
     {
@@ -298,8 +311,8 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
     TTAdManagerHolder.get().requestPermissionIfNecessary(activity);
   }
 
-  // banner 广告回调
-  private void loadExpressAd(String codeId, int expressViewWidth, int expressViewHeight, final int interval) {
+  // banner广告 加载
+  private void loadExpressBannerAd(String codeId, int expressViewWidth, int expressViewHeight, final int interval) {
     mExpressContainer.removeAllViews();
     //step4:创建广告请求参数AdSlot,具体参数含义参考文档
     AdSlot adSlot = new AdSlot.Builder()
@@ -325,7 +338,7 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
         mTTAd = ads.get(0);
         //设置轮播间隔 ms,不调用则不进行轮播展示
         mTTAd.setSlideIntervalTime(interval * 1000);
-        bindAdListener(mTTAd);
+        bindBannerAdListener(mTTAd);
         startTime = System.currentTimeMillis();
         // 渲染广告
         mTTAd.render();
@@ -333,8 +346,8 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
     });
   }
 
-  // banner 广告回调
-  private void bindAdListener(TTNativeExpressAd ad) {
+  // banner广告 监听
+  private void bindBannerAdListener(TTNativeExpressAd ad) {
     ad.setExpressInteractionListener(new TTNativeExpressAd.ExpressAdInteractionListener() {
       @Override
       public void onAdClicked(View view, int type) {
@@ -397,6 +410,107 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
       @Override
       public void onDownloadFinished(long totalBytes, String fileName, String appName) {
 //        TToast.show(BannerExpressActivity.this, "点击安装", Toast.LENGTH_LONG);
+      }
+    });
+  }
+
+  //插屏广告 加载
+  private void loadExpressInterstitialAd(String codeId, int expressViewWidth, int expressViewHeight) {
+    //step4:创建广告请求参数AdSlot,具体参数含义参考文档
+    AdSlot adSlot = new AdSlot.Builder()
+            .setCodeId(codeId) //广告位id
+            .setSupportDeepLink(true)
+            .setAdCount(1) //请求广告数量为1到3条
+            .setExpressViewAcceptedSize(expressViewWidth, expressViewHeight) //期望模板广告view的size,单位dp
+            .build();
+    //step5:请求广告，对请求回调的广告作渲染处理
+    mTTAdNative.loadInteractionExpressAd(adSlot, new TTAdNative.NativeExpressAdListener() {
+      @Override
+      public void onError(int code, String message) {
+//        TToast.show(InteractionExpressActivity.this, "load error : " + code + ", " + message);
+      }
+
+      @Override
+      public void onNativeExpressAdLoad(List<TTNativeExpressAd> ads) {
+        if (ads == null || ads.size() == 0) {
+          return;
+        }
+        mTTAd = ads.get(0);
+        bindInterstitialAdListener(mTTAd);
+        startTime = System.currentTimeMillis();
+        mTTAd.render();
+      }
+    });
+  }
+
+  //插屏广告 监听
+  private void bindInterstitialAdListener(TTNativeExpressAd ad) {
+    ad.setExpressInteractionListener(new TTNativeExpressAd.AdInteractionListener() {
+      @Override
+      public void onAdDismiss() {
+        TToast.show(mContext, "广告关闭");
+      }
+
+      @Override
+      public void onAdClicked(View view, int type) {
+        TToast.show(mContext, "广告被点击");
+      }
+
+      @Override
+      public void onAdShow(View view, int type) {
+        TToast.show(mContext, "广告展示");
+      }
+
+      @Override
+      public void onRenderFail(View view, String msg, int code) {
+        Log.e("ExpressView", "render fail:" + (System.currentTimeMillis() - startTime));
+        TToast.show(mContext, msg + " code:" + code);
+      }
+
+      @Override
+      public void onRenderSuccess(View view, float width, float height) {
+        Log.e("ExpressView", "render suc:" + (System.currentTimeMillis() - startTime));
+        //返回view的宽高 单位 dp
+        TToast.show(mContext, "渲染成功");
+        mTTAd.showInteractionExpressAd(activity);
+
+      }
+    });
+    if (ad.getInteractionType() != TTAdConstant.INTERACTION_TYPE_DOWNLOAD) {
+      return;
+    }
+    ad.setDownloadListener(new TTAppDownloadListener() {
+      @Override
+      public void onIdle() {
+//        TToast.show(InteractionExpressActivity.this, "点击开始下载", Toast.LENGTH_LONG);
+      }
+
+      @Override
+      public void onDownloadActive(long totalBytes, long currBytes, String fileName, String appName) {
+//        if (!mHasShowDownloadActive) {
+//          mHasShowDownloadActive = true;
+//          TToast.show(InteractionExpressActivity.this, "下载中，点击暂停", Toast.LENGTH_LONG);
+//        }
+      }
+
+      @Override
+      public void onDownloadPaused(long totalBytes, long currBytes, String fileName, String appName) {
+//        TToast.show(InteractionExpressActivity.this, "下载暂停，点击继续", Toast.LENGTH_LONG);
+      }
+
+      @Override
+      public void onDownloadFailed(long totalBytes, long currBytes, String fileName, String appName) {
+//        TToast.show(InteractionExpressActivity.this, "下载失败，点击重新下载", Toast.LENGTH_LONG);
+      }
+
+      @Override
+      public void onInstalled(String fileName, String appName) {
+//        TToast.show(InteractionExpressActivity.this, "安装完成，点击图片打开", Toast.LENGTH_LONG);
+      }
+
+      @Override
+      public void onDownloadFinished(long totalBytes, String fileName, String appName) {
+//        TToast.show(InteractionExpressActivity.this, "点击安装", Toast.LENGTH_LONG);
       }
     });
   }

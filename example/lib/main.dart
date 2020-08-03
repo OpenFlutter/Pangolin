@@ -78,7 +78,7 @@ class _MyAppState extends State<MyApp> {
         debug: true,
         supportMultiProcess: true
     ).then((v){
-      _loadBannerAd();
+      _loadInterstitialAd();
     });
   }
 
