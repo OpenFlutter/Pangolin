@@ -88,7 +88,8 @@ Future loadBannerAd({
   double expressViewWidth,
   double expressViewHeight,
   bool isCarousel,
-  int interval
+  int interval,
+  int topMargin
 }) async {
   return await _channel.invokeMethod("loadBannerAd", {
     "mCodeId": mCodeId,
@@ -96,7 +97,8 @@ Future loadBannerAd({
     "expressViewWidth": expressViewWidth,
     "expressViewHeight": expressViewHeight,
     "isCarousel": isCarousel,
-    "interval": interval
+    "interval": interval,
+    "topMargin": topMargin
   });
 }
 

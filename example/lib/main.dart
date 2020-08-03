@@ -112,10 +112,12 @@ class _MyAppState extends State<MyApp> {
     await Pangolin.loadBannerAd(
         mCodeId: "945330217",
         supportDeepLink: true,
-        expressViewWidth: 300,
-        expressViewHeight: 150,
+        expressViewWidth: 600,
+        expressViewHeight: 300,
         isCarousel: true,
-        interval: 40);
+        interval: 40,
+      topMargin: 300
+    );
   }
 
   _loadInterstitialAd() async

@@ -233,6 +233,7 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
       int interval = 0;
       float expressViewWidth = 0;
       float expressViewHeight = 0;
+      int topMargin = 0;
       if (call.argument("expressViewWidth") != null)
       {
         double expressViewWidthDouble = call.argument("expressViewWidth");
@@ -247,6 +248,10 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
       if (call.argument("interval") != null && isCarousel)
       {
         interval = call.argument("interval");
+      }
+      if(call.argument("topMargin") != null)
+      {
+        topMargin = call.argument("topMargin");
       }
 
       Log.d("banner广告",mCodeId);
@@ -266,10 +271,10 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
 
       // 设置banner 广告参数
       RelativeLayout.LayoutParams params= (RelativeLayout.LayoutParams) mExpressContainer.getLayoutParams();
-      params.height= (int) expressViewHeight;
-      params.width = (int) expressViewHeight;
+      params.height= (int) expressViewHeight * 2;
+      params.width = (int) expressViewWidth * 2;
       // 到顶部距离
-      params.topMargin = 200;
+      params.topMargin = topMargin;
       mExpressContainer.setLayoutParams(params);
       rootView.addView(mExpressContainer);
       initTTSDKConfig();
