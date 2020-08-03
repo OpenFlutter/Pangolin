@@ -58,3 +58,7 @@
 ## 0.1.9
 
 * TODO: fix activity is null
+
+## 0.2.0
+
+* TODO: Android BannerAd support
