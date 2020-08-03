@@ -9,7 +9,7 @@
 <a href="https://www.dart.dev"><img src=https://img.shields.io/badge/Language-Dart-orange></a>
 <a href="https://www.flutter.dev"><img src=https://img.shields.io/badge/Flutter-v1.17.3-informational></a>
 <a href="https://www.dart.dev"><img src=https://img.shields.io/badge/Dart-v2.4.1-informational></a>
-<a href="https://github.com/tongyangsheng/flutter_reader"><img src=https://img.shields.io/badge/Pangolin-v0.2.0-success></a>
+<a href="https://github.com/tongyangsheng/flutter_reader"><img src=https://img.shields.io/badge/Pangolin-v0.2.1-success></a>
 </p>
 
 ## 前言
@@ -39,6 +39,7 @@ Pangolin是一款Flutter插件，集成了字节跳动旗下的广告平台—�
 | 0.1.8  | 修复部分用户context获取不到的问题 原因是部分用户没有走onAttachedToEngine()，走了registerWith()   |
 | 0.1.9  | 修复部分用户activity获取不到的问题 原因是部分用户没有走onAttachedToActivity() 为了满足所有用户，我太难了😭   |
 | 0.2.0  | 支持Android banner广告   |
+| 0.2.1  | 支持Android 插屏广告   |
 
 
 ## 插件开发环境相关
@@ -65,7 +66,7 @@ Android - 自己去官网选择版本下载
 ```yaml
 # add this line to your dependencies
 dependencies:
-  pangolin: ^0.2.0
+  pangolin: ^0.2.1
 ```
 
 ## 环境配置
@@ -254,8 +255,7 @@ Pangolin.pangolinResponseEventHandler.listen((value)
 ## 加入/贡献
 目前项目已经逐渐完善，但是还有许多特性需要给的协助，如果你对项目有兴趣并且对开源有兴趣和信心，可以通过README底部的联系方式联系我，并在备注中说明，我会优先回复你的信息🤪。目前剩余的广告（按目前issue中提到的人数统计优先级）：
 * 信息流广告
-* banner广告（Android）
-* 插屏广告
+
 ### 方法 
 * fork项目代码
 * 开发/测试功能
