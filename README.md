@@ -19,6 +19,9 @@
 ## 公告
 Flutter最新的Stable版本已经来到`1.20.1`，本插件不再支持 Flutter`1.12.0`以下的用户，请各位及时更新Flutter版本以保证API的兼容和用户体验的优化📈。
 
+### 一个不一样的群
+<img src=https://github.com/OpenFlutter/Pangolin/blob/master/showImage/WechatQun.png lt="drawing" width="500">
+
 ## 简介
 Pangolin是一款Flutter插件，集成了字节跳动旗下的广告平台——穿山甲的Android和iOS的SDK，方便开发者直接在Flutter层面调用相关方法。
 
