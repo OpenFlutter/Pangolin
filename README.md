@@ -7,14 +7,17 @@
 <a href="https://www.apple.com/lae/ios/ios-13/"><img src=https://img.shields.io/badge/platform-ios-lightgrey></a>
 <a href="https://www.Android.com/package/drone"><img src=https://img.shields.io/badge/platform-Android-lightgrey></a>
 <a href="https://www.dart.dev"><img src=https://img.shields.io/badge/Language-Dart-orange></a>
-<a href="https://www.flutter.dev"><img src=https://img.shields.io/badge/Flutter-v1.17.3-informational></a>
+<a href="https://www.flutter.dev"><img src=https://img.shields.io/badge/Flutter-v1.20.1-informational></a>
 <a href="https://www.dart.dev"><img src=https://img.shields.io/badge/Dart-v2.4.1-informational></a>
-<a href="https://github.com/tongyangsheng/flutter_reader"><img src=https://img.shields.io/badge/Pangolin-v0.2.1-success></a>
+<a href="https://github.com/tongyangsheng/flutter_reader"><img src=https://img.shields.io/badge/Pangolin-v0.2.2-success></a>
 </p>
 
 ## 前言
 ⚠️在使用本插件前请认真，仔细阅读[穿山甲官方文档](http://partner.toutiao.com/doc?id=5dd0fe756b181e00112e3ec5)。本插件将尽量保留SDK内容和各API相关内容，如出现在官方文档以外报错信息可以留言issue,或通过文末联系方式联系作者（注明来意）。针对你可能会遇到的问题，在使用过程中可以先查阅👉
 ### [Pangolin报错及其解决方案](https://github.com/tongyangsheng/Pangolin/blob/master/PangolinError.md)
+
+## 公告
+Flutter最新的Stable版本已经来到`1.20.1`，本插件不再支持 Flutter`1.12.0`以下的用户，请各位及时更新Flutter版本以保证API的兼容和用户体验的优化📈。
 
 ## 简介
 Pangolin是一款Flutter插件，集成了字节跳动旗下的广告平台——穿山甲的Android和iOS的SDK，方便开发者直接在Flutter层面调用相关方法。
@@ -40,6 +43,7 @@ Pangolin是一款Flutter插件，集成了字节跳动旗下的广告平台—�
 | 0.1.9  | 修复部分用户activity获取不到的问题 原因是部分用户没有走onAttachedToActivity() 为了满足所有用户，我太难了😭   |
 | 0.2.0  | 支持Android banner广告   |
 | 0.2.1  | 支持Android 插屏广告   |
+| 0.2.2  | 接入了Flutter1.20.1环境 新增一个banner广告的手动关闭方法   |
 
 
 ## 插件开发环境相关
@@ -66,7 +70,7 @@ Android - 自己去官网选择版本下载
 ```yaml
 # add this line to your dependencies
 dependencies:
-  pangolin: ^0.2.1
+  pangolin: ^0.2.2
 ```
 
 ## 环境配置
@@ -233,6 +237,13 @@ Pangolin.pangolinResponseEventHandler.listen((value)
 
 
 以上参数在创建代码位时都可以进行自定义设置，请确保在代码中填写的实际值和创建代码位时一致。
+
+### 手动关闭Banner广告（Android）
+```dart
+Pangolin.removeBannerAd();
+```
+
+该方法提供给Android用户，在关闭界面时手动调用，关闭Banner广告
 
 ### 加载插屏广告（iOS）
 ```dart
