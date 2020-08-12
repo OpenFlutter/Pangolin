@@ -66,3 +66,7 @@
 ## 0.2.1
 
 * TODO: Android InterstitialAd support
+
+## 0.2.2
+
+* TODO: Android BannerAd remove method, Flutter 1.20.1 check
