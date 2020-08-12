@@ -40,6 +40,7 @@ Pangolin是一款Flutter插件，集成了字节跳动旗下的广告平台—�
 | 0.1.9  | 修复部分用户activity获取不到的问题 原因是部分用户没有走onAttachedToActivity() 为了满足所有用户，我太难了😭   |
 | 0.2.0  | 支持Android banner广告   |
 | 0.2.1  | 支持Android 插屏广告   |
+| 0.2.1  | 接入了Flutter1.20.1环境 新增一个banner广告的手动关闭方法   |
 
 
 ## 插件开发环境相关
@@ -233,6 +234,13 @@ Pangolin.pangolinResponseEventHandler.listen((value)
 
 
 以上参数在创建代码位时都可以进行自定义设置，请确保在代码中填写的实际值和创建代码位时一致。
+
+### 手动关闭Banner广告（Android）
+```dart
+Pangolin.removeBannerAd();
+```
+
+该方法提供给Android用户，在关闭界面时手动调用，关闭Banner广告
 
 ### 加载插屏广告（iOS）
 ```dart
