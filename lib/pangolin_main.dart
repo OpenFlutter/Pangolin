@@ -114,6 +114,11 @@ Future loadInterstitialAd({
   });
 }
 
+Future removeBannerAd() async
+{
+  await _channel.invokeMethod("removeBannerAd");
+}
+
 Future _methodHandler(MethodCall methodCall) {
   var response =
       BasePangolinResponse.create(methodCall.method, methodCall.arguments);

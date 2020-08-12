@@ -281,6 +281,14 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
       initTTSDKConfig();
       this.loadExpressBannerAd(mCodeId,Math.round(expressViewWidth),Math.round(expressViewHeight), interval);
     }
+    else if (call.method.equals("removeBannerAd"))
+    {
+      Log.d("bannerLog","close");
+      FrameLayout.LayoutParams params= (FrameLayout.LayoutParams) mExpressContainer.getLayoutParams();
+      params.height = 0;
+      params.width = 0;
+      mExpressContainer.setLayoutParams(params);
+    }
     else if (call.method.equals("loadInterstitialAd"))
     {
       String mCodeId = call.argument("mCodeId");
@@ -458,6 +466,7 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
 
       @Override
       public void onAdShow(View view, int type) {
+        Log.d("插屏广告","show");
         TToast.show(mContext, "广告展示");
       }
 

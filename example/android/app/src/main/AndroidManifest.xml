@@ -35,8 +35,11 @@
     <application
         android:name="io.flutter.app.FlutterApplication"
         android:label="pangolin_example"
+        android:usesCleartextTraffic="true"
+        android:networkSecurityConfig="@xml/network_config"
         tools:replace="label"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        tools:targetApi="n">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

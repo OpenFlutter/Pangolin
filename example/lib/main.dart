@@ -78,7 +78,11 @@ class _MyAppState extends State<MyApp> {
         debug: true,
         supportMultiProcess: true
     ).then((v){
-      _loadInterstitialAd();
+      _loadBannerAd();
+      Future.delayed(Duration(seconds: 3), (){
+        debugPrint("结束banner");
+        Pangolin.removeBannerAd();
+      });
     });
   }
 
@@ -94,7 +98,7 @@ class _MyAppState extends State<MyApp> {
   {
     await Pangolin.loadRewardAd(
       isHorizontal: false,
-      debug: false,
+      debug: true,
       mCodeId: "945122969",
       supportDeepLink: true,
       rewardName: "书币",

@@ -1,8 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<paths>
-    <external-path name="tt_external_root" path="." />
-    <external-path name="tt_external_download" path="Download" />
-    <external-files-path name="tt_external_files_download" path="Download" />
-    <files-path name="tt_internal_file_download" path="Download" />
-    <cache-path name="tt_internal_cache_download" path="Download" />
-</paths>
+<network-security-config>
+    <base-config cleartextTrafficPermitted="true" />
+    <domain-config>
+        <domain includeSubdomains="true">i.snssdk.com</domain>
+        <domain includeSubdomains="true">is.snssdk.com</domain>
+        <domain includeSubdomains="true">pangolin.snssdk.com</domain>
+        <domain includeSubdomains="true">extlog.snssdk.com</domain>
+        <domain includeSubdomains="true">sf3-ttcdn-tos.pstatp.com</domain>
+        <domain includeSubdomains="true">bds.snssdk.com</domain>
+        <domain includeSubdomains="true">dig.bdurl.net</domain>
+        <trust-anchors>
+            <certificates src="user"/>//信任用户自己安装的证书
+            <certificates src="system"/>
+        </trust-anchors>
+    </domain-config>
+</network-security-config>
