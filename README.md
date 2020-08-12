@@ -16,6 +16,9 @@
 ⚠️在使用本插件前请认真，仔细阅读[穿山甲官方文档](http://partner.toutiao.com/doc?id=5dd0fe756b181e00112e3ec5)。本插件将尽量保留SDK内容和各API相关内容，如出现在官方文档以外报错信息可以留言issue,或通过文末联系方式联系作者（注明来意）。针对你可能会遇到的问题，在使用过程中可以先查阅👉
 ### [Pangolin报错及其解决方案](https://github.com/tongyangsheng/Pangolin/blob/master/PangolinError.md)
 
+## 公告
+Flutter最新的Stable版本已经来到`1.20.1`，本插件不再支持 Flutter`1.12.0`以下的用户，请各位及时更新Flutter版本以保证API的兼容和用户体验的优化📈。
+
 ## 简介
 Pangolin是一款Flutter插件，集成了字节跳动旗下的广告平台——穿山甲的Android和iOS的SDK，方便开发者直接在Flutter层面调用相关方法。
 
