@@ -19,9 +19,6 @@
 ## 公告
 Flutter最新的Stable版本已经来到`1.20.1`，本插件不再支持 Flutter`1.12.0`以下的用户，请各位及时更新Flutter版本以保证API的兼容和用户体验的优化📈。
 
-### 一个不一样的群
-<img src=https://github.com/OpenFlutter/Pangolin/blob/master/showImage/WechatQun.png lt="drawing" width="500">
-
 ## 简介
 Pangolin是一款Flutter插件，集成了字节跳动旗下的广告平台——穿山甲的Android和iOS的SDK，方便开发者直接在Flutter层面调用相关方法。
 
@@ -284,6 +281,8 @@ Pangolin.removeBannerAd();
 2.我本人去某大厂修“福报”了，未来可能比较忙，加我好友可能需要等待几个小时到一天不等，感谢各位谅解🤣</br>
 3.感谢各位一直以来的支持 特别是我的好友[瑞宇](https://github.com/zhangruiyu) ，各位期待的 信息流、banner 都有小伙伴自告奋勇的在制作了，后续会和我pr，也欢迎各位加入这个项目。</br>
 
+### 一个不一样的群
+<img src=https://github.com/OpenFlutter/Pangolin/blob/master/showImage/WechatQun.png lt="drawing" width="500">
 
 ## 个人联系方式
 * QQ:964997115<br/>
