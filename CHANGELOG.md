@@ -70,3 +70,8 @@
 ## 0.2.2
 
 * TODO: Android BannerAd remove method, Flutter 1.20.1 check
+
+## 0.2.3
+
+* TODO: Add a rewardVideo callback
+
