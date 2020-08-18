@@ -9,7 +9,7 @@
 <a href="https://www.dart.dev"><img src=https://img.shields.io/badge/Language-Dart-orange></a>
 <a href="https://www.flutter.dev"><img src=https://img.shields.io/badge/Flutter-v1.20.1-informational></a>
 <a href="https://www.dart.dev"><img src=https://img.shields.io/badge/Dart-v2.4.1-informational></a>
-<a href="https://github.com/tongyangsheng/flutter_reader"><img src=https://img.shields.io/badge/Pangolin-v0.2.2-success></a>
+<a href="https://github.com/tongyangsheng/flutter_reader"><img src=https://img.shields.io/badge/Pangolin-v0.2.3-success></a>
 </p>
 
 ## 前言
@@ -44,6 +44,7 @@ Pangolin是一款Flutter插件，集成了字节跳动旗下的广告平台—�
 | 0.2.0  | 支持Android banner广告   |
 | 0.2.1  | 支持Android 插屏广告   |
 | 0.2.2  | 接入了Flutter1.20.1环境 新增一个banner广告的手动关闭方法   |
+| 0.2.3  | 新增了一个激励视频的回调——关闭激励视频   |
 
 
 ## 插件开发环境相关
@@ -70,7 +71,7 @@ Android - 自己去官网选择版本下载
 ```yaml
 # add this line to your dependencies
 dependencies:
-  pangolin: ^0.2.2
+  pangolin: ^0.2.3
 ```
 
 ## 环境配置
@@ -210,7 +211,9 @@ Pangolin.pangolinResponseEventHandler.listen((value)
 | :------------ |:---------------:| -----:|
 | rewardVerify      | 验证奖励有效性，即用户是否完成观看 | / |
 | rewardName  | 你在穿山甲填写的奖励名称      |    / |
-| rewardName  | 你在穿山甲填写的奖励数量     |    / |
+| rewardAmount  | 你在穿山甲填写的奖励数量     |    / |
+
+* 激励视频关闭监听：如果你收到了一个回调，并且`rewardName == rewardVideo Close`说明是一个激励视频关闭的回调，详见example
 
 激励视频的具体使用参见项目目录下Example
 
