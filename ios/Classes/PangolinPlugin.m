@@ -171,7 +171,12 @@ FlutterMethodChannel* globalMethodChannel;
 
 //激励视频关闭
 - (void)nativeExpressRewardedVideoAdDidClose:(BUNativeExpressRewardedVideoAd *)rewardedVideoAd {
+    NSMutableDictionary *mutableDictionary=[NSMutableDictionary dictionaryWithCapacity:3];
+    [mutableDictionary setValue:@NO forKey:@"rewardVerify"];
+    [mutableDictionary setValue:NULL forKey:@"rewardAmount"];
+    [mutableDictionary setValue:@"rewardVideo Close" forKey:@"rewardName"];
     
+    [globalMethodChannel invokeMethod:@"onRewardResponse" arguments:mutableDictionary];
 }
 
 //开屏视频关闭

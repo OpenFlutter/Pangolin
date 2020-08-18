@@ -150,6 +150,11 @@ public class RewardVideo extends FlutterActivity {
                         if (debug)
                         {
                             TToast.show(context, "rewardVideoAd close");
+                            Map<String,Object> rewardVideoCallBack = new HashMap<>();
+                            rewardVideoCallBack.put("rewardVerify",false);
+                            rewardVideoCallBack.put("rewardAmount", 0);
+                            rewardVideoCallBack.put("rewardName","rewardVideo Close");
+                            _channel.invokeMethod("onRewardResponse",rewardVideoCallBack);
                         }
                     }
 

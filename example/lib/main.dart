@@ -25,6 +25,11 @@ class _MyAppState extends State<MyApp> {
           print("激励视频回调：${value.rewardVerify}");
           print("激励视频回调：${value.rewardName}");
           print("激励视频回调：${value.rewardAmount}");
+
+          if(value.rewardName == "rewardVideo Close")
+            {
+              debugPrint("视频关闭了");
+            }
         }
       else
         {
@@ -78,11 +83,7 @@ class _MyAppState extends State<MyApp> {
         debug: true,
         supportMultiProcess: true
     ).then((v){
-      _loadBannerAd();
-      Future.delayed(Duration(seconds: 3), (){
-        debugPrint("结束banner");
-        Pangolin.removeBannerAd();
-      });
+      _loadRewardAd();
     });
   }
 
