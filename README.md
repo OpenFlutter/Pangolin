@@ -1,5 +1,5 @@
 <p align="center">
-<img src=https://github.com/tongyangsheng/Pangolin/blob/master/showImage/showImage3.png alt="drawing" width="700">
+<img src=https://github.com/OpenFlutter/Pangolin/blob/master/showImage/new_ad_image.png alt="drawing" width="700">
 </p>
 
 <p>
