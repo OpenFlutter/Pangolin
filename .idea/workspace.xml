@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="69a1e289-c17a-4105-997e-40a0d7ef5a11" name="Default Changelist" comment="banner iOS contact step1">
+      <change afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/.idea/dbnavigator.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/Flutter/.last_build_id" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Flutter/.last_build_id" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/pangolin.podspec" beforeDir="false" afterPath="$PROJECT_DIR$/ios/pangolin.podspec" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +40,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -73,37 +83,37 @@
     </state>
     <state x="-1347" y="74" width="857" height="1080" key="CommitChangelistDialog2/0.0.1792.1120/-1920.74.1920.1080@-1920.74.1920.1080" timestamp="1595227543573" />
     <state x="-1347" y="74" key="CommitChangelistDialog2/0.23.1792.1018/-1920.74.1920.1080@-1920.74.1920.1080" timestamp="1595317090435" />
-    <state width="1878" height="370" key="GridCell.Tab.0.bottom" timestamp="1597732858013">
+    <state width="1878" height="372" key="GridCell.Tab.0.bottom" timestamp="1601345384701">
       <screen x="-1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="370" key="GridCell.Tab.0.bottom/0.0.1792.1120/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1597732858013" />
+    <state width="1878" height="372" key="GridCell.Tab.0.bottom/0.0.1792.1120/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1601345384701" />
     <state width="1878" height="370" key="GridCell.Tab.0.bottom/0.0.1792.1120/-1920.74.1920.1080@-1920.74.1920.1080" timestamp="1597212248215" />
     <state width="1750" height="534" key="GridCell.Tab.0.bottom/0.0.1792.1120/-1920.74.1920.1080@0.0.1792.1120" timestamp="1597136269426" />
     <state width="1750" height="399" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1596197908298" />
     <state width="1878" height="416" key="GridCell.Tab.0.bottom/0.23.1792.1018/-1920.97.1920.1057@-1920.97.1920.1057" timestamp="1595209446504" />
     <state width="1878" height="416" key="GridCell.Tab.0.bottom/0.23.1792.1097/-1920.74.1920.1080@-1920.74.1920.1080" timestamp="1595213254150" />
-    <state width="1878" height="370" key="GridCell.Tab.0.center" timestamp="1597732858011">
+    <state width="1878" height="372" key="GridCell.Tab.0.center" timestamp="1601345384699">
       <screen x="-1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="370" key="GridCell.Tab.0.center/0.0.1792.1120/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1597732858011" />
+    <state width="1878" height="372" key="GridCell.Tab.0.center/0.0.1792.1120/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1601345384699" />
     <state width="1878" height="370" key="GridCell.Tab.0.center/0.0.1792.1120/-1920.74.1920.1080@-1920.74.1920.1080" timestamp="1597212248214" />
     <state width="1750" height="534" key="GridCell.Tab.0.center/0.0.1792.1120/-1920.74.1920.1080@0.0.1792.1120" timestamp="1597136269425" />
     <state width="1750" height="399" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1596197908297" />
     <state width="1878" height="416" key="GridCell.Tab.0.center/0.23.1792.1018/-1920.97.1920.1057@-1920.97.1920.1057" timestamp="1595209446503" />
     <state width="1878" height="416" key="GridCell.Tab.0.center/0.23.1792.1097/-1920.74.1920.1080@-1920.74.1920.1080" timestamp="1595213254149" />
-    <state width="1878" height="370" key="GridCell.Tab.0.left" timestamp="1597732858010">
+    <state width="1878" height="372" key="GridCell.Tab.0.left" timestamp="1601345384699">
       <screen x="-1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="370" key="GridCell.Tab.0.left/0.0.1792.1120/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1597732858010" />
+    <state width="1878" height="372" key="GridCell.Tab.0.left/0.0.1792.1120/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1601345384699" />
     <state width="1878" height="370" key="GridCell.Tab.0.left/0.0.1792.1120/-1920.74.1920.1080@-1920.74.1920.1080" timestamp="1597212248213" />
     <state width="1750" height="534" key="GridCell.Tab.0.left/0.0.1792.1120/-1920.74.1920.1080@0.0.1792.1120" timestamp="1597136269424" />
     <state width="1750" height="399" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1596197908296" />
     <state width="1878" height="416" key="GridCell.Tab.0.left/0.23.1792.1018/-1920.97.1920.1057@-1920.97.1920.1057" timestamp="1595209446503" />
     <state width="1878" height="416" key="GridCell.Tab.0.left/0.23.1792.1097/-1920.74.1920.1080@-1920.74.1920.1080" timestamp="1595213254148" />
-    <state width="1878" height="370" key="GridCell.Tab.0.right" timestamp="1597732858011">
+    <state width="1878" height="372" key="GridCell.Tab.0.right" timestamp="1601345384700">
       <screen x="-1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="370" key="GridCell.Tab.0.right/0.0.1792.1120/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1597732858011" />
+    <state width="1878" height="372" key="GridCell.Tab.0.right/0.0.1792.1120/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1601345384700" />
     <state width="1878" height="370" key="GridCell.Tab.0.right/0.0.1792.1120/-1920.74.1920.1080@-1920.74.1920.1080" timestamp="1597212248214" />
     <state width="1750" height="534" key="GridCell.Tab.0.right/0.0.1792.1120/-1920.74.1920.1080@0.0.1792.1120" timestamp="1597136269425" />
     <state width="1750" height="399" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1596197908297" />
@@ -121,9 +131,10 @@
       <screen x="-1920" y="74" width="1920" height="1080" />
     </state>
     <state x="-1360" y="350" key="Vcs.Push.Dialog.v2/0.0.1792.1120/-1920.74.1920.1080@-1920.74.1920.1080" timestamp="1595227559050" />
-    <state x="-1316" y="355" width="930" height="518" key="find.popup" timestamp="1595229197967">
-      <screen x="-1920" y="74" width="1920" height="1080" />
+    <state x="-1316" y="281" width="945" height="518" key="find.popup" timestamp="1601345568628">
+      <screen x="-1920" y="0" width="1920" height="1080" />
     </state>
+    <state x="-1316" y="281" width="945" height="518" key="find.popup/0.0.1792.1120/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1601345568628" />
     <state x="-1316" y="355" width="930" height="518" key="find.popup/0.0.1792.1120/-1920.74.1920.1080@-1920.74.1920.1080" timestamp="1595229197967" />
     <state x="-1395" y="394" key="git4idea.merge.GitPullDialog" timestamp="1595227551600">
       <screen x="-1920" y="74" width="1920" height="1080" />
