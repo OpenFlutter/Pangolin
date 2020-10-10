@@ -83,7 +83,7 @@ class _MyAppState extends State<MyApp> {
         debug: true,
         supportMultiProcess: true
     ).then((v){
-      _loadRewardAd();
+      _loadBannerAd();
     });
   }
 
@@ -146,7 +146,7 @@ class _MyAppState extends State<MyApp> {
             child: FlatButton(
               onPressed: ()
               {
-
+                Pangolin.removeBannerAd();
               },
               child: Text("Pangolin"),
             ),

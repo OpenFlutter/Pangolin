@@ -110,6 +110,10 @@ FlutterMethodChannel* globalMethodChannel;
         [self.bannerView loadAdData];
         [rootVC.view addSubview:self.bannerView];
     }
+    else if([@"removeBannerAd" isEqualToString:call.method])
+    {
+        self.bannerView.removeFromSuperview;
+    }
     else if([@"loadInterstitialAd" isEqualToString:call.method])
     {
         NSString* mCodeId = call.arguments[@"mCodeId"];

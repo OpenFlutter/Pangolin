@@ -75,3 +75,7 @@
 
 * TODO: Add a rewardVideo callback
 
+## 0.2.4
+
+* TODO: iOS removeBannerAd, check Flutter 1.22 support
+

@@ -27,7 +27,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Bytedance-UnionAD: c416fab8b06ccb24e4f73baa453cda2548ca8320
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
-  pangolin: 3ed0f5bb9642f63eb9323c94315b6b3301edde52
+  pangolin: 7bef05eb068f0f73057c994a98c5b81fd772a0dd
   permission_handler: eac8e15b4a1a3fba55b761d19f3f4e6b005d15b6
 
 PODFILE CHECKSUM: 8e679eca47255a8ca8067c4c67aab20e64cb974d
