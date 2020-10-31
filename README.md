@@ -284,10 +284,8 @@ Pangolin.removeBannerAd();
 2.我本人去某大厂修“福报”了，未来可能比较忙，加我好友可能需要等待几个小时到一天不等，感谢各位谅解🤣</br>
 3.感谢各位一直以来的支持 特别是我的好友[瑞宇](https://github.com/zhangruiyu) ，各位期待的 信息流、banner 都有小伙伴自告奋勇的在制作了，后续会和我pr，也欢迎各位加入这个项目。</br>
 
-### 一个不一样的群
-<img src=https://github.com/OpenFlutter/Pangolin/blob/master/showImage/WechatQun.png lt="drawing" width="500">
-
 ## 个人联系方式
 * QQ:964997115<br/>
 * Wechat:tys19971122<br/>
+* 请各位不要在周末的时候尝试加好友，周末要么在加班要么在各地旅游✈️ 。好友请求很容易过期...
 
