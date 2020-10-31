@@ -177,7 +177,7 @@ public class RewardVideo extends FlutterActivity {
 
                     //视频播放完成后，奖励验证回调，rewardVerify：是否有效，rewardAmount：奖励梳理，rewardName：奖励名称
                     @Override
-                    public void onRewardVerify(boolean rewardVerify, int rewardAmount, String rewardName) {
+                    public void onRewardVerify(boolean rewardVerify, int rewardAmount, String rewardName, int errorCode, String errorMsg) {
                         if (debug)
                         {
                             TToast.show(context, "verify:" + rewardVerify + " amount:" + rewardAmount +

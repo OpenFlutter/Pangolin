@@ -79,3 +79,7 @@
 
 * TODO: iOS removeBannerAd, check Flutter 1.22 support
 
+## 0.2.5
+
+* TODO: Android API update
+

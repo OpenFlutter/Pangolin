@@ -1,4 +1,5 @@
-include ':app', ':open_ad_sdk'
+include ':open_ad_sdk_new'
+include ':app'
 
 def flutterProjectRoot = rootProject.projectDir.parentFile.toPath()
 
