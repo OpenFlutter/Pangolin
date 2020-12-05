@@ -83,3 +83,7 @@
 
 * TODO: Android API update
 
+## 0.2.6
+
+* TODO: check Flutter 1.22.4 fix issues
+

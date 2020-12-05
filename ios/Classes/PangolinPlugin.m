@@ -137,6 +137,16 @@ FlutterMethodChannel* globalMethodChannel;
     }
 }
 
+// 开屏广告加载失败
+- (void)splashAd:(BUSplashAdView *)splashAd didFailWithError:(NSError * _Nullable)error {
+      [splashAd removeFromSuperview];
+}
+
+//开屏视频关闭
+- (void)splashAdDidClose:(BUSplashAdView *)splashAd {
+    [splashAd removeFromSuperview];
+}
+
 //展示视频用
 - (UIViewController *)rootViewController{
     UIViewController *rootVC = [[UIApplication sharedApplication].delegate window].rootViewController;
@@ -156,7 +166,6 @@ FlutterMethodChannel* globalMethodChannel;
 //激励视频渲染完成并展示
 - (void)nativeExpressRewardedVideoAdViewRenderSuccess:(BUNativeExpressRewardedVideoAd *)rewardedVideoAd {
     [self.rewardedAd showAdFromRootViewController: [self rootViewController]];
-    
 }
 
 //激励视频播放完成
@@ -173,6 +182,10 @@ FlutterMethodChannel* globalMethodChannel;
     
 }
 
+- (void)nativeExpressRewardedVideoAdDidDownLoadVideo:(BUNativeExpressRewardedVideoAd *)rewardedVideoAd {
+    
+}
+
 //激励视频关闭
 - (void)nativeExpressRewardedVideoAdDidClose:(BUNativeExpressRewardedVideoAd *)rewardedVideoAd {
     NSMutableDictionary *mutableDictionary=[NSMutableDictionary dictionaryWithCapacity:3];
@@ -183,10 +196,6 @@ FlutterMethodChannel* globalMethodChannel;
     [globalMethodChannel invokeMethod:@"onRewardResponse" arguments:mutableDictionary];
 }
 
-//开屏视频关闭
-- (void)splashAdDidClose:(BUSplashAdView *)splashAd {
-    [splashAd removeFromSuperview];
-}
 
 #pragma BUNativeExpressBannerViewDelegate
 - (void)nativeExpressBannerAdViewDidLoad:(BUNativeExpressBannerView *)bannerAdView {
