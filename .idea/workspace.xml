@@ -6,12 +6,25 @@
   <component name="ChangeListManager">
     <list default="true" id="69a1e289-c17a-4105-997e-40a0d7ef5a11" name="Default Changelist" comment="v0.2.4,Flutter 1.22:rocket:">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/src/main/java/com/tongyangsheng/pangolin/RewardVideo.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/tongyangsheng/pangolin/RewardVideo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/open_ad_sdk/open_ad_sdk.aar" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/open_ad_sdk/open_ad_sdk.aar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/open_ad_sdk_new/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/open_ad_sdk_new/open_ad_sdk.aar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/android/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/settings.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/example/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/ios/Flutter/.last_build_id" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/Flutter/.last_build_id" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Classes/PangolinPlugin.m" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Classes/PangolinPlugin.m" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/example/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/example/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/example/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/example/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/example/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/example/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/example/android/open_ad_sdk/open_ad_sdk.aar" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/example/android/open_ad_sdk/open_ad_sdk.aar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/example/android/open_ad_sdk_new/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/example/android/open_ad_sdk_new/open_ad_sdk.aar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/example/android/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/ios/.symlinks/plugins/pangolin/example/android/settings.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -93,37 +106,37 @@
       <screen x="-1920" y="0" width="1920" height="1080" />
     </state>
     <state x="-1635" y="81" key="DiffContextDialog/0.0.1792.1120/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1601345652402" />
-    <state width="1878" height="385" key="GridCell.Tab.0.bottom" timestamp="1607049246806">
+    <state width="1878" height="385" key="GridCell.Tab.0.bottom" timestamp="1607426387276">
       <screen x="-1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="385" key="GridCell.Tab.0.bottom/0.0.1792.1120/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1607049246806" />
+    <state width="1878" height="385" key="GridCell.Tab.0.bottom/0.0.1792.1120/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1607426387276" />
     <state width="1750" height="388" key="GridCell.Tab.0.bottom/0.0.1792.1120/-1920.0.1920.1080@0.0.1792.1120" timestamp="1604048321930" />
     <state width="1750" height="388" key="GridCell.Tab.0.bottom/0.0.1792.1120/-1920.23.1920.1057@0.0.1792.1120" timestamp="1604057061181" />
     <state width="1878" height="372" key="GridCell.Tab.0.bottom/0.23.1792.1097/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1602309809912" />
-    <state width="1878" height="385" key="GridCell.Tab.0.center" timestamp="1607049246805">
+    <state width="1878" height="385" key="GridCell.Tab.0.center" timestamp="1607426387275">
       <screen x="-1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="385" key="GridCell.Tab.0.center/0.0.1792.1120/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1607049246805" />
+    <state width="1878" height="385" key="GridCell.Tab.0.center/0.0.1792.1120/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1607426387275" />
     <state width="1750" height="388" key="GridCell.Tab.0.center/0.0.1792.1120/-1920.0.1920.1080@0.0.1792.1120" timestamp="1604048321928" />
     <state width="1750" height="388" key="GridCell.Tab.0.center/0.0.1792.1120/-1920.23.1920.1057@0.0.1792.1120" timestamp="1604057061180" />
     <state width="1878" height="372" key="GridCell.Tab.0.center/0.23.1792.1097/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1602309809910" />
-    <state width="1878" height="385" key="GridCell.Tab.0.left" timestamp="1607049246804">
+    <state width="1878" height="385" key="GridCell.Tab.0.left" timestamp="1607426387274">
       <screen x="-1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="385" key="GridCell.Tab.0.left/0.0.1792.1120/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1607049246804" />
+    <state width="1878" height="385" key="GridCell.Tab.0.left/0.0.1792.1120/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1607426387274" />
     <state width="1750" height="388" key="GridCell.Tab.0.left/0.0.1792.1120/-1920.0.1920.1080@0.0.1792.1120" timestamp="1604048321927" />
     <state width="1750" height="388" key="GridCell.Tab.0.left/0.0.1792.1120/-1920.23.1920.1057@0.0.1792.1120" timestamp="1604057061179" />
     <state width="1878" height="372" key="GridCell.Tab.0.left/0.23.1792.1097/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1602309809909" />
-    <state width="1878" height="385" key="GridCell.Tab.0.right" timestamp="1607049246806">
+    <state width="1878" height="385" key="GridCell.Tab.0.right" timestamp="1607426387275">
       <screen x="-1920" y="0" width="1920" height="1080" />
     </state>
-    <state width="1878" height="385" key="GridCell.Tab.0.right/0.0.1792.1120/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1607049246806" />
+    <state width="1878" height="385" key="GridCell.Tab.0.right/0.0.1792.1120/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1607426387275" />
     <state width="1750" height="388" key="GridCell.Tab.0.right/0.0.1792.1120/-1920.0.1920.1080@0.0.1792.1120" timestamp="1604048321929" />
     <state width="1750" height="388" key="GridCell.Tab.0.right/0.0.1792.1120/-1920.23.1920.1057@0.0.1792.1120" timestamp="1604057061180" />
     <state width="1878" height="372" key="GridCell.Tab.0.right/0.23.1792.1097/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1602309809911" />
-    <state x="-1316" y="281" width="945" height="518" key="find.popup" timestamp="1602310481785">
+    <state x="-1316" y="281" width="945" height="522" key="find.popup" timestamp="1607418792364">
       <screen x="-1920" y="0" width="1920" height="1080" />
     </state>
-    <state x="-1316" y="281" width="945" height="518" key="find.popup/0.0.1792.1120/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1602310481785" />
+    <state x="-1316" y="281" width="945" height="522" key="find.popup/0.0.1792.1120/-1920.0.1920.1080@-1920.0.1920.1080" timestamp="1607418792364" />
   </component>
 </project>

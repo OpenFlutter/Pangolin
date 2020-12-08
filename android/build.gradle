@@ -34,7 +34,7 @@ android {
 }
 
 dependencies {
-    implementation project(path: ':open_ad_sdk_new')
     implementation 'androidx.appcompat:appcompat:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation project(path: ':open_ad_sdk')
 }
