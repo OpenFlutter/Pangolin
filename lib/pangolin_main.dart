@@ -13,7 +13,7 @@ MethodChannel _channel = MethodChannel('com.tongyangsheng.pangolin')
   ..setMethodCallHandler(_methodHandler);
 
 StreamController<BasePangolinResponse> _pangolinResponseEventHandlerController =
-    new StreamController.broadcast();
+    StreamController.broadcast();
 
 Stream<BasePangolinResponse> get pangolinResponseEventHandler =>
     _pangolinResponseEventHandlerController.stream;

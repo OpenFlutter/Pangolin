@@ -1,6 +1,3 @@
-const String _errCode = "errCode";
-const String _errStr = "errStr";
-
 typedef BasePangolinResponse _PangolinResponseInvoker(Map argument);
 
 Map<String, _PangolinResponseInvoker> _nameAndResponseMapper = {
@@ -29,5 +26,5 @@ class RewardResponse extends BasePangolinResponse {
       : rewardVerify = map["rewardVerify"],
         rewardAmount = map["rewardAmount"],
         rewardName = map["rewardName"],
-        super._(map[_errCode], map[_errStr]);
+        super._(0, 'ok');
 }
