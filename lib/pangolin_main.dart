@@ -9,6 +9,9 @@ const int NETWORK_STATE_3G = 3;
 const int NETWORK_STATE_WIFI = 4;
 const int NETWORK_STATE_4G = 5;
 
+const int ORIENTATION_VERTICAL = 1;
+const int ORIENTATION_HORIZONTAL = 2;
+
 MethodChannel _channel = MethodChannel('com.tongyangsheng.pangolin')
   ..setMethodCallHandler(_methodHandler);
 
@@ -107,6 +110,19 @@ Future loadInterstitialAd(
     "mCodeId": mCodeId,
     "expressViewWidth": expressViewWidth,
     "expressViewHeight": expressViewHeight,
+  });
+}
+
+Future loadFullScreenVideoAd(
+    {required String mCodeId,
+    double? expressViewWidth,
+    double? expressViewHeight,
+    int orientation = ORIENTATION_VERTICAL}) async {
+  return await _channel.invokeMethod("loadFullScreenVideoAd", {
+    "mCodeId": mCodeId,
+    "expressViewWidth": expressViewWidth,
+    "expressViewHeight": expressViewHeight,
+    "orientation": orientation,
   });
 }
 

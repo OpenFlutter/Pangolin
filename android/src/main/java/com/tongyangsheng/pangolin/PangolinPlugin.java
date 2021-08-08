@@ -20,6 +20,7 @@ import com.bytedance.sdk.openadsdk.TTAdConstant;
 import com.bytedance.sdk.openadsdk.TTAdNative;
 import com.bytedance.sdk.openadsdk.TTAppDownloadListener;
 import com.bytedance.sdk.openadsdk.TTNativeExpressAd;
+import com.bytedance.sdk.openadsdk.TTFullScreenVideoAd;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -49,6 +50,7 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
   private Context mContext;
   private FrameLayout mExpressContainer;
   private TTNativeExpressAd mTTAd;
+  private TTFullScreenVideoAd mFSVAd;
   private long startTime = 0;
 
   public static void registerWith(Registrar registrar) {
@@ -305,6 +307,23 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
       initTTSDKConfig();
       this.loadExpressInterstitialAd(mCodeId,(int) expressViewWidth,(int) expressViewHeight);
     }
+    else if (call.method.equals("loadFullScreenVideoAd"))
+    {
+      String mCodeId = call.argument("mCodeId");
+      int orientation = call.argument("orientation");
+      double expressViewWidth = 0;
+      double expressViewHeight = 0;
+      if(call.argument("expressViewWidth") != null)
+      {
+        expressViewWidth = call.argument("expressViewWidth");
+      }
+      if (call.argument("expressViewHeight") != null)
+      {
+        expressViewHeight = call.argument("expressViewHeight");
+      }
+      initTTSDKConfig();
+      this.loadFullScreenVideoAd(mCodeId,(int) expressViewWidth,(int) expressViewHeight,orientation);
+    }
     else
     {
       result.notImplemented();
@@ -520,6 +539,93 @@ public class PangolinPlugin implements FlutterPlugin, MethodCallHandler, Activit
       @Override
       public void onDownloadFinished(long totalBytes, String fileName, String appName) {
 //        TToast.show(InteractionExpressActivity.this, "点击安装", Toast.LENGTH_LONG);
+      }
+    });
+  }
+
+  //新插屏广告 加载
+  private void loadFullScreenVideoAd(String codeId, int expressViewWidth, int expressViewHeight, int orientation) {
+    //step4:创建广告请求参数AdSlot,具体参数含义参考文档
+    AdSlot adSlot = new AdSlot.Builder()
+            .setCodeId(codeId) //广告位id
+            .setSupportDeepLink(true)
+            .setOrientation(orientation) //期望视频的播放方向
+            .setExpressViewAcceptedSize(expressViewWidth, expressViewHeight) //期望模板广告view的size,单位dp
+            .build();
+    //step5:请求广告，对请求回调的广告作渲染处理
+    mTTAdNative.loadFullScreenVideoAd(adSlot, new TTAdNative.FullScreenVideoAdListener() {
+      @Override
+      public void onError(int code, String message) {
+      }
+
+      @Override
+      public void onFullScreenVideoAdLoad(TTFullScreenVideoAd ad) {
+        if (ad == null) {
+          return;
+        }
+        mFSVAd = ad;
+        bindFullScreenVideoAdListener(mFSVAd);
+      }
+
+      @Override
+      public void onFullScreenVideoCached() {
+      }
+
+      @Override
+      public void onFullScreenVideoCached(TTFullScreenVideoAd ad) {
+        ad.showFullScreenVideoAd(activity, TTAdConstant.RitScenes.GAME_GIFT_BONUS, null);
+        mFSVAd = null;
+      }
+    });
+  }
+
+  //新插屏广告 监听
+  private void bindFullScreenVideoAdListener(TTFullScreenVideoAd ad) {
+    ad.setFullScreenVideoAdInteractionListener(new TTFullScreenVideoAd.FullScreenVideoAdInteractionListener() {
+      @Override
+      public void onAdClose() {
+        mFSVAd = null;
+      }
+
+      @Override
+      public void onAdVideoBarClick() {
+      }
+
+      @Override
+      public void onAdShow() {
+      }
+
+      @Override
+      public void onVideoComplete() {
+      }
+
+      @Override
+      public void onSkippedVideo() {
+      }
+    });
+    ad.setDownloadListener(new TTAppDownloadListener() {
+      @Override
+      public void onIdle() {
+      }
+
+      @Override
+      public void onDownloadActive(long totalBytes, long currBytes, String fileName, String appName) {
+      }
+
+      @Override
+      public void onDownloadPaused(long totalBytes, long currBytes, String fileName, String appName) {
+      }
+
+      @Override
+      public void onDownloadFailed(long totalBytes, long currBytes, String fileName, String appName) {
+      }
+
+      @Override
+      public void onInstalled(String fileName, String appName) {
+      }
+
+      @Override
+      public void onDownloadFinished(long totalBytes, String fileName, String appName) {
       }
     });
   }
