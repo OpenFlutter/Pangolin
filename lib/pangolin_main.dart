@@ -1,7 +1,5 @@
 import 'dart:async';
-import 'dart:io';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:pangolin/pangolin.dart';
 
@@ -11,24 +9,27 @@ const int NETWORK_STATE_3G = 3;
 const int NETWORK_STATE_WIFI = 4;
 const int NETWORK_STATE_4G = 5;
 
+const int ORIENTATION_VERTICAL = 1;
+const int ORIENTATION_HORIZONTAL = 2;
+
 MethodChannel _channel = MethodChannel('com.tongyangsheng.pangolin')
   ..setMethodCallHandler(_methodHandler);
 
 StreamController<BasePangolinResponse> _pangolinResponseEventHandlerController =
-    new StreamController.broadcast();
+    StreamController.broadcast();
 
 Stream<BasePangolinResponse> get pangolinResponseEventHandler =>
     _pangolinResponseEventHandlerController.stream;
 
 Future<bool> registerPangolin({
-  @required String appId,
-  @required bool useTextureView,
-  @required String appName,
-  @required bool allowShowNotify,
-  @required bool allowShowPageWhenScreenLock,
-  @required bool debug,
-  @required bool supportMultiProcess,
-  List<int> directDownloadNetworkType,
+  required String appId,
+  required bool useTextureView,
+  required String appName,
+  required bool allowShowNotify,
+  required bool allowShowPageWhenScreenLock,
+  required bool debug,
+  required bool supportMultiProcess,
+  List<int>? directDownloadNetworkType,
 }) async {
   return await _channel.invokeMethod("register", {
     "appId": appId,
@@ -49,23 +50,23 @@ Future<bool> registerPangolin({
 }
 
 Future<bool> loadSplashAd(
-    {@required String mCodeId, @required bool debug}) async {
+    {required String mCodeId, required bool debug}) async {
   return await _channel
       .invokeMethod("loadSplashAd", {"mCodeId": mCodeId, "debug": debug});
 }
 
 Future loadRewardAd({
-  @required String mCodeId,
-  @required bool debug,
-  @required bool supportDeepLink,
-  @required String rewardName,
-  @required int rewardAmount,
-  @required bool isExpress,
-  double expressViewAcceptedSizeH,
-  double expressViewAcceptedSizeW,
-  @required userID,
-  String mediaExtra,
-  @required bool isHorizontal,
+  required String mCodeId,
+  required bool debug,
+  required bool supportDeepLink,
+  required String rewardName,
+  required int rewardAmount,
+  required bool isExpress,
+  double? expressViewAcceptedSizeH,
+  double? expressViewAcceptedSizeW,
+  required userID,
+  String? mediaExtra,
+  required bool isHorizontal,
 }) async {
   return await _channel.invokeMethod("loadRewardAd", {
     "mCodeId": mCodeId,
@@ -82,15 +83,14 @@ Future loadRewardAd({
   });
 }
 
-Future loadBannerAd({
-  @required String mCodeId,
-  @required bool supportDeepLink,
-  double expressViewWidth,
-  double expressViewHeight,
-  bool isCarousel,
-  int interval,
-  int topMargin
-}) async {
+Future loadBannerAd(
+    {required String mCodeId,
+    required bool supportDeepLink,
+    double? expressViewWidth,
+    double? expressViewHeight,
+    bool? isCarousel,
+    int? interval,
+    int? topMargin}) async {
   return await _channel.invokeMethod("loadBannerAd", {
     "mCodeId": mCodeId,
     "supportDeepLink": supportDeepLink,
@@ -102,20 +102,31 @@ Future loadBannerAd({
   });
 }
 
-Future loadInterstitialAd({
-  @required String mCodeId,
-  double expressViewWidth,
-  double expressViewHeight
-}) async {
-  return await _channel.invokeMethod("loadInterstitialAd",{
+Future loadInterstitialAd(
+    {required String mCodeId,
+    double? expressViewWidth,
+    double? expressViewHeight}) async {
+  return await _channel.invokeMethod("loadInterstitialAd", {
     "mCodeId": mCodeId,
     "expressViewWidth": expressViewWidth,
     "expressViewHeight": expressViewHeight,
   });
 }
 
-Future removeBannerAd() async
-{
+Future loadFullScreenVideoAd(
+    {required String mCodeId,
+    double? expressViewWidth,
+    double? expressViewHeight,
+    int orientation = ORIENTATION_VERTICAL}) async {
+  return await _channel.invokeMethod("loadFullScreenVideoAd", {
+    "mCodeId": mCodeId,
+    "expressViewWidth": expressViewWidth,
+    "expressViewHeight": expressViewHeight,
+    "orientation": orientation,
+  });
+}
+
+Future removeBannerAd() async {
   await _channel.invokeMethod("removeBannerAd");
 }
 

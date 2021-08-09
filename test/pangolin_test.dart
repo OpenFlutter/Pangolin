@@ -1,6 +1,5 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:pangolin/pangolin.dart';
 
 void main() {
   const MethodChannel channel = MethodChannel('pangolin');
@@ -16,5 +15,4 @@ void main() {
   tearDown(() {
     channel.setMockMethodCallHandler(null);
   });
-
 }

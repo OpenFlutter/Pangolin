@@ -1,15 +1,7 @@
-import 'dart:typed_data';
-
-import 'package:pangolin/pangolin.dart';
-
-const String _errCode = "errCode";
-const String _errStr = "errStr";
-
 typedef BasePangolinResponse _PangolinResponseInvoker(Map argument);
 
 Map<String, _PangolinResponseInvoker> _nameAndResponseMapper = {
-  "onRewardResponse": (Map argument) =>
-      onRewardResponse.fromMap(argument),
+  "onRewardResponse": (Map argument) => RewardResponse.fromMap(argument),
 };
 
 class BasePangolinResponse {
@@ -22,17 +14,17 @@ class BasePangolinResponse {
 
   /// create response from response pool
   factory BasePangolinResponse.create(String name, Map argument) =>
-      _nameAndResponseMapper[name](argument);
+      _nameAndResponseMapper[name]!(argument);
 }
 
-class onRewardResponse extends BasePangolinResponse {
+class RewardResponse extends BasePangolinResponse {
   final bool rewardVerify;
   final int rewardAmount;
   final String rewardName;
 
-  onRewardResponse.fromMap(Map map)
-  : rewardVerify = map["rewardVerify"],
+  RewardResponse.fromMap(Map map)
+      : rewardVerify = map["rewardVerify"],
         rewardAmount = map["rewardAmount"],
         rewardName = map["rewardName"],
-  super._(map[_errCode], map[_errStr]);
+        super._(0, 'ok');
 }

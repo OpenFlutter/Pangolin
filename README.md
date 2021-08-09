@@ -13,65 +13,78 @@
 </p>
 
 ## 前言
-⚠️在使用本插件前请认真，仔细阅读[穿山甲官方文档](http://partner.toutiao.com/doc?id=5dd0fe756b181e00112e3ec5)。本插件将尽量保留SDK内容和各API相关内容，如出现在官方文档以外报错信息可以留言issue,或通过文末联系方式联系作者（注明来意）。针对你可能会遇到的问题，在使用过程中可以先查阅👉
-### [Pangolin报错及其解决方案](https://github.com/tongyangsheng/Pangolin/blob/master/PangolinError.md)
+
+⚠️ 在使用本插件前请认真，仔细阅读[穿山甲官方文档](http://partner.toutiao.com/doc?id=5dd0fe756b181e00112e3ec5)。本插件将尽量保留 SDK 内容和各 API 相关内容，如出现在官方文档以外报错信息可以留言 issue,或通过文末联系方式联系作者（注明来意）。针对你可能会遇到的问题，在使用过程中可以先查阅 👉
+
+### [Pangolin 报错及其解决方案](https://github.com/tongyangsheng/Pangolin/blob/master/PangolinError.md)
 
 ## 公告
-Flutter最新的Stable版本已经来到`1.22.4`，本插件不再支持 Flutter`1.12.0`以下的用户，请各位及时更新Flutter版本以保证API的兼容和用户体验的优化📈。
+
+Flutter 最新的 Stable 版本已经来到`1.22.4`，本插件不再支持 Flutter`1.12.0`以下的用户，请各位及时更新 Flutter 版本以保证 API 的兼容和用户体验的优化 📈。
 
 ## 简介
-Pangolin是一款Flutter插件，集成了字节跳动旗下的广告平台——穿山甲的Android和iOS的SDK，方便开发者直接在Flutter层面调用相关方法。
+
+Pangolin 是一款 Flutter 插件，集成了字节跳动旗下的广告平台——穿山甲的 Android 和 iOS 的 SDK，方便开发者直接在 Flutter 层面调用相关方法。
 
 ## 版本信息
-| 版本  | 更新信息  |
-| :------------ |:---------------:|
-| 0.0.1  | 穿山甲SDK接入，开屏广告实现 |
-| 0.0.2  | 修复开屏广告偶现TopBar的Bug |
-| 0.0.5  | 激励视频Android接入     |
-| 0.0.6  | 激励视频接口参数重写     |
-| 0.0.7  | 移除默认Activity 直接在当前界面调起广告    |
-| 0.0.8  | 紧急修复iOS端 报错Bug   |
-| 0.1.0  | iOS激励视频支持   |
-| 0.1.1  | 自动下载网络环境可配置   |
-| 0.1.2  | 修复了toast无法移除的问题   |
-| 0.1.3  | 修复了部分情况下iOS无法收到回调的问题，iOS的开屏现在会自动关闭   |
-| 0.1.4  | 修复了部分情况下iOS在使用Cocoapods导入SDK时存在的错误   |
-| 0.1.5  | 支持iOS banner广告   |
-| 0.1.6  | 支持iOS 插屏广告   |
-| 0.1.7  | 修复“isExpress”参数的传递问题   |
-| 0.1.8  | 修复部分用户context获取不到的问题 原因是部分用户没有走onAttachedToEngine()，走了registerWith()   |
-| 0.1.9  | 修复部分用户activity获取不到的问题 原因是部分用户没有走onAttachedToActivity() 为了满足所有用户，我太难了😭   |
-| 0.2.0  | 支持Android banner广告   |
-| 0.2.1  | 支持Android 插屏广告   |
-| 0.2.2  | 接入了Flutter1.20.1环境 新增一个banner广告的手动关闭方法   |
-| 0.2.3  | 新增了一个激励视频的回调——关闭激励视频   |
-| 0.2.4  | 新增iOS Banner广告移除方法，校验Flutter1.22环境下的运行情况   |
-| 0.2.5  | 根据Android最新SDK 更新了API   |
-| 0.2.6  | 测试了功能 Flutter1.22.4 修复了部分issue反馈的错误 采纳了部分优化建议   |
-| 0.2.7  | 尝试修复Android上的向下兼容性问题   |
 
+| 版本  |                                                    更新信息                                                    |
+| :---- | :------------------------------------------------------------------------------------------------------------: |
+| 0.0.1 |                                         穿山甲 SDK 接入，开屏广告实现                                          |
+| 0.0.2 |                                         修复开屏广告偶现 TopBar 的 Bug                                         |
+| 0.0.5 |                                             激励视频 Android 接入                                              |
+| 0.0.6 |                                              激励视频接口参数重写                                              |
+| 0.0.7 |                                    移除默认 Activity 直接在当前界面调起广告                                    |
+| 0.0.8 |                                            紧急修复 iOS 端 报错 Bug                                            |
+| 0.1.0 |                                                iOS 激励视频支持                                                |
+| 0.1.1 |                                             自动下载网络环境可配置                                             |
+| 0.1.2 |                                          修复了 toast 无法移除的问题                                           |
+| 0.1.3 |                       修复了部分情况下 iOS 无法收到回调的问题，iOS 的开屏现在会自动关闭                        |
+| 0.1.4 |                          修复了部分情况下 iOS 在使用 Cocoapods 导入 SDK 时存在的错误                           |
+| 0.1.5 |                                              支持 iOS banner 广告                                              |
+| 0.1.6 |                                               支持 iOS 插屏广告                                                |
+| 0.1.7 |                                         修复“isExpress”参数的传递问题                                          |
+| 0.1.8 |       修复部分用户 context 获取不到的问题 原因是部分用户没有走 onAttachedToEngine()，走了 registerWith()       |
+| 0.1.9 | 修复部分用户 activity 获取不到的问题 原因是部分用户没有走 onAttachedToActivity() 为了满足所有用户，我太难了 😭 |
+| 0.2.0 |                                            支持 Android banner 广告                                            |
+| 0.2.1 |                                             支持 Android 插屏广告                                              |
+| 0.2.2 |                          接入了 Flutter1.20.1 环境 新增一个 banner 广告的手动关闭方法                          |
+| 0.2.3 |                                     新增了一个激励视频的回调——关闭激励视频                                     |
+| 0.2.4 |                        新增 iOS Banner 广告移除方法，校验 Flutter1.22 环境下的运行情况                         |
+| 0.2.5 |                                        根据 Android 最新 SDK 更新了 API                                        |
+| 0.2.6 |                    测试了功能 Flutter1.22.4 修复了部分 issue 反馈的错误 采纳了部分优化建议                     |
+| 0.2.7 |                                      尝试修复 Android 上的向下兼容性问题                                       |
 
 ## 插件开发环境相关
+
 ### Flutter
+
 ```
 Flutter (Channel stable, v1.12.13+hotfix.8, on Mac OS X 10.15.1 19B88, locale zh-Hans-CN)
 ```
+
 ### Dart
+
 ```
 Dart VM version: 2.4.1 (Wed Aug 7 13:15:56 2019 +0200) on "macos_x64"
 ```
+
 ### Platform
+
 ```
 Xcode - develop for iOS and macOS (Xcode 11.2)
 Android Studio (version 3.6)
 ```
+
 ### 穿山甲
+
 ```
 iOS - cocoapods lastest version
 Android - 自己去官网选择版本下载
 ```
 
 ## 安装
+
 ```yaml
 # add this line to your dependencies
 dependencies:
@@ -79,30 +92,45 @@ dependencies:
 ```
 
 ## 环境配置
-使用前请确认您以根据穿山甲的官方文档中的步骤进行了相应的依赖添加，权限获取以及参数配置
-### Android
-[穿山甲Android SDK 接入基础配置](https://partner.oceanengine.com/union/media/union/download/detail?id=4&docId=5de8d9b425b16b00113af0da&osType=android)<br>
-⚠️说明：<br>
-* 从Android 6.0(API 23)开始，对系统权限做了很大的改变。在之前用户安装APP前，只是把APP需要使用的权限列出来给用户告知一下，APP安装后都可以访问这些权限。从6.0开始，一些敏感权限，需要在使用时动态申请，并且用户可以选择拒绝授权访问这些权限，已授予过的权限，用户也可以去APP设置页面去关闭授权。有关动态权限的获取pub上有很多package，我个人不会在插件内集成权限申请相关，方便使用者灵活配置，可根据实际需求选择相应插件和权限。
 
-* 穿山甲官方推荐在合适时机申请用户权限，但是使用本插件前请务必确认你所需的权限已经获得用户授权。
+使用前请确认您以根据穿山甲的官方文档中的步骤进行了相应的依赖添加，权限获取以及参数配置
+
+### Android
+
+[穿山甲 Android SDK 接入基础配置](https://partner.oceanengine.com/union/media/union/download/detail?id=4&docId=5de8d9b425b16b00113af0da&osType=android)<br>
+⚠️ 说明：<br>
+
+- 从 Android 6.0(API 23)开始，对系统权限做了很大的改变。在之前用户安装 APP 前，只是把 APP 需要使用的权限列出来给用户告知一下，APP 安装后都可以访问这些权限。从 6.0 开始，一些敏感权限，需要在使用时动态申请，并且用户可以选择拒绝授权访问这些权限，已授予过的权限，用户也可以去 APP 设置页面去关闭授权。有关动态权限的获取 pub 上有很多 package，我个人不会在插件内集成权限申请相关，方便使用者灵活配置，可根据实际需求选择相应插件和权限。
+
+- 穿山甲官方推荐在合适时机申请用户权限，但是使用本插件前请务必确认你所需的权限已经获得用户授权。
 
 #### iOS
-[穿山甲iOS SDK 接入基础配置](https://partner.oceanengine.com/union/media/union/download/detail?id=16&docId=5de8d570b1afac00129330c5&osType=ios)
 
-## Pangolin集成
-### Android 
-在Android端你可能需要简单的四个小步骤导入穿山甲SDK具体步骤已为你写好请戳👉
-#### [Pangolin Android集成手册](https://github.com/tongyangsheng/Pangolin/blob/master/AndroidProfile.md)
+[穿山甲 iOS SDK 接入基础配置](https://partner.oceanengine.com/union/media/union/download/detail?id=16&docId=5de8d570b1afac00129330c5&osType=ios)
+
+## Pangolin 集成
+
+### Android
+
+在 Android 端你可能需要简单的四个小步骤导入穿山甲 SDK 具体步骤已为你写好请戳 👉
+
+#### [Pangolin Android 集成手册](https://github.com/tongyangsheng/Pangolin/blob/master/AndroidProfile.md)
+
 ### iOS
+
 ```
 pod install
 ```
+
 ## 穿山甲平台
-在使用之前必须确认您在穿山甲平台的[控制台](https://partner.oceanengine.com/union/media/union/site)已经注册了自己app所对应的应用以及对应广告类型的代码位，由于穿山甲包含多种类型的广告和功能请务必确认你在插件中注册的和你在平台注册的一一对应。
+
+在使用之前必须确认您在穿山甲平台的[控制台](https://partner.oceanengine.com/union/media/union/site)已经注册了自己 app 所对应的应用以及对应广告类型的代码位，由于穿山甲包含多种类型的广告和功能请务必确认你在插件中注册的和你在平台注册的一一对应。
+
 ## 开始使用
+
 ### 初始化（register）
-调用穿山甲SDK的第一步是对SDK的初始化
+
+调用穿山甲 SDK 的第一步是对 SDK 的初始化
 
 ```dart
 await Pangolin.registerPangolin(
@@ -115,20 +143,25 @@ await Pangolin.registerPangolin(
         supportMultiProcess: true
     )
 ```
-#### 参数说明
-| 参数  | 描述  | 默认值 |
-| :------------ |:---------------:| -----:|
-| appId      | 在穿山甲平台注册的自己的AppId | null |
-| useTextureView       | 使用TextureView控件播放视频,默认为SurfaceView,当有SurfaceView冲突的场景，可以使用TextureView       |   false |
-| appName  | 自己的应用名称       |    null |
-| allowShowNotify   | 是否允许sdk展示通知栏提示       |    true |
-| allowShowPageWhenScreenLock  | 是否在锁屏场景支持展示广告落地页       |    true |
-| debug  | 测试阶段打开，可以通过日志排查问题，上线时去除该调用       |    true |
-| supportMultiProcess  | 是否支持多进程      |    false |
 
-* 注意以上参数大部分针对Android端，iOS端由于穿山甲SDK本身的原因并没有过多的参数配置，有用的参数仅为appId，appName。
-#### 接入成功debug信息
-* Android
+#### 参数说明
+
+| 参数                        |                                                描述                                                | 默认值 |
+| :-------------------------- | :------------------------------------------------------------------------------------------------: | -----: |
+| appId                       |                                   在穿山甲平台注册的自己的 AppId                                   |   null |
+| useTextureView              | 使用 TextureView 控件播放视频,默认为 SurfaceView,当有 SurfaceView 冲突的场景，可以使用 TextureView |  false |
+| appName                     |                                           自己的应用名称                                           |   null |
+| allowShowNotify             |                                    是否允许 sdk 展示通知栏提示                                     |   true |
+| allowShowPageWhenScreenLock |                                  是否在锁屏场景支持展示广告落地页                                  |   true |
+| debug                       |                        测试阶段打开，可以通过日志排查问题，上线时去除该调用                        |   true |
+| supportMultiProcess         |                                           是否支持多进程                                           |  false |
+
+- 注意以上参数大部分针对 Android 端，iOS 端由于穿山甲 SDK 本身的原因并没有过多的参数配置，有用的参数仅为 appId，appName。
+
+#### 接入成功 debug 信息
+
+- Android
+
 ```
 E/TTAdSdk-InitChecker( 5148): ==当前进程名：com.tongyangsheng.pangolin_example
 E/TTAdSdk-InitChecker( 5148): ==穿山甲sdk接入，环境为debug，初始化配置检测开始==
@@ -142,26 +175,31 @@ E/TTAdSdk-InitChecker( 5148): 动态权限正常：android.permission.WRITE_EXTE
 E/TTAdSdk-InitChecker( 5148): ==穿山甲sdk初始化配置检测结束==
 ```
 
-* iOS 
-仅提示穿山甲接入成功
+- iOS
+  仅提示穿山甲接入成功
 
-⚠️进行下一步操作前请确认，穿山甲已经成功接入并且检测正常。
+⚠️ 进行下一步操作前请确认，穿山甲已经成功接入并且检测正常。
 
 ### 加载开屏广告
+
 ```dart
         Pangolin.loadSplashAd(
             mCodeId: "Your CodeId",
             debug: false);
 ```
+
 #### 参数说明
-| 参数  | 描述  | 默认值 |
-| :------------ |:---------------:| -----:|
-| mCodeId      | 在穿山甲平台注册的自己的广告位id | null |
-| debug  | 测试阶段打开，可以通过日志排查问题，上线时去除该调用       |    true |
+
+| 参数    |                         描述                         | 默认值 |
+| :------ | :--------------------------------------------------: | -----: |
+| mCodeId |          在穿山甲平台注册的自己的广告位 id           |   null |
+| debug   | 测试阶段打开，可以通过日志排查问题，上线时去除该调用 |   true |
 
 ### 加载激励视频
+
 激励视频的原生接入相对复杂，但是我已经给各位留好了接口，只需简单的几步就可以加载到你的激励视频<br/>
-⚠️使用前请确认您已在穿山甲平台的[控制台](https://partner.oceanengine.com/union/media/union/site)建立了你的激励视频广告id。<br/>
+⚠️ 使用前请确认您已在穿山甲平台的[控制台](https://partner.oceanengine.com/union/media/union/site)建立了你的激励视频广告 id。<br/>
+
 ```dart
     await Pangolin.loadRewardAd(
       isHorizontal: false,
@@ -177,28 +215,31 @@ E/TTAdSdk-InitChecker( 5148): ==穿山甲sdk初始化配置检测结束==
       mediaExtra: "media_extra"
         );
 ```
-#### 参数说明
-| 参数  | 描述  | 默认值 |
-| :------------ |:---------------:| -----:|
-| isHorizontal  | 是否横屏      |    false |
-| mCodeId      | 在穿山甲平台注册的自己的广告位id | null |
-| debug  | 此处debug为true的情况下 我会给你显示整体进程的一个Toast 方便你调试      |    true |
-| supportDeepLink  | 是否横屏      |    false |
-| rewardName  | 奖励的名称      |    null |
-| rewardAmount  | 奖励数量      |    null |
-| isExpress  |是否进行自渲染（传入后设置激励视频尺寸）      |    true |
-| expressViewAcceptedSizeH  | 渲染视频高度      |    500 |
-| expressViewAcceptedSizeW  | 渲染视频宽度      |    500 |
-| userID  | 必传参数，表来标识应用侧唯一用户；若非服务器回调模式或不需sdk透传      |    null |
-| mediaExtra  | 用户透传的信息，可不传      |    media_extra |
 
+#### 参数说明
+
+| 参数                     |                                  描述                                   |      默认值 |
+| :----------------------- | :---------------------------------------------------------------------: | ----------: |
+| isHorizontal             |                                是否横屏                                 |       false |
+| mCodeId                  |                    在穿山甲平台注册的自己的广告位 id                    |        null |
+| debug                    | 此处 debug 为 true 的情况下 我会给你显示整体进程的一个 Toast 方便你调试 |        true |
+| supportDeepLink          |                                是否横屏                                 |       false |
+| rewardName               |                               奖励的名称                                |        null |
+| rewardAmount             |                                奖励数量                                 |        null |
+| isExpress                |                是否进行自渲染（传入后设置激励视频尺寸）                 |        true |
+| expressViewAcceptedSizeH |                              渲染视频高度                               |         500 |
+| expressViewAcceptedSizeW |                              渲染视频宽度                               |         500 |
+| userID                   |   必传参数，表来标识应用侧唯一用户；若非服务器回调模式或不需 sdk 透传   |        null |
+| mediaExtra               |                         用户透传的信息，可不传                          | media_extra |
 
 ### 激励视频回调监听
+
 在合适的位置注册你的监听，保证用户看完广告时接收到我给你的回调信息，并做下一步处理
+
 ```dart
 Pangolin.pangolinResponseEventHandler.listen((value)
     {
-      if(value is Pangolin.onRewardResponse)
+      if(value is Pangolin.RewardResponse)
         {
           print("激励视频回调：${value.rewardVerify}");
           print("激励视频回调：${value.rewardName}");
@@ -210,49 +251,55 @@ Pangolin.pangolinResponseEventHandler.listen((value)
         }
     });
 ```
+
 #### 参数说明
-| 参数  | 描述  | 默认值 |
-| :------------ |:---------------:| -----:|
-| rewardVerify      | 验证奖励有效性，即用户是否完成观看 | / |
-| rewardName  | 你在穿山甲填写的奖励名称      |    / |
-| rewardAmount  | 你在穿山甲填写的奖励数量     |    / |
 
-* 激励视频关闭监听：如果你收到了一个回调，并且`rewardName == rewardVideo Close`说明是一个激励视频关闭的回调，详见example
+| 参数         |                描述                | 默认值 |
+| :----------- | :--------------------------------: | -----: |
+| rewardVerify | 验证奖励有效性，即用户是否完成观看 |      / |
+| rewardName   |      你在穿山甲填写的奖励名称      |      / |
+| rewardAmount |      你在穿山甲填写的奖励数量      |      / |
 
-激励视频的具体使用参见项目目录下Example
+- 激励视频关闭监听：如果你收到了一个回调，并且`rewardName == rewardVideo Close`说明是一个激励视频关闭的回调，详见 example
 
-### 加载Banner广告
+激励视频的具体使用参见项目目录下 Example
+
+### 加载 Banner 广告
+
 ```dart
      await Pangolin.loadBannerAd(
-        mCodeId: "Your CodeId", 
-        supportDeepLink: true, 
+        mCodeId: "Your CodeId",
+        supportDeepLink: true,
         expressViewWidth: Your expressViewWidth,
-        expressViewHeight: Your expressViewHeight, 
+        expressViewHeight: Your expressViewHeight,
         isCarousel: true,
         interval: 40);
 ```
-#### 参数说明
-| 参数  | 描述  | 默认值 |
-| :------------ |:---------------:| -----:|
-|  mCodeId      | 在穿山甲平台注册的自己的广告位id | null |
-|  supportDeepLink | 是否支持横屏     |    true |
-|  expressViewWidth | banner长度     |    null |
-|  expressViewWidth | banner高度    |    null |
-|  isCarousel | 是否开启轮播    |    true |
-|  interval | 轮播间隔（30～120s）     |    null |
-|  topMargin | banner到顶部距离（仅Android）     |    0 |
 
+#### 参数说明
+
+| 参数             |               描述                | 默认值 |
+| :--------------- | :-------------------------------: | -----: |
+| mCodeId          | 在穿山甲平台注册的自己的广告位 id |   null |
+| supportDeepLink  |           是否支持横屏            |   true |
+| expressViewWidth |            banner 长度            |   null |
+| expressViewWidth |            banner 高度            |   null |
+| isCarousel       |           是否开启轮播            |   true |
+| interval         |      轮播间隔（30 ～ 120s）       |   null |
+| topMargin        |  banner 到顶部距离（仅 Android）  |      0 |
 
 以上参数在创建代码位时都可以进行自定义设置，请确保在代码中填写的实际值和创建代码位时一致。
 
-### 手动关闭Banner广告（Android）
+### 手动关闭 Banner 广告（Android）
+
 ```dart
 Pangolin.removeBannerAd();
 ```
 
-该方法提供给Android用户，在关闭界面时手动调用，关闭Banner广告
+该方法提供给 Android 用户，在关闭界面时手动调用，关闭 Banner 广告
 
 ### 加载插屏广告（iOS）
+
 ```dart
     await Pangolin.loadInterstitialAd(
         mCodeId: "Your CodeId",
@@ -260,36 +307,43 @@ Pangolin.removeBannerAd();
         expressViewHeight: 300
     );
 ```
+
 #### 参数说明
-| 参数  | 描述  | 默认值 |
-| :------------ |:---------------:| -----:|
-|  mCodeId      | 在穿山甲平台注册的自己的广告位id | null |
-|  expressViewWidth | 插屏长度     |    null |
-|  expressViewWidth | 插屏高度    |    null |
 
-插屏广告的长宽可以自己设定，但是长宽比必须和自己代码位设定的一致，例如设置了1:1的长宽比可以设置： 长度300+宽度300 或 长度600+宽度600。
+| 参数             |               描述                | 默认值 |
+| :--------------- | :-------------------------------: | -----: |
+| mCodeId          | 在穿山甲平台注册的自己的广告位 id |   null |
+| expressViewWidth |             插屏长度              |   null |
+| expressViewWidth |             插屏高度              |   null |
 
+插屏广告的长宽可以自己设定，但是长宽比必须和自己代码位设定的一致，例如设置了 1:1 的长宽比可以设置： 长度 300+宽度 300 或 长度 600+宽度 600。
 
 ## 加入/贡献
-目前项目已经逐渐完善，但是还有许多特性需要给的协助，如果你对项目有兴趣并且对开源有兴趣和信心，可以通过README底部的联系方式联系我，并在备注中说明，我会优先回复你的信息🤪。目前剩余的广告（按目前issue中提到的人数统计优先级）：
-* 信息流广告
 
-### 方法 
-* fork项目代码
-* 开发/测试功能
-* 提出pr
+目前项目已经逐渐完善，但是还有许多特性需要给的协助，如果你对项目有兴趣并且对开源有兴趣和信心，可以通过 README 底部的联系方式联系我，并在备注中说明，我会优先回复你的信息 🤪。目前剩余的广告（按目前 issue 中提到的人数统计优先级）：
+
+- 信息流广告
+
+### 方法
+
+- fork 项目代码
+- 开发/测试功能
+- 提出 pr
 
 ## 测试说明
-穿山甲的测试个人建议在真机进行测试，我本人在模拟器上会遇到各种疑难杂症，虽然插件和穿山甲SDK的报错都能看到，但是直接上真机很多报错会减少，这个由使用者自行决定，建议仅供参考
+
+穿山甲的测试个人建议在真机进行测试，我本人在模拟器上会遇到各种疑难杂症，虽然插件和穿山甲 SDK 的报错都能看到，但是直接上真机很多报错会减少，这个由使用者自行决定，建议仅供参考
+
 ## 感谢
-感谢各位Flutter开发者的支持和帮助，如果本插件能为你在开发过程中省下一点点的时间和精力算是达到了我开发插件的初衷。如果喜欢，欢迎点个🌟持续关注。如果项目关注度高，会继续开发SDK的剩余部分和分享一些开发插件的心得和踩坑经验。
+
+感谢各位 Flutter 开发者的支持和帮助，如果本插件能为你在开发过程中省下一点点的时间和精力算是达到了我开发插件的初衷。如果喜欢，欢迎点个 🌟 持续关注。如果项目关注度高，会继续开发 SDK 的剩余部分和分享一些开发插件的心得和踩坑经验。
+
 ## 闲谈
-1.这个项目其实初衷是帮助各位了解Flutter插件的使用，同时方便各位的开发工作。到后来就演变成了我必须要更新。某些来联系我的人甚至态度恶劣和不屑，十分让人寒心，开源社区的环境应该由大家来维护，应该给予开源者最起码的尊重。</br>
-2.工作繁忙，加我好友可能需要等待几个小时到一天不等，感谢各位谅解🤣</br>
-3.感谢各位一直以来的支持 特别是我的好友[瑞宇](https://github.com/zhangruiyu) ，各位期待的 信息流、banner 都有小伙伴自告奋勇的在制作了，后续会和我pr，也欢迎各位加入这个项目。</br>
+
+1.这个项目其实初衷是帮助各位了解 Flutter 插件的使用，同时方便各位的开发工作。到后来就演变成了我必须要更新。某些来联系我的人甚至态度恶劣和不屑，十分让人寒心，开源社区的环境应该由大家来维护，应该给予开源者最起码的尊重。</br> 2.工作繁忙，加我好友可能需要等待几个小时到一天不等，感谢各位谅解 🤣</br> 3.感谢各位一直以来的支持 特别是我的好友[瑞宇](https://github.com/zhangruiyu) ，各位期待的 信息流、banner 都有小伙伴自告奋勇的在制作了，后续会和我 pr，也欢迎各位加入这个项目。</br>
 
 ## 个人联系方式
-* QQ:964997115<br/>
-* Wechat:tys19971122<br/>
-* 请各位不要在周末的时候尝试加好友，周末要么在加班要么在各地旅游✈️ 。好友请求很容易过期...
 
+- QQ:964997115<br/>
+- Wechat:tys19971122<br/>
+- 请各位不要在周末的时候尝试加好友，周末要么在加班要么在各地旅游 ✈️ 。好友请求很容易过期...
