@@ -6,7 +6,7 @@ BUNativeAdsManagerDelegate,BUVideoAdViewDelegate,BUNativeAdDelegate,
 BUNativeExpressAdViewDelegate,
 BUNativeExpressFullscreenVideoAdDelegate,
 BUNativeExpresInterstitialAdDelegate,
-BUBannerAdViewDelegate>
+BUNativeExpressBannerViewDelegate>
 @property (nonatomic, strong) UITextField *playableUrlTextView;
 @property (nonatomic, strong) UITextField *downloadUrlTextView;
 @property (nonatomic, strong) UITextField *deeplinkUrlTextView;
@@ -20,8 +20,9 @@ BUBannerAdViewDelegate>
 
 @property (nonatomic, strong) BURewardedVideoAd *rewardedVideoAd;
 @property (nonatomic, strong) BUNativeExpressRewardedVideoAd *rewardedAd;
-@property(nonatomic, strong) BUNativeExpressBannerView *bannerView;
+@property (nonatomic, strong) BUNativeExpressBannerView *bannerView;
 @property (nonatomic, strong) BUNativeExpressInterstitialAd *interstitialAd;
+@property (nonatomic, strong) BUNativeExpressFullscreenVideoAd *fullscreenVideoAd;
 
 @end
 
@@ -131,6 +132,14 @@ FlutterMethodChannel* globalMethodChannel;
         self.interstitialAd.delegate = self;
         [self.interstitialAd loadAdData];
     }
+    else if([@"loadFullScreenVideoAd" isEqualToString:call.method])
+    {
+        NSString* mCodeId = call.arguments[@"mCodeId"];
+
+        self.fullscreenVideoAd = [[BUNativeExpressFullscreenVideoAd alloc] initWithSlotID:mCodeId];
+        self.fullscreenVideoAd.delegate = self;
+        [self.fullscreenVideoAd loadAdData];
+    }
     else
     {
         result(FlutterMethodNotImplemented);
@@ -165,32 +174,30 @@ FlutterMethodChannel* globalMethodChannel;
 
 //激励视频渲染完成并展示
 - (void)nativeExpressRewardedVideoAdViewRenderSuccess:(BUNativeExpressRewardedVideoAd *)rewardedVideoAd {
-    [self.rewardedAd showAdFromRootViewController: [self rootViewController]];
 }
 
 //激励视频播放完成
 - (void)nativeExpressRewardedVideoAdDidPlayFinish:(BUNativeExpressRewardedVideoAd *)rewardedVideoAd didFailWithError:(NSError *_Nullable)error {
+}
+
+- (void)nativeExpressRewardedVideoAdServerRewardDidSucceed:(BUNativeExpressRewardedVideoAd *)rewardedVideoAd verify:(BOOL)verify {
     NSMutableDictionary *mutableDictionary=[NSMutableDictionary dictionaryWithCapacity:3];
-    [mutableDictionary setValue:@YES forKey:@"rewardVerify"];
-    [mutableDictionary setValue:NULL forKey:@"rewardAmount"];
-    [mutableDictionary setValue:NULL forKey:@"rewardName"];
+    [mutableDictionary setValue:verify?@YES:@NO forKey:@"rewardVerify"];
+    [mutableDictionary setValue:[NSNumber numberWithLong:rewardedVideoAd.rewardedVideoModel.rewardAmount] forKey:@"rewardAmount"];
+    [mutableDictionary setValue:rewardedVideoAd.rewardedVideoModel.rewardName forKey:@"rewardName"];
     
     [globalMethodChannel invokeMethod:@"onRewardResponse" arguments:mutableDictionary];
 }
 
-- (void)nativeExpressRewardedVideoAdServerRewardDidSucceed:(BUNativeExpressRewardedVideoAd *)rewardedVideoAd verify:(BOOL)verify {
-    
-}
-
 - (void)nativeExpressRewardedVideoAdDidDownLoadVideo:(BUNativeExpressRewardedVideoAd *)rewardedVideoAd {
-    
+    [self.rewardedAd showAdFromRootViewController: [self rootViewController]];
 }
 
 //激励视频关闭
 - (void)nativeExpressRewardedVideoAdDidClose:(BUNativeExpressRewardedVideoAd *)rewardedVideoAd {
     NSMutableDictionary *mutableDictionary=[NSMutableDictionary dictionaryWithCapacity:3];
     [mutableDictionary setValue:@NO forKey:@"rewardVerify"];
-    [mutableDictionary setValue:NULL forKey:@"rewardAmount"];
+    [mutableDictionary setValue:[NSNumber numberWithLong:rewardedVideoAd.rewardedVideoModel.rewardAmount] forKey:@"rewardAmount"];
     [mutableDictionary setValue:@"rewardVideo Close" forKey:@"rewardName"];
     
     [globalMethodChannel invokeMethod:@"onRewardResponse" arguments:mutableDictionary];
@@ -291,6 +298,58 @@ FlutterMethodChannel* globalMethodChannel;
 }
 
 
+#pragma ---BUNativeExpressFullscreenVideoAdDelegate
+- (void)nativeExpressFullscreenVideoAdDidLoad:(BUNativeExpressFullscreenVideoAd *)fullscreenVideoAd {
+    NSLog(@"%s",__func__);
+}
+
+- (void)nativeExpressFullscreenVideoAd:(BUNativeExpressFullscreenVideoAd *)fullscreenVideoAd didFailWithError:(NSError *)error {
+    NSLog(@"加载失败");
+    NSLog(@"%s",__func__);
+}
+
+- (void)nativeExpressFullscreenVideoAdViewRenderSuccess:(BUNativeExpressFullscreenVideoAd *)fullscreenVideoAd {
+    NSLog(@"%s",__func__);
+}
+
+- (void)nativeExpressFullscreenVideoAdDidDownLoadVideo:(BUNativeExpressFullscreenVideoAd *)fullscreenVideoAd {
+    UIViewController* rootVC = [self getRootViewController];
+    [self.fullscreenVideoAd showAdFromRootViewController:rootVC];
+    NSLog(@"%s",__func__);
+}
+
+- (void)nativeExpressFullscreenVideoAdViewRenderFail:(BUNativeExpressFullscreenVideoAd *)fullscreenVideoAd error:(NSError *)error {
+    NSLog(@"%s",__func__);
+    NSLog(@"error code : %ld , error message : %@",(long)error.code,error.description);
+}
+
+- (void)nativeExpressFullscreenVideoAdWillVisible:(BUNativeExpressFullscreenVideoAd *)fullscreenVideoAd {
+    NSLog(@"%s",__func__);
+}
+
+- (void)nativeExpressFullscreenVideoAdDidClick:(BUNativeExpressFullscreenVideoAd *)fullscreenVideoAd {
+    NSLog(@"%s",__func__);
+}
+
+- (void)nativeExpressFullscreenVideoAdWillClose:(BUNativeExpressFullscreenVideoAd *)fullscreenVideoAd {
+    NSLog(@"%s",__func__);
+}
+
+- (void)nativeExpressFullscreenVideoAdDidClose:(BUNativeExpressFullscreenVideoAd *)fullscreenVideoAd {
+    NSLog(@"%s",__func__);
+}
+
+- (void)nativeExpressFullscreenVideoAdDidCloseOtherController:(BUNativeExpressFullscreenVideoAd *)fullscreenVideoAd interactionType:(BUInteractionType)interactionType {
+    NSString *str = nil;
+    if (interactionType == BUInteractionTypePage) {
+        str = @"ladingpage";
+    } else if (interactionType == BUInteractionTypeVideoAdDetail) {
+        str = @"videoDetail";
+    } else {
+        str = @"appstoreInApp";
+    }
+    NSLog(@"%s __ %@",__func__,str);
+}
 
 
 //获取根控制器
